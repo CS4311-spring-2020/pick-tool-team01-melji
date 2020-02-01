@@ -1,4 +1,8 @@
-
+#############################################################################
+##  Please note that this is meant as a runnable template
+##  The toolbar code is located in TemplateforPICK under InitUI 
+##  Thanks - Micheal 2/1/20
+#############################################################################
 import sys
 from PyQt5.QtWidgets import QMainWindow, QAction, qApp, QApplication
 from PyQt5.QtGui import QIcon
@@ -14,11 +18,10 @@ class TemplateforPICK(QMainWindow):
     def initUI(self):               
         #this is where the toolbar elements are set up
 
-        self.toolbar = self.addToolBar('UI')
-
+        self.toolbar = self.addToolBar('UI')   #to-do lock toolbar
+        
         fileAct = QAction(QIcon('bin\\assets\\file.png'), 'file', self)
         fileAct.setShortcut('Ctrl+X')
-
         #use following code for actions 
         #fileAct.triggered.connect(filepopup()**note function call may not be correct**) 
         #self.toolbar.addAction(fileAct)
@@ -48,7 +51,6 @@ class TemplateforPICK(QMainWindow):
         #historyAct.triggered.connect(history popup())
         #self.toolbar.addAction(historyAct)
 
-        
         redoAct = QAction(QIcon('bin\\assets\\redo.png'), 'redo change', self)
         redoAct.setShortcut('Ctrl+Y')
         #redoAct.triggered.connect(redo())
@@ -59,7 +61,9 @@ class TemplateforPICK(QMainWindow):
         #undoAct.triggered.connect(undo())
         #self.toolbar.addAction(undoAct)
 
-        #to-do lock toolbar?
+        
+
+        #the following code adds the items to the toolbar
         self.toolbar.addAction(fileAct)
         self.toolbar.addAction(saveAct)
         self.toolbar.addAction(vcAct)
@@ -68,6 +72,9 @@ class TemplateforPICK(QMainWindow):
         self.toolbar.addAction(historyAct)
         self.toolbar.addAction(redoAct)
         self.toolbar.addAction(undoAct)
+
+
+
         self.setGeometry(500, 500, 500, 500)
         self.setWindowTitle(currtitle)  
         self.show()
