@@ -5,6 +5,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from node_scence import Scene
 from node_dto import Node
+from node_connector import Socket
 
 class GraphWindow(QWidget):
 
@@ -21,8 +22,8 @@ class GraphWindow(QWidget):
 
         self.scene = Scene()
         # self.grScene = self.scene.grScene
-        node = Node(self.scene, "Node 1")
-        node2 = Node(self.scene, "Node 2")
+        node = Node(self.scene, "Node 1", inputs=[1], outputs=[1])
+        # node2 = Node(self.scene, "Node 2")
         self.view = GraphView(self.scene.grScene,self)
         self.layout.addWidget(self.view)
 

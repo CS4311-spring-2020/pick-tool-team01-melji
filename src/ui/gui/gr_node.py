@@ -23,6 +23,8 @@ class GRNode(QGraphicsItem):
         self.initTitle()
         self.title = title
 
+        self.initSockets()
+
 
         self.initUI()
 
@@ -44,11 +46,13 @@ class GRNode(QGraphicsItem):
     def initTitle(self):
         self.title_item = QGraphicsTextItem(self)
         self.title_item.setDefaultTextColor(self._title_color)
-        self.title_item.setPos(self._padding, 20)#TODO: Put the title of the ndoe in the middle of the ndoe
+        self.title_item.setPos(self._padding, 35)#TODO: Put the title of the ndoe in the middle of the ndoe
         self.title_item.setTextWidth(
             self.radius
             - 2 * self._padding
         )
+    def initSockets(self):
+        pass
 
     @property
     def title(self): return self._title
