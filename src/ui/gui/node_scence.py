@@ -1,5 +1,5 @@
 from graph_scene import GraphScene
-class Scene:
+class Scene():
     def __init__(self):
         self.nodes = []
         self.edges = []

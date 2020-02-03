@@ -4,6 +4,7 @@ from graph_view import GraphView
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from node_scence import Scene
+from node_dto import Node
 
 class GraphWindow(QWidget):
 
@@ -19,15 +20,16 @@ class GraphWindow(QWidget):
         self.setLayout(self.layout)
 
         self.scene = Scene()
-        self.grScene = self.scene.grScene
-
-        self.view = GraphView(self.grScene,self)
+        # self.grScene = self.scene.grScene
+        node = Node(self.scene, "Node 1")
+        node2 = Node(self.scene, "Node 2")
+        self.view = GraphView(self.scene.grScene,self)
         self.layout.addWidget(self.view)
 
         self.setWindowTitle('Graph View')
         self.show()
 
-        self.addDebugContent()
+        # self.addDebugContent()
     
     def addDebugContent(self):
         greenBrush = QBrush(Qt.green)
