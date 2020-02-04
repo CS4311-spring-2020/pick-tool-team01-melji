@@ -24,8 +24,6 @@ class GRNode(QGraphicsItem):
         self.title = title
 
         self.initSockets()
-
-
         self.initUI()
 
 
@@ -41,6 +39,9 @@ class GRNode(QGraphicsItem):
     def initUI(self):
         self.setFlag(QGraphicsItem.ItemIsSelectable)
         self.setFlag(QGraphicsItem.ItemIsMovable)
+        #Setting the right click in the notes
+        
+
 
 
     def initTitle(self):

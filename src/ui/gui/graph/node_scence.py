@@ -1,4 +1,4 @@
-from graph_scene import GraphScene
+from graph.graph_scene import GraphScene
 class Scene():
     def __init__(self):
         self.nodes = []

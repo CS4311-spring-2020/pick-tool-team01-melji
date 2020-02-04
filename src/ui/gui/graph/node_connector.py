@@ -1,5 +1,5 @@
 
-from gr_node_connector import GRSocket
+from graph.gr_node_connector import GRSocket
 
 LEFT_TOP = 1
 LEFT_BOTTOM = 2
