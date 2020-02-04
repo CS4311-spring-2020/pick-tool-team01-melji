@@ -4,9 +4,9 @@
 #############################################################################
 import sys
 from PyQt5.QtWidgets import (QScrollArea,QWidget,QGridLayout,QLabel)
-from LogDataType import LogInfo
-from GridButtonBuilder import GetGridWidgets
-from SampleDataMaker import GetSampleWidgets
+from logview.LogDataType import LogInfo
+from logview.GridButtonBuilder import GetGridWidgets
+from logview.SampleDataMaker import GetSampleWidgets
 from random import seed,randint
 import random
 
