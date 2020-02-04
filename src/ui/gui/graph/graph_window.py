@@ -45,6 +45,18 @@ class GraphWindow(QWidget):
         edge1 = Edge(self.scene, node1.outputs[0], node2.inputs[0])
         edge2 = Edge(self.scene, node2.outputs[0], node3.inputs[0], type=2)
 
+    def contextMenuEvent(self, event):
+        contextMenu = QMenu(self)
+        
+        removeNodeAction = contextMenu.addAction("Remove Node\tCtr-R")
+        connectNode = contextMenu.addAction("Connect Node\tCtr-C")
+        deConnectNode = contextMenu.addAction("Deconnect Node\tCtr-D")
+        undoChanges = contextMenu.addAction("Undo Changes\tCtr-Z")
+        redoChanges = contextMenu.addAction("Redo Changes\tCtr-Y")
+        settings = contextMenu.addAction("Settings\tCtr-A")
+
+        action = contextMenu.exec_(self.mapToParent(event.pos()))
+
 
     def addDebugContent(self):
         greenBrush = QBrush(Qt.green)

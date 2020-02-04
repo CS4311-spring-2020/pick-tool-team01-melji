@@ -61,6 +61,20 @@ class GRNode(QGraphicsItem):
     def title(self, value):
         self._title = value
         self.title_item.setPlainText(self._title)
+    
+    # def contextMenuEvent(self, event):
+    #     contextMenu = QMenu(self)
+        
+    #     removeNodeAction = contextMenu.addAction("Remove Node\tCtr-R")
+    #     connectNode = contextMenu.addAction("Connect Node\tCtr-C")
+    #     deConnectNode = contextMenu.addAction("Deconnect Node\tCtr-D")
+    #     undoChanges = contextMenu.addAction("Undo Changes\tCtr-Z")
+    #     redoChanges = contextMenu.addAction("Redo Changes\tCtr-Y")
+    #     settings = contextMenu.addAction("Settings\tCtr-A")
+
+    #     action = contextMenu.exec_(self.mapFromItem(self))
+
+        
 
 
     def paint(self, painter, QStyleOptionGraphicsItem, widget=None):
