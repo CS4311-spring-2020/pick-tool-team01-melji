@@ -3,3 +3,4 @@
 .project
 .settings
 .vsscode
+__pycache__
