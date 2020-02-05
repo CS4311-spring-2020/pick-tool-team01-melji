@@ -9,7 +9,7 @@ class GRSocket(QGraphicsItem):
 
         self.radius = 6.0
         self.outline_width = 1.0
-        self._color_background = QColor("#FFFF7700")
+        self._color_background = QColor("#5532CAF6")
         self._color_outline = QColor("#FF000000")
 
         self._pen = QPen(self._color_outline)

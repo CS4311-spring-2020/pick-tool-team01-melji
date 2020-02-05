@@ -4,7 +4,7 @@ from graph.graph_view import GraphView
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from graph.node_scence import Scene
-from graph.node_edge import Edge
+from graph.node_edge import Edge, EDGE_TYPE_BEZIER
 from graph.node_dto import Node
 from graph.node_connector import Socket
 
@@ -42,8 +42,9 @@ class GraphWindow(QWidget):
         node2.setPos(-75, 0)
         node3.setPos(200, -150)
 
-        edge1 = Edge(self.scene, node1.outputs[0], node2.inputs[0])
-        edge2 = Edge(self.scene, node2.outputs[0], node3.inputs[0], type=2)
+        edge1 = Edge(self.scene, node1.outputs[0], node2.inputs[0], edge_type=EDGE_TYPE_BEZIER)
+        edge2 = Edge(self.scene, node2.outputs[0], node3.inputs[0], edge_type=EDGE_TYPE_BEZIER)
+
 
     def contextMenuEvent(self, event):
         contextMenu = QMenu(self)
