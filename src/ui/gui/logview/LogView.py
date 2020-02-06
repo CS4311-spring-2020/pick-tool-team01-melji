@@ -6,7 +6,7 @@
 import sys
 from PyQt5.QtWidgets import QMainWindow, QAction, qApp, QApplication, QVBoxLayout, QWidget,QToolBar,QLineEdit,QPushButton
 from PyQt5.QtGui import QIcon
-from GridBuilder import GridMake
+from logview.GridBuilder import GridMake
 
 class LogView(QMainWindow):
     
@@ -23,6 +23,7 @@ class LogView(QMainWindow):
         self.setCentralWidget(_widget)
         #############################################################################
         self.setGeometry(500, 500, 500, 500)
+        currtitle = 'PICK System'
         self.setWindowTitle(currtitle)  
         self.show()
         
@@ -151,14 +152,3 @@ class LogView(QMainWindow):
 
         self.addToolBarBreak()
         self.addToolBar(self.toolbarlower)
-
-
-
-        
-        
-        
-if __name__ == '__main__':
-    currtitle = 'PICK System'  #Use this var to change title
-    app = QApplication(sys.argv)
-    ex = LogView()
-    sys.exit(app.exec_())
