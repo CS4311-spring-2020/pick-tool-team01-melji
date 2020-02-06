@@ -11,15 +11,33 @@ class GetGridWidgets(QFrame):
     def __init__(self, parent=None):
         super(GetGridWidgets,self).__init__(parent)
         
-        self.arrayofwidgets = [ LogIDWidget(), LogNameWidget(), TimeStampWidget(), DescriptionWidget(), ReporterWidget(), EventTeamWidget(), 
-        IconWidget(),OriginDocumentWidget(),VectorsAttachedToWidget(), LogIDTextWidget(), LogNameTextWidget(), TimeStampTextWidget(), 
-        DescriptionTextWidget(), ReporterTextWidget(), EventTeamTextWidget(), IconTextWidget(), OriginDocumentTextWidget(), VectorsAttachedToTextWidget()]
+        self.arrayofwidgets = [ NodeVisibilityTextWidget(), NodeIDWidget(), NodeNameWidget(), NodeTimeStampWidget(), NodeDescriptionWidget(), NodeSourceWidget(), #NodeWidget(), 
+        NodeIconWidget(), NodeOriginDocumentWidget(), NodeLogEntryRefrenceWidget(), EmptyWidget(), NodeIDTextWidget(), NodeNameTextWidget(), NodeTimeStampTextWidget(), 
+        NodeDescriptionTextWidget(), NodeSourceTextWidget(),  NodeIconTextWidget(), NodeOriginDocumentTextWidget(), NodeLogEntryRefrenceTextWidget()]
         return 
-    
 
-class LogIDWidget(QFrame):
+
+
+class NodeVisibilityTextWidget(QFrame):
+
     def __init__(self, parent=None):
-        super(LogIDWidget,self).__init__(parent)
+        super(NodeVisibilityTextWidget,self).__init__(parent)
+
+        layout = QHBoxLayout()
+        layout.setContentsMargins(0,0,0,0)
+        layout.setSpacing(0)
+        self.setStyleSheet("border: 1px solid black;")
+        self.textlable = QLabel("Visibility")
+        layout.addWidget(self.textlable)
+        self.setLayout(layout)  
+        self.setMaximumHeight(heightoftextrow)
+        return
+
+
+
+class NodeIDWidget(QFrame):
+    def __init__(self, parent=None):
+        super(NodeIDWidget,self).__init__(parent)
 
         layout = QHBoxLayout()
         layout.setContentsMargins(0,0,0,0)
@@ -30,16 +48,16 @@ class LogIDWidget(QFrame):
         self.textlable = QLabel(b)
         layout.addWidget(self.textlable)
         
-        self.logidsortbutton = QPushButton()
-        self.logidsortbutton.setIcon(QIcon(QPixmap("bin\\assets\\1_9sort.png")))
+        self.nodeidsortbutton = QPushButton()
+        self.nodeidsortbutton.setIcon(QIcon(QPixmap("bin\\assets\\1_9sort.png")))
         #self.b2.clicked.connect(lambda:self.whichbtn(self.b2))
-        layout.addWidget(self.logidsortbutton)
+        layout.addWidget(self.nodeidsortbutton)
 
-        self.logidvisibilitybutton = QCheckBox()
-        self.logidvisibilitybutton.setToolTip("This allows you to change visiblilty in this and the graph")
-        self.logidvisibilitybutton.setChecked(True)
-        #self.logidvisibilitybutton.stateChanged.connect(lambda:self.btnstate(self.b1))
-        layout.addWidget(self.logidvisibilitybutton)
+        self.nodeidvisibilitybutton = QCheckBox()
+        self.nodeidvisibilitybutton.setToolTip("This allows you to change visiblilty in this and the graph")
+        self.nodeidvisibilitybutton.setChecked(True)
+        #self.nodeidvisibilitybutton.stateChanged.connect(lambda:self.btnstate(self.b1))
+        layout.addWidget(self.nodeidvisibilitybutton)
 
         
         self.setLayout(layout)
@@ -49,15 +67,15 @@ class LogIDWidget(QFrame):
 
 
 
-class LogIDTextWidget(QFrame):
+class NodeIDTextWidget(QFrame):
 
     def __init__(self, parent=None):
-        super(LogIDTextWidget,self).__init__(parent)
+        super(NodeIDTextWidget,self).__init__(parent)
         layout = QHBoxLayout()
         layout.setContentsMargins(0,0,0,0)
         layout.setSpacing(0)
         self.setStyleSheet("border: 1px solid black;")
-        self.textlable = QLabel("Log ID")
+        self.textlable = QLabel("Node ID")
         layout.addWidget(self.textlable)
         self.setLayout(layout)    
         self.setMaximumHeight(heightoftextrow)
@@ -65,26 +83,26 @@ class LogIDTextWidget(QFrame):
 
 
 
-class LogNameWidget(QFrame):
+class NodeNameWidget(QFrame):
 
     def __init__(self, parent=None):
-        super(LogNameWidget,self).__init__(parent)
+        super(NodeNameWidget,self).__init__(parent)
 
         layout = QHBoxLayout()
         layout.setContentsMargins(0,0,0,0)
         layout.setSpacing(0)
         self.setStyleSheet("border: 1px solid black;")
         
-        self.lognamesortbutton = QPushButton()
-        self.lognamesortbutton.setIcon(QIcon(QPixmap("bin\\assets\\a_zsort.png")))
+        self.nodenamesortbutton = QPushButton()
+        self.nodenamesortbutton.setIcon(QIcon(QPixmap("bin\\assets\\a_zsort.png")))
         #self.b2.clicked.connect(lambda:self.whichbtn(self.b2))
-        layout.addWidget(self.lognamesortbutton)
+        layout.addWidget(self.nodenamesortbutton)
 
-        self.lognamevisibilitybutton = QCheckBox()
-        self.lognamevisibilitybutton.setToolTip("This allows you to change visiblilty in this and the graph")
-        self.lognamevisibilitybutton.setChecked(True)
-        #self.lognamevisibilitybutton.stateChanged.connect(lambda:self.btnstate(self.b1))
-        layout.addWidget(self.lognamevisibilitybutton)
+        self.nodenamevisibilitybutton = QCheckBox()
+        self.nodenamevisibilitybutton.setToolTip("This allows you to change visiblilty in this and the graph")
+        self.nodenamevisibilitybutton.setChecked(True)
+        #self.nodenamevisibilitybutton.stateChanged.connect(lambda:self.btnstate(self.b1))
+        layout.addWidget(self.nodenamevisibilitybutton)
 
         
         self.setLayout(layout)
@@ -94,16 +112,16 @@ class LogNameWidget(QFrame):
 
 
 
-class LogNameTextWidget(QFrame):
+class NodeNameTextWidget(QFrame):
 
     def __init__(self, parent=None):
-        super(LogNameTextWidget,self).__init__(parent)
+        super(NodeNameTextWidget,self).__init__(parent)
 
         layout = QHBoxLayout()
         layout.setContentsMargins(0,0,0,0)
         layout.setSpacing(0)
         self.setStyleSheet("border: 1px solid black;")
-        self.textlable = QLabel("LogID")
+        self.textlable = QLabel("NodeID")
         layout.addWidget(self.textlable)
         self.setLayout(layout)  
         self.setMaximumHeight(heightoftextrow)
@@ -111,31 +129,31 @@ class LogNameTextWidget(QFrame):
 
 
 
-class TimeStampWidget(QFrame):
+class NodeTimeStampWidget(QFrame):
 
     def __init__(self, parent=None):
-        super(TimeStampWidget,self).__init__(parent)
+        super(NodeTimeStampWidget,self).__init__(parent)
 
         layout = QHBoxLayout()
         layout.setContentsMargins(0,0,0,0)
         layout.setSpacing(0)
         self.setStyleSheet("border: 1px solid black;")
         
-        self.logtimestampsortbutton = QPushButton()
-        self.logtimestampsortbutton.setIcon(QIcon(QPixmap("bin\\assets\\1_9sort.png")))
-        #self.logtimestampsortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
-        layout.addWidget(self.logtimestampsortbutton)
+        self.nodetimestampsortbutton = QPushButton()
+        self.nodetimestampsortbutton.setIcon(QIcon(QPixmap("bin\\assets\\1_9sort.png")))
+        #self.nodetimestampsortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
+        layout.addWidget(self.nodetimestampsortbutton)
         
-        self.logtimestampvisibilitybutton = QCheckBox()
-        self.logtimestampvisibilitybutton.setToolTip("This allows you to change visiblilty in this and the graph")
-        self.logtimestampvisibilitybutton.setChecked(True)
-        #self.logtimestampvisibilitybutton.stateChanged.connect(lambda:self.btnstate(self.b1))
-        layout.addWidget(self.logtimestampvisibilitybutton)
+        self.nodetimestampvisibilitybutton = QCheckBox()
+        self.nodetimestampvisibilitybutton.setToolTip("This allows you to change visiblilty in this and the graph")
+        self.nodetimestampvisibilitybutton.setChecked(True)
+        #self.nodetimestampvisibilitybutton.stateChanged.connect(lambda:self.btnstate(self.b1))
+        layout.addWidget(self.nodetimestampvisibilitybutton)
 
-        self.logtimestampfilterbutton = QPushButton()
-        self.logtimestampfilterbutton.setIcon(QIcon(QPixmap("bin\\assets\\filter.png")))
-        #self.logtimestampfilterbutton.clicked.connect(lambda:self.whichbtn(self.b2))
-        layout.addWidget(self.logtimestampfilterbutton)
+        self.nodetimestampfilterbutton = QPushButton()
+        self.nodetimestampfilterbutton.setIcon(QIcon(QPixmap("bin\\assets\\filter.png")))
+        #self.nodetimestampfilterbutton.clicked.connect(lambda:self.whichbtn(self.b2))
+        layout.addWidget(self.nodetimestampfilterbutton)
 
         
         self.setLayout(layout)
@@ -145,10 +163,10 @@ class TimeStampWidget(QFrame):
 
 
 
-class TimeStampTextWidget(QFrame):
+class NodeTimeStampTextWidget(QFrame):
 
     def __init__(self, parent=None):
-        super(TimeStampTextWidget,self).__init__(parent)
+        super(NodeTimeStampTextWidget,self).__init__(parent)
 
         layout = QHBoxLayout()
         layout.setContentsMargins(0,0,0,0)
@@ -159,43 +177,46 @@ class TimeStampTextWidget(QFrame):
         self.setLayout(layout)  
         self.setMaximumHeight(heightoftextrow)
         return
-        
 
 
-class DescriptionWidget(QFrame):
+
+class NodeDescriptionWidget(QFrame):
 
     def __init__(self, parent=None):
-        super(DescriptionWidget,self).__init__(parent)
+        super(NodeDescriptionWidget,self).__init__(parent)
 
         layout = QHBoxLayout()
         layout.setContentsMargins(0,0,0,0)
         layout.setSpacing(0)
         self.setStyleSheet("border: 1px solid black;")
         
-        self.logdescriptionsortbutton = QPushButton()
-        self.logdescriptionsortbutton.setIcon(QIcon(QPixmap("bin\\assets\\upsort.png")))
-        #self.logdescriptionsortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
-        layout.addWidget(self.logdescriptionsortbutton)
+        self.nodedescriptionsortbutton = QPushButton()
+        self.nodedescriptionsortbutton.setIcon(QIcon(QPixmap("bin\\assets\\upsort.png")))
+        #self.nodedescriptionsortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
+        layout.addWidget(self.nodedescriptionsortbutton)
         
-        self.logdescriptionvisibilitybutton = QCheckBox()
-        self.logdescriptionvisibilitybutton.setToolTip("This allows you to change visiblilty in this and the graph")
-        self.logdescriptionvisibilitybutton.setChecked(True)
-        #self.logdescriptionvisibilitybutton.stateChanged.connect(lambda:self.btnstate(self.b1))
-        layout.addWidget(self.logdescriptionvisibilitybutton)
+
+
+        self.nodedescriptionvisibilitybutton = QCheckBox()
+        self.nodedescriptionvisibilitybutton.setToolTip("This allows you to change visiblilty in this and the graph")
+        self.nodedescriptionvisibilitybutton.setChecked(True)
+        #self.nodedescriptionvisibilitybutton.stateChanged.connect(lambda:self.btnstate(self.b1))
+        layout.addWidget(self.nodedescriptionvisibilitybutton)
 
 
         
         self.setLayout(layout)
         #self.setFixedSize(widthofcolumns, heightofrows) 
         self.setMaximumHeight(heightofrows)
+
         return
 
 
 
-class DescriptionTextWidget(QFrame):
+class NodeDescriptionTextWidget(QFrame):
 
     def __init__(self, parent=None):
-        super(DescriptionTextWidget,self).__init__(parent)
+        super(NodeDescriptionTextWidget,self).__init__(parent)
 
         layout = QHBoxLayout()
         layout.setContentsMargins(0,0,0,0)
@@ -203,134 +224,51 @@ class DescriptionTextWidget(QFrame):
         self.setStyleSheet("border: 1px solid black;")
         self.textlable = QLabel("Description")
         layout.addWidget(self.textlable)
-        self.setLayout(layout)
-        self.setMaximumHeight(heightoftextrow)
-        return
-
-
-
-class ReporterWidget(QFrame):
-
-    def __init__(self, parent=None):
-        super(ReporterWidget,self).__init__(parent)
-
-        layout = QHBoxLayout()
-        layout.setContentsMargins(0,0,0,0)
-        layout.setSpacing(0)
-        self.setStyleSheet("border: 1px solid black;")
-        
-        self.logreportersortbutton = QPushButton()
-        self.logreportersortbutton.setIcon(QIcon(QPixmap("bin\\assets\\a_zsort.png")))
-        #self.logreportersortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
-        layout.addWidget(self.logreportersortbutton)
-        
-        self.logreportervisibilitybutton = QCheckBox()
-        self.logreportervisibilitybutton.setToolTip("This allows you to change visiblilty in this and the graph")
-        self.logreportervisibilitybutton.setChecked(True)
-        #self.logreportervisibilitybutton.stateChanged.connect(lambda:self.btnstate(self.b1))
-        layout.addWidget(self.logreportervisibilitybutton)
-
-        self.logreporterfilterbutton = QPushButton()
-        self.logreporterfilterbutton.setIcon(QIcon(QPixmap("bin\\assets\\filter.png")))
-        #self.logreporterfilterbutton.clicked.connect(lambda:self.whichbtn(self.b2))
-        layout.addWidget(self.logreporterfilterbutton)
-
-        
-        self.setLayout(layout)
-        #self.setFixedSize(widthofcolumns, heightofrows) 
-        self.setMaximumHeight(heightofrows)
-        return
-
-
-
-class ReporterTextWidget(QFrame):
-
-    def __init__(self, parent=None):
-        super(ReporterTextWidget,self).__init__(parent)
-
-        layout = QHBoxLayout()
-        layout.setContentsMargins(0,0,0,0)
-        layout.setSpacing(0)
-        self.setStyleSheet("border: 1px solid black;")
-        self.textlable = QLabel("Reporter")
-        layout.addWidget(self.textlable)
         self.setLayout(layout)  
         self.setMaximumHeight(heightoftextrow)
         return
 
 
-
-class EventTeamWidget(QFrame):
+class EmptyWidget(QFrame):
 
     def __init__(self, parent=None):
-        super(EventTeamWidget,self).__init__(parent)
+        super(EmptyWidget,self).__init__(parent)
 
         layout = QHBoxLayout()
         layout.setContentsMargins(0,0,0,0)
         layout.setSpacing(0)
         self.setStyleSheet("border: 1px solid black;")
-        
-        self.logeventteamsortbutton = QPushButton()
-        self.logeventteamsortbutton.setIcon(QIcon(QPixmap("bin\\assets\\a_zsort.png")))
-        #self.logeventteamsortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
-        layout.addWidget(self.logeventteamsortbutton)
-        
-        self.logeventteamvisibilitybutton = QCheckBox()
-        self.logeventteamvisibilitybutton.setToolTip("This allows you to change visiblilty in this and the graph")
-        self.logeventteamvisibilitybutton.setChecked(True)
-        #self.logeventteamvisibilitybutton.stateChanged.connect(lambda:self.btnstate(self.b1))
-        layout.addWidget(self.logeventteamvisibilitybutton)
-
-        self.logeventteamfilterbutton = QPushButton()
-        self.logeventteamfilterbutton.setIcon(QIcon(QPixmap("bin\\assets\\filter.png")))
-        #self.logeventteamfilterbutton.clicked.connect(lambda:self.whichbtn(self.b2))
-        layout.addWidget(self.logeventteamfilterbutton)
-
-        
-        self.setLayout(layout)
-        #self.setFixedSize(widthofcolumns, heightofrows) 
-        self.setMaximumHeight(heightofrows)
-        return
-
-
-
-class EventTeamTextWidget(QFrame):
-
-    def __init__(self, parent=None):
-        super(EventTeamTextWidget,self).__init__(parent)
-
-        layout = QHBoxLayout()
-        layout.setContentsMargins(0,0,0,0)
-        layout.setSpacing(0)
-        self.setStyleSheet("border: 1px solid black;")
-        self.textlable = QLabel("Rvent Team")
+        self.textlable = QLabel("")
         layout.addWidget(self.textlable)
         self.setLayout(layout)  
         self.setMaximumHeight(heightoftextrow)
         return
 
-
-
-class IconWidget(QFrame):
+class NodeSourceWidget(QFrame):
 
     def __init__(self, parent=None):
-        super(IconWidget,self).__init__(parent)
+        super(NodeSourceWidget,self).__init__(parent)
 
         layout = QHBoxLayout()
         layout.setContentsMargins(0,0,0,0)
         layout.setSpacing(0)
         self.setStyleSheet("border: 1px solid black;")
         
-        self.logiconsortbutton = QPushButton()
-        self.logiconsortbutton.setIcon(QIcon(QPixmap("bin\\assets\\upsort.png")))
-        #self.logiconsortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
-        layout.addWidget(self.logiconsortbutton)
+        self.nodeeventteamsortbutton = QPushButton()
+        self.nodeeventteamsortbutton.setIcon(QIcon(QPixmap("bin\\assets\\a_zsort.png")))
+        #self.nodeeventteamsortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
+        layout.addWidget(self.nodeeventteamsortbutton)
         
-        self.logiconvisibilitybutton = QCheckBox()
-        self.logiconvisibilitybutton.setToolTip("This allows you to change visiblilty in this and the graph")
-        self.logiconvisibilitybutton.setChecked(True)
-        #self.logiconvisibilitybutton.stateChanged.connect(lambda:self.btnstate(self.b1))
-        layout.addWidget(self.logiconvisibilitybutton)
+        self.nodeeventteamvisibilitybutton = QCheckBox()
+        self.nodeeventteamvisibilitybutton.setToolTip("This allows you to change visiblilty in this and the graph")
+        self.nodeeventteamvisibilitybutton.setChecked(True)
+        #self.nodeeventteamvisibilitybutton.stateChanged.connect(lambda:self.btnstate(self.b1))
+        layout.addWidget(self.nodeeventteamvisibilitybutton)
+
+        self.nodeeventteamfilterbutton = QPushButton()
+        self.nodeeventteamfilterbutton.setIcon(QIcon(QPixmap("bin\\assets\\filter.png")))
+        #self.nodeeventteamfilterbutton.clicked.connect(lambda:self.whichbtn(self.b2))
+        layout.addWidget(self.nodeeventteamfilterbutton)
 
         
         self.setLayout(layout)
@@ -340,10 +278,58 @@ class IconWidget(QFrame):
 
 
 
-class IconTextWidget(QFrame):
+class NodeSourceTextWidget(QFrame):
 
     def __init__(self, parent=None):
-        super(IconTextWidget,self).__init__(parent)
+        super(NodeSourceTextWidget,self).__init__(parent)
+
+        layout = QHBoxLayout()
+        layout.setContentsMargins(0,0,0,0)
+        layout.setSpacing(0)
+
+        self.setStyleSheet("border: 1px solid black;")
+        self.textlable = QLabel("Source")
+
+        layout.addWidget(self.textlable)
+        self.setLayout(layout)  
+        self.setMaximumHeight(heightoftextrow)
+
+        return
+
+
+class NodeIconWidget(QFrame):
+
+    def __init__(self, parent=None):
+        super(NodeIconWidget,self).__init__(parent)
+
+        layout = QHBoxLayout()
+        layout.setContentsMargins(0,0,0,0)
+        layout.setSpacing(0)
+        self.setStyleSheet("border: 1px solid black;")
+        
+        self.nodeiconsortbutton = QPushButton()
+        self.nodeiconsortbutton.setIcon(QIcon(QPixmap("bin\\assets\\upsort.png")))
+        #self.nodeiconsortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
+        layout.addWidget(self.nodeiconsortbutton)
+        
+        self.nodeiconvisibilitybutton = QCheckBox()
+        self.nodeiconvisibilitybutton.setToolTip("This allows you to change visiblilty in this and the graph")
+        self.nodeiconvisibilitybutton.setChecked(True)
+        #self.nodeiconvisibilitybutton.stateChanged.connect(lambda:self.btnstate(self.b1))
+        layout.addWidget(self.nodeiconvisibilitybutton)
+
+        
+        self.setLayout(layout)
+        #self.setFixedSize(widthofcolumns, heightofrows) 
+        self.setMaximumHeight(heightofrows)
+        return
+
+
+
+class NodeIconTextWidget(QFrame):
+
+    def __init__(self, parent=None):
+        super(NodeIconTextWidget,self).__init__(parent)
         
         layout = QHBoxLayout()
         layout.setContentsMargins(0,0,0,0)
@@ -356,26 +342,27 @@ class IconTextWidget(QFrame):
 
 
 
-class OriginDocumentWidget(QFrame):
+
+class NodeOriginDocumentWidget(QFrame):
 
     def __init__(self, parent=None):
-        super(OriginDocumentWidget,self).__init__(parent)
+        super(NodeOriginDocumentWidget,self).__init__(parent)
 
         layout = QHBoxLayout()
         layout.setContentsMargins(0,0,0,0)
         layout.setSpacing(0)
         self.setStyleSheet("border: 1px solid black;")
         
-        self.logorigindocumentsortbutton = QPushButton()
-        self.logorigindocumentsortbutton.setIcon(QIcon(QPixmap("bin\\assets\\a_zsort.png")))
-        #self.logorigindocumentsortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
-        layout.addWidget(self.logorigindocumentsortbutton)
+        self.nodeorigindocumentsortbutton = QPushButton()
+        self.nodeorigindocumentsortbutton.setIcon(QIcon(QPixmap("bin\\assets\\a_zsort.png")))
+        #self.nodeorigindocumentsortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
+        layout.addWidget(self.nodeorigindocumentsortbutton)
         
-        self.logorigindocumentvisibilitybutton = QCheckBox()
-        self.logorigindocumentvisibilitybutton.setToolTip("This allows you to change visiblilty in this and the graph")
-        self.logorigindocumentvisibilitybutton.setChecked(True)
-        #self.logorigindocumentvisibilitybutton.stateChanged.connect(lambda:self.btnstate(self.b1))
-        layout.addWidget(self.logorigindocumentvisibilitybutton)
+        self.nodeorigindocumentvisibilitybutton = QCheckBox()
+        self.nodeorigindocumentvisibilitybutton.setToolTip("This allows you to change visiblilty in this and the graph")
+        self.nodeorigindocumentvisibilitybutton.setChecked(True)
+        #self.nodeorigindocumentvisibilitybutton.stateChanged.connect(lambda:self.btnstate(self.b1))
+        layout.addWidget(self.nodeorigindocumentvisibilitybutton)
 
         
         self.setLayout(layout)
@@ -385,10 +372,10 @@ class OriginDocumentWidget(QFrame):
         
 
 
-class OriginDocumentTextWidget(QFrame):
+class NodeOriginDocumentTextWidget(QFrame):
 
     def __init__(self, parent=None):
-        super(OriginDocumentTextWidget,self).__init__(parent)
+        super(NodeOriginDocumentTextWidget,self).__init__(parent)
 
         
         layout = QHBoxLayout()
@@ -403,31 +390,31 @@ class OriginDocumentTextWidget(QFrame):
 
 
         
-class VectorsAttachedToWidget(QFrame):
+class NodeLogEntryRefrenceWidget(QFrame):
 
     def __init__(self, parent=None):
-        super(VectorsAttachedToWidget,self).__init__(parent)
+        super(NodeLogEntryRefrenceWidget,self).__init__(parent)
 
         layout = QHBoxLayout()
         layout.setContentsMargins(0,0,0,0)
         layout.setSpacing(0)
         self.setStyleSheet("border: 1px solid black;")
         
-        self.logvectorsattachedtosortbutton = QPushButton()
-        self.logvectorsattachedtosortbutton.setIcon(QIcon(QPixmap("bin\\assets\\a_zsort.png")))
-        #self.logvectorsattachedtosortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
-        layout.addWidget(self.logvectorsattachedtosortbutton)
+        self.nodevectorsattachedtosortbutton = QPushButton()
+        self.nodevectorsattachedtosortbutton.setIcon(QIcon(QPixmap("bin\\assets\\a_zsort.png")))
+        #self.nodevectorsattachedtosortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
+        layout.addWidget(self.nodevectorsattachedtosortbutton)
         
-        self.logvectorsattachedtovisibilitybutton = QCheckBox()
-        self.logvectorsattachedtovisibilitybutton.setToolTip("This allows you to change visiblilty in this and the graph")
-        self.logvectorsattachedtovisibilitybutton.setChecked(True)
-        #self.logvectorsattachedtovisibilitybutton.stateChanged.connect(lambda:self.btnstate(self.b1))
-        layout.addWidget(self.logvectorsattachedtovisibilitybutton)
+        self.nodevectorsattachedtovisibilitybutton = QCheckBox()
+        self.nodevectorsattachedtovisibilitybutton.setToolTip("This allows you to change visiblilty in this and the graph")
+        self.nodevectorsattachedtovisibilitybutton.setChecked(True)
+        #self.nodevectorsattachedtovisibilitybutton.stateChanged.connect(lambda:self.btnstate(self.b1))
+        layout.addWidget(self.nodevectorsattachedtovisibilitybutton)
 
-        self.logvectorsattachedtofilterbutton = QPushButton()
-        self.logvectorsattachedtofilterbutton.setIcon(QIcon(QPixmap("bin\\assets\\filter.png")))
-        #self.logvectorsattachedtofilterbutton.clicked.connect(lambda:self.whichbtn(self.b2))
-        layout.addWidget(self.logvectorsattachedtofilterbutton)
+        self.nodevectorsattachedtofilterbutton = QPushButton()
+        self.nodevectorsattachedtofilterbutton.setIcon(QIcon(QPixmap("bin\\assets\\filter.png")))
+        #self.nodevectorsattachedtofilterbutton.clicked.connect(lambda:self.whichbtn(self.b2))
+        layout.addWidget(self.nodevectorsattachedtofilterbutton)
 
         
         self.setLayout(layout)
@@ -437,16 +424,16 @@ class VectorsAttachedToWidget(QFrame):
 
 
         
-class VectorsAttachedToTextWidget(QFrame):
+class NodeLogEntryRefrenceTextWidget(QFrame):
 
     def __init__(self, parent=None):
-        super(VectorsAttachedToTextWidget,self).__init__(parent)
+        super(NodeLogEntryRefrenceTextWidget,self).__init__(parent)
         
         layout = QHBoxLayout()
         layout.setContentsMargins(0,0,0,0)
         layout.setSpacing(0)
         self.setStyleSheet("border: 1px solid black;")
-        self.textlable = QLabel("Vectors Log is Attached to")
+        self.textlable = QLabel("Log Refrence")
         layout.addWidget(self.textlable)
         self.setLayout(layout)
         self.setMaximumHeight(heightoftextrow)

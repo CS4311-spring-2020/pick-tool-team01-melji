@@ -8,15 +8,18 @@ import string
 widthofcolumns = 200
 heightofrows=180
 heightoftextrow = 180
-rvalue = 1  # for the program to know the color of the icon
+rvalueg = 1  # for the program to know the color of the icon
+global sample
 class GetSampleWidgets(QFrame):
     def __init__(self, parent=None):
         super(GetSampleWidgets,self).__init__(parent)
-
-        self.arrayofsamplewidgets= [LogRandIDTextWidget(),LogRandNameTextWidget(),RandTimeWidget(),LogRandDescriptionTextWidget(),RandEventTeamWidget(),RandEventTeamWidget(),IconWidget(),RandomFileTextWidget(),RandVectorWidget()]
-            
-            
+        global sample
         
+        sample = open('text.txt', 'w') 
+        self.arrayofsamplewidgets= [LogRandIDTextWidget(),LogRandNameTextWidget(),RandTimeWidget(),LogRandDescriptionTextWidget(),RandEventTeamWidget(),RandEventTeamWidget(),IconWidget(),RandomFileTextWidget(),RandVectorWidget()]
+        
+         
+        sample.close() 
 
         return 
 
@@ -183,18 +186,19 @@ class RandVectorWidget(QFrame):
         return
 
 
-
 class RandEventTeamWidget(QFrame):
 
     def __init__(self, parent=None):
         super(RandEventTeamWidget,self).__init__(parent)
-
-        
+        global sample
+        global rvalueg
         layout = QHBoxLayout()
         layout.setContentsMargins(0,0,0,0)
         layout.setSpacing(0)
         rvalue = randint(1, 3)
+        rvalueg = rvalue
         self.setStyleSheet("border: 1px solid black;")
+        sample.write(str(rvalue))
         color = ""
         if rvalue == 1:
             color = "white"
@@ -202,12 +206,13 @@ class RandEventTeamWidget(QFrame):
            color = "blue"
         if rvalue == 3:
             color = "red"
-
+        sample.write(color)
         labeli = QLabel(color)
         labeli.setScaledContents(True)
         layout.addWidget(labeli)
-        print(labeli.hasScaledContents())
-        print(labeli.size())
+
+        #print(labeli.hasScaledContents())
+        #print(labeli.size())
         
         self.setLayout(layout)  
         self.setMaximumHeight(heightofrows)
@@ -218,25 +223,26 @@ class IconWidget(QFrame):
 
     def __init__(self, parent=None):
         super(IconWidget,self).__init__(parent)
-
-        
+        global sample
+        global rvalueg
         layout = QHBoxLayout()
         layout.setContentsMargins(0,0,0,0)
         layout.setSpacing(0)
         labeli = QLabel(self)
         self.setStyleSheet("border: 1px solid black;")
-        if rvalue == 1:
+        if rvalueg == 1:
             labeli.setPixmap(QPixmap("bin\\assets\\white.png"))
-        if rvalue == 2:
+        if rvalueg == 2:
             labeli.setPixmap(QPixmap("bin\\assets\\blue.png"))
-        if rvalue == 3:
+        if rvalueg == 3:
             labeli.setPixmap(QPixmap("bin\\assets\\red.png"))
         labeli.setScaledContents(True)
         labeli.setMaximumHeight(100)
         labeli.setMaximumWidth(120)
+        sample.write("HI")
+        
         layout.addWidget(labeli)
-        print(labeli.hasScaledContents())
-        print(labeli.size())
+        sample.write(str(rvalueg))
         
         self.setLayout(layout)  
         self.setMaximumHeight(heightofrows)

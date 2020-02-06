@@ -4,9 +4,9 @@
 #############################################################################
 import sys
 from PyQt5.QtWidgets import (QScrollArea,QWidget,QGridLayout,QLabel)
-from LogDataType import LogInfo
-from GridButtonBuilder import GetGridWidgets
-from SampleDataMaker import GetSampleWidgets
+#from LogDataType import LogInfo
+from NodeGridButtonBuilder import GetGridWidgets
+from SampleNodeDataMaker import GetSampleWidgets
 from random import seed,randint
 import random
 
@@ -27,7 +27,7 @@ class GridMake(QScrollArea):
         
         numofsample = 0
         numofsample = randint(0, 98)
-
+        
         for y in range(0,numofsample): #this code will detect what is in the datatype and put it into spaces in grid layout
             for x in range(0,9):
                 if y < 2:
