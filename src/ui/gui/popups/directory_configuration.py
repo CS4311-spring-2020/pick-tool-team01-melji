@@ -50,7 +50,7 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
+        Form.setWindowTitle(_translate("Form", "Directory Configuration"))
         self.pushButton.setText(_translate("Form", "Start Data Ingestion"))
         self.label.setText(_translate("Form", "Red Team Folder:"))
         self.label_2.setText(_translate("Form", "Blue Team Folder: "))

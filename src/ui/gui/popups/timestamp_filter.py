@@ -12,7 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_Form(object):
     def setupUi(self, Form):
-        Form.setObjectName("Form")
+        Form.setObjectName("Timestamp Filter")
         Form.resize(400, 124)
         self.dateTimeEdit = QtWidgets.QDateTimeEdit(Form)
         self.dateTimeEdit.setGeometry(QtCore.QRect(40, 40, 101, 22))
@@ -35,7 +35,7 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
+        Form.setWindowTitle(_translate("Form", "Timestamp Filter"))
         self.label.setText(_translate("Form", "Start:"))
         self.label_2.setText(_translate("Form", "End:"))
         self.pushButton.setText(_translate("Form", "Filter"))

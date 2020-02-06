@@ -12,7 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_Form(object):
     def setupUi(self, Form):
-        Form.setObjectName("Form")
+        Form.setObjectName("Version Control")
         Form.resize(400, 164)
         self.pushButton = QtWidgets.QPushButton(Form)
         self.pushButton.setGeometry(QtCore.QRect(80, 46, 81, 31))
@@ -32,7 +32,7 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
+        Form.setWindowTitle(_translate("Form", "Version Controll"))
         self.pushButton.setText(_translate("Form", "Push"))
         self.pushButton_2.setText(_translate("Form", "Disconnect"))
         self.pushButton_3.setText(_translate("Form", "Pull"))

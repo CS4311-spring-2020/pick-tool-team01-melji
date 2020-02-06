@@ -33,7 +33,7 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
+        Form.setWindowTitle(_translate("Form", "Export Configuration"))
         self.comboBox.setItemText(0, _translate("Form", "None"))
         self.comboBox.setItemText(1, _translate("Form", "PNG"))
         self.comboBox.setItemText(2, _translate("Form", "JPEG"))

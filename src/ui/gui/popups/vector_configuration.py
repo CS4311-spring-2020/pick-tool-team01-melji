@@ -12,7 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_Form(object):
     def setupUi(self, Form):
-        Form.setObjectName("Form")
+        Form.setObjectName("Vector Configuration")
         Form.resize(393, 300)
         self.tableView = QtWidgets.QTableView(Form)
         self.tableView.setGeometry(QtCore.QRect(-5, 1, 501, 211))
@@ -127,7 +127,7 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
+        Form.setWindowTitle(_translate("Form", "Vector Configuration"))
         self.label.setText(_translate("Form", "Vector Name:"))
         self.label_2.setText(_translate("Form", "Vector Description:"))
         self.lineEdit.setText(_translate("Form", "Description of vector"))

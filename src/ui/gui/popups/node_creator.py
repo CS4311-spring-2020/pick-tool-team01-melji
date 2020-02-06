@@ -12,7 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_Form(object):
     def setupUi(self, Form):
-        Form.setObjectName("Form")
+        Form.setObjectName("Create Node")
         Form.resize(539, 300)
         self.formLayoutWidget = QtWidgets.QWidget(Form)
         self.formLayoutWidget.setGeometry(QtCore.QRect(10, -16, 521, 241))

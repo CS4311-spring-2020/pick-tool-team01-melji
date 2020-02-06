@@ -12,7 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_Form(object):
     def setupUi(self, Form):
-        Form.setObjectName("Form")
+        Form.setObjectName("Team Configuration")
         Form.resize(400, 197)
         self.checkBox = QtWidgets.QCheckBox(Form)
         self.checkBox.setGeometry(QtCore.QRect(70, 20, 121, 31))
@@ -39,7 +39,7 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
+        Form.setWindowTitle(_translate("Form", "Team Configuration"))
         self.checkBox.setText(_translate("Form", "Lead"))
         self.label.setText(_translate("Form", "Lead IP Adress:"))
         self.label_2.setText(_translate("Form", "Number of connections:"))
