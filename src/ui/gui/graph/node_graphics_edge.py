@@ -20,8 +20,15 @@ class QDMGraphicsEdge(QGraphicsPathItem):
 
         self.setZValue(-1)
 
-        self.posSource = [0, 0]
+        self.posSource = [-8, 40]
         self.posDestination = [200, 100]
+
+    def setSource(self, x, y):
+        self.posSource = [x, y]
+
+    def setDestination(self, x, y):
+        self.posDestination = [x, y]
+
 
 
     def paint(self, painter, QStyleOptionGraphicsItem, widget=None):
@@ -47,7 +54,7 @@ class QDMGraphicsEdgeBezier(QDMGraphicsEdge):
     def updatePath(self):
         s = self.posSource
         d = self.posDestination
-        dist = (d[0] - s[0]) * 0.5
+        dist = (d[0] - (s[0] + 50)) * 0.5
         if s[0] > d[0]: dist *= -1
 
         path = QPainterPath(QPointF(self.posSource[0], self.posSource[1]))

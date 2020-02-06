@@ -34,4 +34,8 @@ class Node():
         # x = self.grNode.radius 
         y = index * 20
         
-        return x, y
+        return [x, y]
+    def updateConnectedEdges(self):
+        for socket in self.inputs + self.outputs:
+            if socket.hasEdge():
+                socket.edge.updatePositions()
