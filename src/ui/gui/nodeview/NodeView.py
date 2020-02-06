@@ -47,7 +47,7 @@ class NodeView(QMainWindow):
         #############################################################################
 
         self.setGeometry(500, 500, 500, 500)
-        self.setWindowTitle("node view")  
+        self.setWindowTitle("Node View")  
         #self.show()
 
 

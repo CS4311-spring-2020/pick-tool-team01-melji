@@ -162,7 +162,7 @@ class LogView(QMainWindow):
         self.searchbutton.setMaximumWidth(150)
         self.toolbarlower.addWidget(self.searchbutton)
 
-        self.changevectorbutton = QPushButton("Change Vector")
+        self.changevectorbutton = QPushButton("Go To Vector")
         self.changevectorbutton.setMaximumWidth(150)
         global ex3
         global window
