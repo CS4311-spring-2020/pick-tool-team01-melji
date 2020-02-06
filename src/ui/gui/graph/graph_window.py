@@ -4,9 +4,10 @@ from graph.graph_view import GraphView
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from graph.node_scence import Scene
-from graph.node_edge import Edge
+from graph.node_edge import Edge, EDGE_TYPE_BEZIER
 from graph.node_dto import Node
 from graph.node_connector import Socket
+from graph.timeline_dto import Timeline
 
 
 class GraphWindow(QWidget):
@@ -38,12 +39,28 @@ class GraphWindow(QWidget):
         node1 = Node(self.scene, "Node 1", inputs=[1], outputs=[1])
         node2 = Node(self.scene, "Node 2", inputs=[1], outputs=[1])
         node3 = Node(self.scene, "Node 3", inputs=[1], outputs=[1])
-        node1.setPos(-350, -250)
-        node2.setPos(-75, 0)
-        node3.setPos(200, -150)
+        node1.setPos(-220, 300)
+        node2.setPos(-170, 170)
+        node3.setPos(-130, 20)
 
-        edge1 = Edge(self.scene, node1.outputs[0], node2.inputs[0])
-        edge2 = Edge(self.scene, node2.outputs[0], node3.inputs[0], type=2)
+        edge1 = Edge(self.scene, node1.outputs[0], node2.inputs[0], edge_type=EDGE_TYPE_BEZIER)
+        edge2 = Edge(self.scene, node2.outputs[0], node3.inputs[0], edge_type=EDGE_TYPE_BEZIER)
+        timeline = Timeline(self.scene)
+
+
+    def contextMenuEvent(self, event):
+        contextMenu = QMenu(self)
+        
+        removeNodeAction = contextMenu.addAction("Add node")
+        connectNode = contextMenu.addAction("Add relationship")
+        deConnectNode = contextMenu.addAction("Delete node")
+        undoChanges = contextMenu.addAction("Delete relationship")
+        redoChanges = contextMenu.addAction("Edit node")
+        settings = contextMenu.addAction("Edit relationship")
+        settings = contextMenu.addAction("Timeline orientation")
+        settings = contextMenu.addAction("Interval units")
+
+        action = contextMenu.exec_(self.mapToParent(event.pos()))
 
 
     def addDebugContent(self):

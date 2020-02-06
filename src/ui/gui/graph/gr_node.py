@@ -8,13 +8,14 @@ class GRNode(QGraphicsItem):
         super().__init__(parent)
         self._title_color = Qt.black        
         self.radius = 90
+        self.node = node
 
         self.width = 180
         self._padding = 10.0
 
         self._pen_default = QPen(QColor("#7F000000"))
         self._pen_default.setWidth(3)
-        self._pen_selected = QPen(QColor("#FFFFA637"))
+        self._pen_selected = QPen(QColor("#32CAF6"))
         self._pen_selected.setWidth(3)
 
         self._brush_title = QBrush(QColor("#FF313131"))
@@ -42,8 +43,6 @@ class GRNode(QGraphicsItem):
         #Setting the right click in the notes
         
 
-
-
     def initTitle(self):
         self.title_item = QGraphicsTextItem(self)
         self.title_item.setDefaultTextColor(self._title_color)
@@ -54,6 +53,10 @@ class GRNode(QGraphicsItem):
         )
     def initSockets(self):
         pass
+    def mouseMoveEvent(self, event):
+        super().mouseMoveEvent(event)
+        self.node.updateConnectedEdges()
+
 
     @property
     def title(self): return self._title
@@ -61,6 +64,20 @@ class GRNode(QGraphicsItem):
     def title(self, value):
         self._title = value
         self.title_item.setPlainText(self._title)
+    
+    # def contextMenuEvent(self, event):
+    #     contextMenu = QMenu(self)
+        
+    #     removeNodeAction = contextMenu.addAction("Remove Node\tCtr-R")
+    #     connectNode = contextMenu.addAction("Connect Node\tCtr-C")
+    #     deConnectNode = contextMenu.addAction("Deconnect Node\tCtr-D")
+    #     undoChanges = contextMenu.addAction("Undo Changes\tCtr-Z")
+    #     redoChanges = contextMenu.addAction("Redo Changes\tCtr-Y")
+    #     settings = contextMenu.addAction("Settings\tCtr-A")
+
+    #     action = contextMenu.exec_(self.mapFromItem(self))
+
+        
 
 
     def paint(self, painter, QStyleOptionGraphicsItem, widget=None):
