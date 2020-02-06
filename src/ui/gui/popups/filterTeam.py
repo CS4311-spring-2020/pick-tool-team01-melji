@@ -51,7 +51,7 @@ class Ui_Dialog(object):
 
 
 
-class OpenVectorConfigPopup(QMainWindow):
+class OpenFilterTeamPopup(QMainWindow):
     
     def __init__(self):
         super().__init__()
@@ -65,6 +65,5 @@ class OpenVectorConfigPopup(QMainWindow):
         self.ui.setupUi(self.Dialog)
         layout.addWidget(self.Dialog)
         self.setLayout(layout)
-        #sys.exit(app1.exec_())
-    def Open(self):
         self.Dialog.show()
+        #sys.exit(app1.exec_())

@@ -49,7 +49,7 @@ class Ui_Dialog(object):
         self.comboBox.setItemText(2, _translate("Dialog", "Vector 2"))
         self.comboBox.setItemText(3, _translate("Dialog", "Vector 3"))
 
-
+ 
 
 class OpenFilterVectorPopup(QMainWindow):
     
@@ -65,6 +65,5 @@ class OpenFilterVectorPopup(QMainWindow):
         self.ui.setupUi(self.Dialog)
         layout.addWidget(self.Dialog)
         self.setLayout(layout)
-        #sys.exit(app1.exec_())
-    def Open(self):
         self.Dialog.show()
+        #sys.exit(app1.exec_())

@@ -3,7 +3,7 @@
 ##  Thanks - Micheal 2/1/20
 #############################################################################
 import sys
-from PyQt5.QtWidgets import (QScrollArea,QWidget,QGridLayout,QLabel,QPushButton,QMainWindow,QHBoxLayout,QVBoxLayout)
+from PyQt5.QtWidgets import (QScrollArea, QWidget, QGridLayout, QLabel, QPushButton,QMainWindow,QHBoxLayout,QVBoxLayout)
 from PyQt5.QtGui import QIcon, QPixmap
 
 class IconConfiguration(QMainWindow):

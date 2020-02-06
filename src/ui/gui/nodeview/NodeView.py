@@ -6,13 +6,14 @@
 import sys
 from PyQt5.QtWidgets import QMainWindow, QAction, qApp, QApplication, QVBoxLayout, QWidget,QToolBar,QLineEdit,QPushButton
 from PyQt5.QtGui import QIcon
-from NodeGridBuilder import GridMake
-
+from nodeview.NodeGridBuilder import GridMake
+global gwindow
 class NodeView(QMainWindow):
     
-    def __init__(self): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
+    def __init__(self,gwindow1): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
         super().__init__()
-        
+        global gwindow
+        gwindow = gwindow1
         self.initUI()
 
         #this code runs GridBuilder
@@ -27,8 +28,8 @@ class NodeView(QMainWindow):
         #############################################################################
 
         self.setGeometry(500, 500, 500, 500)
-        self.setWindowTitle(currtitle)  
-        self.show()
+        self.setWindowTitle("node view")  
+        #self.show()
         
         
     def initUI(self):               
@@ -152,6 +153,12 @@ class NodeView(QMainWindow):
         self.editvectorbutton = QPushButton("Edit Vector")
         self.editvectorbutton.setMaximumWidth(150)
         self.toolbarlower.addWidget(self.editvectorbutton)
+        global gwindow
+        window = gwindow
+        self.editvectorbutton1 = QPushButton("Go To Graph")
+        self.editvectorbutton1.setMaximumWidth(150)
+        self.editvectorbutton1.clicked.connect(lambda: window.show())
+        self.toolbarlower.addWidget(self.editvectorbutton1)
 
         self.addToolBarBreak()
         self.addToolBar(self.toolbarlower)
@@ -160,9 +167,3 @@ class NodeView(QMainWindow):
 
         
         
-        
-if __name__ == '__main__':
-    currtitle = 'PICK System'  #Use this var to change title
-    app = QApplication(sys.argv)
-    ex = NodeView()
-    sys.exit(app.exec_())

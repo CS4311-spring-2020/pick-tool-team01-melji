@@ -32,7 +32,7 @@ class GraphWindow(QWidget):
         self.layout.addWidget(self.view)
 
         self.setWindowTitle('Graph View')
-        self.show()
+        #self.show()
 
         # self.addDebugContent()
     def addNodes(self):

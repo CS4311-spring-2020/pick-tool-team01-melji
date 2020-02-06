@@ -8,12 +8,31 @@ from PyQt5.QtWidgets import QMainWindow, QAction, qApp, QApplication, QVBoxLayou
 from PyQt5.QtGui import QIcon
 from logview.GridBuilder import GridMake
 from popups.menupopup import OpenMenuPopup
-
+from popups.ChangeVector import OpenVectorChangePopup
+from popups.vector_configuration import OpenVectorConfigPopup
+from popups.vc_manager import OpenVCPopup
+from popups.timestamp_filter import OpenTSPopup
+from popups.team_configuration import OpenTFPopup
+from popups.remove_link import OpenRLPopup
+from popups.relationships import OpenRelatePopup
+from popups.node_creator import OpenNodeCreatePopup
+from popups.IconConfiguration import IconConfiguration
+from popups.FilterVector import OpenFilterVectorPopup
+from popups.filterTeam import OpenFilterTeamPopup
+from popups.filter_all import OpenFilterAllPopup
+from popups.export_configuration import OpenExportConfigPopup
+from popups.expand import OpenExpandPopup
+from popups.directory_configuration import OpenDirectoryConfigPopup
+from popups.connect_link import OpenconnectlinkPopup
+global ex3
+global window
 class LogView(QMainWindow):
     
-    def __init__(self): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
+    def __init__(self,ex2): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
         super().__init__()
-        
+        global ex3
+        global window
+        ex3 = ex2
         self.initUI()
         #this code runs GridBuilder
         #############################################################################
@@ -37,7 +56,7 @@ class LogView(QMainWindow):
         fileAct = QAction(QIcon('bin\\assets\\file.png'), 'file', self)
         fileAct.setShortcut('Ctrl+X')
         #use following code for actions 
-        #fileAct.triggered.connect(filepopup()**note function call may not be correct**) 
+        fileAct.triggered.connect(OpenMenuPopup) 
         #self.toolbar.addAction(fileAct)
 
         saveAct = QAction(QIcon('bin\\assets\\save.png'), 'save', self)
@@ -47,7 +66,7 @@ class LogView(QMainWindow):
         
         vcAct = QAction(QIcon('bin\\assets\\VC.jpg'), 'version control', self)
         vcAct.setShortcut('Ctrl+N')
-        #vcAct.triggered.connect(versionpopup())
+        vcAct.triggered.connect(OpenVCPopup)
         #self.toolbar.addAction(vcAct)
 
         settingsAct = QAction(QIcon('bin\\assets\\settings.png'), 'settings', self)
@@ -79,10 +98,10 @@ class LogView(QMainWindow):
 
         #the following code adds the items to the toolbar
         self.toolbar.addAction(fileAct)
-        self.toolbar.addAction(saveAct)
+        #6self.toolbar.addAction(saveAct)
         self.toolbar.addAction(vcAct)
-        self.toolbar.addAction(settingsAct)
-        self.toolbar.addAction(logviewAct)
+        #self.toolbar.addAction(settingsAct)
+        #self.toolbar.addAction(logviewAct)
         self.toolbar.addAction(historyAct)
         self.toolbar.addAction(redoAct)
         self.toolbar.addAction(undoAct)
@@ -133,7 +152,7 @@ class LogView(QMainWindow):
         
 
         #the following code adds the items to the toolbarlower
-        self.toolbarlower.addAction(fileAct)
+        self.toolbarlower.addAction(filterAct)
 
         self.lineEntry = QLineEdit(self)
         self.lineEntry.setMaximumWidth(200)
@@ -145,10 +164,14 @@ class LogView(QMainWindow):
 
         self.changevectorbutton = QPushButton("Change Vector")
         self.changevectorbutton.setMaximumWidth(150)
+        global ex3
+        global window
+        self.changevectorbutton.clicked.connect(lambda:OpenVectorChangePopup(ex3,self))
         self.toolbarlower.addWidget(self.changevectorbutton)
 
         self.editvectorbutton = QPushButton("Edit Vector")
         self.editvectorbutton.setMaximumWidth(150)
+        self.editvectorbutton.clicked.connect(OpenVectorConfigPopup)
         self.toolbarlower.addWidget(self.editvectorbutton)
 
         self.addToolBarBreak()

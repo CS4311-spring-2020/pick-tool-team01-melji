@@ -101,7 +101,7 @@ class Ui_Form(object):
         self.comboBox.setItemText(0, _translate("Form", ""))
 
 
-
+ 
 class OpenFilterAllPopup(QMainWindow):
     
     def __init__(self):
@@ -117,5 +117,4 @@ class OpenFilterAllPopup(QMainWindow):
         layout.addWidget(self.Dialog)
         self.setLayout(layout)
         #sys.exit(app1.exec_())
-    def Open(self):
         self.Dialog.show()
