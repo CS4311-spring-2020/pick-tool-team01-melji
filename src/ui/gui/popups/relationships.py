@@ -7,8 +7,10 @@
 # WARNING! All changes made in this file will be lost!
 
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtGui, QtWidgets 
+from PyQt5.QtWidgets import QMainWindow, QVBoxLayout
 
+import sys
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -136,13 +138,22 @@ class Ui_Dialog(object):
         self.label_15.setText(_translate("Dialog", "Child"))
 
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Dialog = QtWidgets.QDialog()
-    ui = Ui_Dialog()
-    ui.setupUi(Dialog)
-    Dialog.show()
-    sys.exit(app.exec_())
 
+class OpenRelatePopup(QMainWindow):
+    
+    def __init__(self):
+        super().__init__()
+        
+        self.initUI()
+    
+    def initUI(self):    
+        layout = QVBoxLayout()
+        self.Dialog = QtWidgets.QDialog()
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self.Dialog)
+        layout.addWidget(self.Dialog)
+        self.setLayout(layout)
+        #sys.exit(app1.exec_())
+    def Open(self):
+        self.Dialog.show()
 

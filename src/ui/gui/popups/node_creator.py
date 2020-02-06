@@ -7,8 +7,10 @@
 # WARNING! All changes made in this file will be lost!
 
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtGui, QtWidgets 
+from PyQt5.QtWidgets import QMainWindow, QVBoxLayout
 
+import sys
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -102,12 +104,22 @@ class Ui_Form(object):
         self.label_2.setText(_translate("Form", "Location"))
         self.linkedNodeLabel.setText(_translate("Form", "Linked Node"))
         self.pushButton.setText(_translate("Form", "Create"))
+       
+
+class OpenNodeCreatePopup(QMainWindow):
+    
+    def __init__(self):
+        super().__init__()
         
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Dialog = QtWidgets.QDialog()
-    ui = Ui_Form()
-    ui.setupUi(Dialog)
-    Dialog.show()
-    sys.exit(app.exec_())
+        self.initUI()
+    
+    def initUI(self):    
+        layout = QVBoxLayout()
+        self.Dialog = QtWidgets.QDialog()
+        self.ui = Ui_Form()
+        self.ui.setupUi(self.Dialog)
+        layout.addWidget(self.Dialog)
+        self.setLayout(layout)
+        #sys.exit(app1.exec_())
+    def Open(self):
+        self.Dialog.show()

@@ -7,6 +7,7 @@ import sys
 from PyQt5.QtWidgets import QMainWindow, QAction, qApp, QApplication, QVBoxLayout, QWidget,QToolBar,QLineEdit,QPushButton
 from PyQt5.QtGui import QIcon
 from logview.GridBuilder import GridMake
+from popups.menupopup import OpenMenuPopup
 
 class LogView(QMainWindow):
     

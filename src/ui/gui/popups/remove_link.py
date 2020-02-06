@@ -1,5 +1,8 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
 
+from PyQt5 import QtCore, QtGui, QtWidgets 
+from PyQt5.QtWidgets import QMainWindow, QVBoxLayout
+
+import sys
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -47,11 +50,21 @@ class Ui_Dialog(object):
         self.comboBox.setItemText(3, _translate("Dialog", "Node 3"))
 
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Dialog = QtWidgets.QDialog()
-    ui = Ui_Dialog()
-    ui.setupUi(Dialog)
-    Dialog.show()
-    sys.exit(app.exec_())
+
+class OpenRLPopup(QMainWindow):
+    
+    def __init__(self):
+        super().__init__()
+        
+        self.initUI()
+    
+    def initUI(self):    
+        layout = QVBoxLayout()
+        self.Dialog = QtWidgets.QDialog()
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self.Dialog)
+        layout.addWidget(self.Dialog)
+        self.setLayout(layout)
+        #sys.exit(app1.exec_())
+    def Open(self):
+        self.Dialog.show()

@@ -7,8 +7,10 @@
 # WARNING! All changes made in this file will be lost!
 
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtGui, QtWidgets 
+from PyQt5.QtWidgets import QMainWindow, QVBoxLayout
 
+import sys
 
 class Ui_Menu(object):
     def setupUi(self, Menu):
@@ -42,12 +44,22 @@ class Ui_Menu(object):
         self.pushButton_3.setText(_translate("Menu", "Create Node"))
 
 
+class OpenMenuPopup(QMainWindow):
+    
+    def __init__(self): 
+        super().__init__()
+        
+        self.initUI()
+    
+    def initUI(self):    
+        layout = QVBoxLayout()
+        self.Dialog = QtWidgets.QDialog()
+        self.ui = Ui_Menu()
+        self.ui.setupUi(self.Dialog)
+        layout.addWidget(self.Dialog)
+        self.setLayout(layout)
+        #sys.exit(app1.exec_())
+    def Open(self):
+        self.Dialog.show()
+        
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Dialog = QtWidgets.QDialog()
-    ui = Ui_Menu()
-    ui.setupUi(Dialog)
-    Dialog.show()
-    sys.exit(app.exec_())

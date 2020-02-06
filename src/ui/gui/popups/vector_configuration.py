@@ -6,10 +6,10 @@
 #
 # WARNING! All changes made in this file will be lost!
 
+from PyQt5 import QtCore, QtGui, QtWidgets 
+from PyQt5.QtWidgets import QMainWindow, QVBoxLayout
 
-from PyQt5 import QtCore, QtGui, QtWidgets
-
-
+import sys
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Vector Configuration")
@@ -146,11 +146,21 @@ class Ui_Form(object):
 
 
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Dialog = QtWidgets.QDialog()
-    ui = Ui_Form()
-    ui.setupUi(Dialog)
-    Dialog.show()
-    sys.exit(app.exec_())
+
+class OpenVectorConfigPopup(QMainWindow):
+    
+    def __init__(self):
+        super().__init__()
+        
+        self.initUI()
+    
+    def initUI(self):    
+        layout = QVBoxLayout()
+        self.Dialog = QtWidgets.QDialog()
+        self.ui = Ui_Form()
+        self.ui.setupUi(self.Dialog)
+        layout.addWidget(self.Dialog)
+        self.setLayout(layout)
+        #sys.exit(app1.exec_())
+    def Open(self):
+        self.Dialog.show()
