@@ -6,22 +6,26 @@
 import sys
 from PyQt5.QtWidgets import QMainWindow, QAction, qApp, QApplication, QVBoxLayout, QWidget,QToolBar,QLineEdit,QPushButton
 from PyQt5.QtGui import QIcon
-from GridBuilder import GridMake
+from NodeGridBuilder import GridMake
 
-class LogView(QMainWindow):
+class NodeView(QMainWindow):
     
     def __init__(self): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
         super().__init__()
         
         self.initUI()
+
         #this code runs GridBuilder
         #############################################################################
+
         self.grid = GridMake(self)
         _widget = QWidget()
         _layout = QVBoxLayout(_widget)
         _layout.addWidget(self.grid)
         self.setCentralWidget(_widget)
+
         #############################################################################
+
         self.setGeometry(500, 500, 500, 500)
         self.setWindowTitle(currtitle)  
         self.show()
@@ -160,5 +164,5 @@ class LogView(QMainWindow):
 if __name__ == '__main__':
     currtitle = 'PICK System'  #Use this var to change title
     app = QApplication(sys.argv)
-    ex = LogView()
+    ex = NodeView()
     sys.exit(app.exec_())

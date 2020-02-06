@@ -451,3 +451,5 @@ class VectorsAttachedToTextWidget(QFrame):
         self.setLayout(layout)
         self.setMaximumHeight(heightoftextrow)
         return
+
+
