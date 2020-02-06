@@ -173,6 +173,7 @@ class RandVectorWidget(QFrame):
         layout.addWidget(self.logreporterfilterbutton)
         
         
+        
         y =  randint(0, 9)
 
         for x in range(0,y):

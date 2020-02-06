@@ -6,6 +6,7 @@ from nodeview.NodeView import NodeView
 from popups.menupopup import OpenMenuPopup
 from popups.vector_configuration import OpenVectorConfigPopup
 from popups.IconConfiguration import IconConfiguration
+from popups.team_configuration import OpenTFPopup
     #icon = IconConfiguration()
 global ex2
 def window():
@@ -18,6 +19,7 @@ def window():
     #win2.Open()
     #win3 = OpenVectorConfigPopup()
     #win3.Open()
+    w = OpenTFPopup()
     ex2 = NodeView(window)
     ex = LogView(ex2)
     sys.exit(app.exec())
