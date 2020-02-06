@@ -7,6 +7,7 @@ from graph.node_scence import Scene
 from graph.node_edge import Edge, EDGE_TYPE_BEZIER
 from graph.node_dto import Node
 from graph.node_connector import Socket
+from graph.timeline_dto import Timeline
 
 
 class GraphWindow(QWidget):
@@ -44,17 +45,18 @@ class GraphWindow(QWidget):
 
         edge1 = Edge(self.scene, node1.outputs[0], node2.inputs[0], edge_type=EDGE_TYPE_BEZIER)
         edge2 = Edge(self.scene, node2.outputs[0], node3.inputs[0], edge_type=EDGE_TYPE_BEZIER)
+        timeline = Timeline(self.scene)
 
 
     def contextMenuEvent(self, event):
         contextMenu = QMenu(self)
         
-        removeNodeAction = contextMenu.addAction("Remove Node\tCtr-R")
-        connectNode = contextMenu.addAction("Connect Node\tCtr-C")
-        deConnectNode = contextMenu.addAction("Deconnect Node\tCtr-D")
-        undoChanges = contextMenu.addAction("Undo Changes\tCtr-Z")
-        redoChanges = contextMenu.addAction("Redo Changes\tCtr-Y")
-        settings = contextMenu.addAction("Settings\tCtr-A")
+        removeNodeAction = contextMenu.addAction("Add node")
+        connectNode = contextMenu.addAction("Add relationship")
+        deConnectNode = contextMenu.addAction("Delete node")
+        undoChanges = contextMenu.addAction("Delete relationship")
+        redoChanges = contextMenu.addAction("Edit node")
+        settings = contextMenu.addAction("Edit relationship")
 
         action = contextMenu.exec_(self.mapToParent(event.pos()))
 
