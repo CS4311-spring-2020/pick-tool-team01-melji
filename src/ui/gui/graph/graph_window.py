@@ -57,6 +57,8 @@ class GraphWindow(QWidget):
         undoChanges = contextMenu.addAction("Delete relationship")
         redoChanges = contextMenu.addAction("Edit node")
         settings = contextMenu.addAction("Edit relationship")
+        settings = contextMenu.addAction("Timeline orientation")
+        settings = contextMenu.addAction("Interval units")
 
         action = contextMenu.exec_(self.mapToParent(event.pos()))
 
