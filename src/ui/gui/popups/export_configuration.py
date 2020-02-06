@@ -40,3 +40,14 @@ class Ui_Form(object):
         self.comboBox.setItemText(3, _translate("Form", "TXT"))
         self.label.setText(_translate("Form", "Export as:"))
         self.pushButton.setText(_translate("Form", "Export"))
+
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Dialog = QtWidgets.QDialog()
+    ui = Ui_Form()
+    ui.setupUi(Dialog)
+    Dialog.show()
+    sys.exit(app.exec_())

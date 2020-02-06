@@ -3,7 +3,8 @@
 ##  Thanks - Micheal 2/1/20
 #############################################################################
 import sys
-from PyQt5.QtWidgets import (QScrollArea,QWidget,QGridLayout,QLabel,QPushButton)
+from PyQt5.QtWidgets import (QScrollArea,QWidget,QGridLayout,QLabel,QPushButton,QMainWindow,QHBoxLayout,QVBoxLayout)
+from PyQt5.QtGui import QIcon, QPixmap
 
 class IconConfiguration(QMainWindow):
     
@@ -15,7 +16,6 @@ class IconConfiguration(QMainWindow):
         #this code runs GridBuilder
         #############################################################################
 
-        self.grid = GridMake(self)
         _widget = QWidget()
         
         self.addiconbutton = QPushButton("Add Icon")
@@ -29,11 +29,15 @@ class IconConfiguration(QMainWindow):
         self.layouth = QHBoxLayout()                
         self.widget.setLayout(self.layouth)
         self.layouth.addWidget(self.addiconbutton)
-        self.layouth.addWidget(label1,0,2)
+        self.layouth.addWidget(self.deleteiconbutton)
+        self.layouth.addWidget(self.editconbutton)
+
         self.widget.setLayout(self.layouth)
 
 
+        self.grid = IconMake()
         _layout = QVBoxLayout(_widget)
+        _layout.addWidget(self.widget)
         _layout.addWidget(self.grid)
         
 
@@ -42,7 +46,7 @@ class IconConfiguration(QMainWindow):
         #############################################################################
 
         self.setGeometry(500, 500, 500, 500)
-        self.setWindowTitle(currtitle)  
+        self.setWindowTitle("Icon Configuration")  
         self.show()
 
 
@@ -58,13 +62,7 @@ class IconMake(QScrollArea):
         self.layoutgrid = QGridLayout()  
         self.layoutgrid.setSpacing(0)
         self.layoutgrid.setHorizontalSpacing(0)
-        i = 0
-        n = 0
-        data = GetGridWidgets()
-        arrayofwidgets = data.arrayofwidgets
-        
-        numofsample = 0
-        numofsample = randint(0, 98)
+
         label1 = QLabel(self)
         label2 = QLabel(self)
         label3 = QLabel(self)
@@ -83,8 +81,8 @@ class IconMake(QScrollArea):
         label3.setMaximumHeight(100)
         label3.setMaximumWidth(120)
         self.layoutgrid.addWidget(label1,0,0)
-        self.layoutgrid.addWidget(label1,0,1)
-        self.layoutgrid.addWidget(label1,0,2)
+        self.layoutgrid.addWidget(label2,0,1)
+        self.layoutgrid.addWidget(label3,0,2)
         self.widget.setLayout(self.layoutgrid)
         self.setWidgetResizable(True)
         self.setWidget(self.widget)

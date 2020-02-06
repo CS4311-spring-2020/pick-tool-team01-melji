@@ -37,3 +37,13 @@ class Ui_Form(object):
         self.pushButton_2.setText(_translate("Form", "Disconnect"))
         self.pushButton_3.setText(_translate("Form", "Pull"))
         self.pushButton_4.setText(_translate("Form", "Connect"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Dialog = QtWidgets.QDialog()
+    ui = Ui_Form()
+    ui.setupUi(Dialog)
+    Dialog.show()
+    sys.exit(app.exec_())

@@ -40,3 +40,14 @@ class Ui_Menu(object):
         self.pushButton.setText(_translate("Menu", "Export"))
         self.pushButton_2.setText(_translate("Menu", "View Relationships"))
         self.pushButton_3.setText(_translate("Menu", "Create Node"))
+
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Dialog = QtWidgets.QDialog()
+    ui = Ui_Menu()
+    ui.setupUi(Dialog)
+    Dialog.show()
+    sys.exit(app.exec_())

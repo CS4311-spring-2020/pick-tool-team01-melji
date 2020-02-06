@@ -143,3 +143,14 @@ class Ui_Form(object):
         self.label_5.setText(_translate("Form", "Vector3"))
         self.label_6.setText(_translate("Form", "Vector4"))
         self.label_7.setText(_translate("Form", "Vector5"))
+
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Dialog = QtWidgets.QDialog()
+    ui = Ui_Form()
+    ui.setupUi(Dialog)
+    Dialog.show()
+    sys.exit(app.exec_())

@@ -57,3 +57,14 @@ class Ui_Form(object):
         self.label_3.setText(_translate("Form", "White team Folder:"))
         self.label_4.setText(_translate("Form", "Root Directory:"))
         self.label_5.setText(_translate("Form", "Directory Configuration"))
+
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Dialog = QtWidgets.QDialog()
+    ui = Ui_Form()
+    ui.setupUi(Dialog)
+    Dialog.show()
+    sys.exit(app.exec_())

@@ -105,3 +105,14 @@ class Ui_Form(object):
         self.label_12.setText(_translate("Form", "red_team_icon.png"))
         self.label_11.setText(_translate("Form", "whiteTeamReport.txt"))
         self.label_10.setText(_translate("Form", "1.vector 4"))
+
+
+        
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Dialog = QtWidgets.QDialog()
+    ui = Ui_Form()
+    ui.setupUi(Dialog)
+    Dialog.show()
+    sys.exit(app.exec_())

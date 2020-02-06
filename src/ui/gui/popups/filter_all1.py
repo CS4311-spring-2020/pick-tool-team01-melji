@@ -100,3 +100,14 @@ class Ui_Form(object):
         self.label_4.setText(_translate("Form", "Timestamp"))
         self.label_5.setText(_translate("Form", "Start:"))
         self.label_6.setText(_translate("Form", "End:"))
+
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Dialog = QtWidgets.QDialog()
+    ui = Ui_Form()
+    ui.setupUi(Dialog)
+    Dialog.show()
+    sys.exit(app.exec_())

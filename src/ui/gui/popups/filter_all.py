@@ -98,3 +98,12 @@ class Ui_Form(object):
         self.comboBox.setItemText(0, _translate("Form", "None"))
         self.comboBox.setItemText(0, _translate("Form", ""))
 
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Dialog = QtWidgets.QDialog()
+    ui = Ui_Form()
+    ui.setupUi(Dialog)
+    Dialog.show()
+    sys.exit(app.exec_())

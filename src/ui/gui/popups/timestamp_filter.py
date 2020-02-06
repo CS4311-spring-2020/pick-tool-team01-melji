@@ -39,3 +39,14 @@ class Ui_Form(object):
         self.label.setText(_translate("Form", "Start:"))
         self.label_2.setText(_translate("Form", "End:"))
         self.pushButton.setText(_translate("Form", "Filter"))
+
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Dialog = QtWidgets.QDialog()
+    ui = Ui_Form()
+    ui.setupUi(Dialog)
+    Dialog.show()
+    sys.exit(app.exec_())
