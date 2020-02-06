@@ -29,8 +29,10 @@ class GraphView(QGraphicsView):
             self.middleMouseButtonPress(event)
         elif event.button() == Qt.LeftButton:
             self.rightMouseButtonPress(event)
+
         elif event.button() == Qt.RightButton:
             self.rightMouseButtonPress(event)
+            
         else:
             super().mousePressEvent(event)
 
@@ -70,6 +72,7 @@ class GraphView(QGraphicsView):
         return super().mouseReleaseEvent(event)
 
     def rightMouseButtonPress(self, event):
+
         return super().mousePressEvent(event)
 
     def rightMouseButtonRelease(self, event):

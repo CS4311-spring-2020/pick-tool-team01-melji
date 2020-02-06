@@ -178,7 +178,7 @@ class RandVectorWidget(QFrame):
         for x in range(0,y):
 
                 
-            b = "randomsampledata" + str(x)
+            b = "Random Sample Vector" + str(x)
             object = QLabel(b)
             object.setStyleSheet("border: 1px solid white;")
             layout.addWidget(object)

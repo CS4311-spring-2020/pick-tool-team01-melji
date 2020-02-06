@@ -11,34 +11,34 @@ class IconConfiguration(QMainWindow):
     def __init__(self): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
         super().__init__()
         
-        self.initUI()
+        #self.initUI()
 
         #this code runs GridBuilder
         #############################################################################
 
         _widget = QWidget()
         
-        self.addiconbutton = QPushButton("Add Icon")
-        self.addiconbutton.setMaximumWidth(150)
-        self.deleteiconbutton = QPushButton("Delete Icon")
-        self.deleteiconbutton.setMaximumWidth(150)
-        self.editiconbutton = QPushButton("Edit Icon")
-        self.editiconbutton.setMaximumWidth(150)
+        addiconbutton = QPushButton("Add Icon")
+        addiconbutton.setMaximumWidth(150)
+        deleteiconbutton = QPushButton("Delete Icon")
+        deleteiconbutton.setMaximumWidth(150)
+        editiconbutton = QPushButton("Edit Icon")
+        editiconbutton.setMaximumWidth(150)
 
-        self.widget = QWidget()                  
-        self.layouth = QHBoxLayout()                
-        self.widget.setLayout(self.layouth)
-        self.layouth.addWidget(self.addiconbutton)
-        self.layouth.addWidget(self.deleteiconbutton)
-        self.layouth.addWidget(self.editconbutton)
+        widget = QWidget()                  
+        layouth = QHBoxLayout()                
+        widget.setLayout(layouth)
+        layouth.addWidget(addiconbutton)
+        layouth.addWidget(deleteiconbutton)
+        layouth.addWidget(editiconbutton)
 
-        self.widget.setLayout(self.layouth)
+        widget.setLayout(layouth)
 
 
-        self.grid = IconMake()
+        grid = IconMake()
         _layout = QVBoxLayout(_widget)
-        _layout.addWidget(self.widget)
-        _layout.addWidget(self.grid)
+        _layout.addWidget(widget)
+        _layout.addWidget(grid)
         
 
         self.setCentralWidget(_widget)
@@ -47,6 +47,8 @@ class IconConfiguration(QMainWindow):
 
         self.setGeometry(500, 500, 500, 500)
         self.setWindowTitle("Icon Configuration")  
+        #self.show()
+    def showiconconfig(self):
         self.show()
 
 

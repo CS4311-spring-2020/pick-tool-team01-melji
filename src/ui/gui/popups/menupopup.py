@@ -27,6 +27,7 @@ from popups.export_configuration import OpenExportConfigPopup
 from popups.expand import OpenExpandPopup
 from popups.directory_configuration import OpenDirectoryConfigPopup
 from popups.connect_link import OpenconnectlinkPopup
+from popups.IconConfiguration import IconConfiguration
 
 import sys
 
@@ -48,6 +49,9 @@ class Ui_Menu(object):
         self.pushButton_3 = QtWidgets.QPushButton(Menu)
         self.pushButton_3.setGeometry(QtCore.QRect(90, 140, 171, 20))
         self.pushButton_3.setObjectName("pushButton_3")
+        self.pushButton_4 = QtWidgets.QPushButton(Menu)
+        self.pushButton_4.setGeometry(QtCore.QRect(90, 180, 171, 20))
+        self.pushButton_4.setObjectName("pushButton_4")
 
         self.retranslateUi(Menu)
         self.buttonBox.accepted.connect(Menu.accept)
@@ -63,6 +67,11 @@ class Ui_Menu(object):
         self.pushButton_2.clicked.connect(lambda: OpenRelatePopup())
         self.pushButton_3.setText(_translate("Menu", "Create Node"))
         self.pushButton_3.clicked.connect(lambda: OpenNodeCreatePopup())
+        self.pushButton_4.setText(_translate("Menu", "Add Icon"))
+        varable = IconConfiguration()
+        self.pushButton_4.clicked.connect(lambda: varable.showiconconfig())
+
+    #icon = IconConfiguration()
 
 
 

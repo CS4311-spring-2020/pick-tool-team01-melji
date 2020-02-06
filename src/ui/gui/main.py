@@ -5,12 +5,15 @@ from logview.LogView import LogView
 from nodeview.NodeView import NodeView
 from popups.menupopup import OpenMenuPopup
 from popups.vector_configuration import OpenVectorConfigPopup
+from popups.IconConfiguration import IconConfiguration
+    #icon = IconConfiguration()
 global ex2
 def window():
     app = QApplication(sys.argv)
     #OpenMenuPopup.Open()
     global ex2
     window = GraphWindow()
+    #icon = IconConfiguration()
     #win2 = OpenMenuPopup()
     #win2.Open()
     #win3 = OpenVectorConfigPopup()
