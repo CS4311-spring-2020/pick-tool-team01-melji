@@ -12,7 +12,7 @@ class Ui_Dialog(object):
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.gridLayout.setObjectName("gridLayout")
         self.horizontalLayoutWidget = QtWidgets.QWidget(Dialog)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(400, 150, 101, 31))
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(350, 150, 101, 31))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
@@ -21,7 +21,7 @@ class Ui_Dialog(object):
         self.pushButton.setObjectName("pushButton")
         self.horizontalLayout.addWidget(self.pushButton)
         self.verticalLayoutWidget = QtWidgets.QWidget(Dialog)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(170, 70, 101, 21))
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(190, 70, 90, 30))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -39,12 +39,12 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Filter Team"))
-        self.pushButton.setText(_translate("Dialog", "Filter"))
+        Dialog.setWindowTitle(_translate("Dialog", "Connect link"))
+        self.pushButton.setText(_translate("Dialog", "Add"))
         self.comboBox.setItemText(0, _translate("Dialog", "None"))
-        self.comboBox.setItemText(1, _translate("Dialog", "Red Team"))
-        self.comboBox.setItemText(2, _translate("Dialog", "Blue Team"))
-        self.comboBox.setItemText(3, _translate("Dialog", "White Team"))
+        self.comboBox.setItemText(1, _translate("Dialog", "Node 1"))
+        self.comboBox.setItemText(2, _translate("Dialog", "Node 2"))
+        self.comboBox.setItemText(3, _translate("Dialog", "Node 3"))
 
 
 if __name__ == "__main__":

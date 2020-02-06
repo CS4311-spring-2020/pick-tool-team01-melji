@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'filter_all.ui'
+# Form implementation generated from reading ui file 'filter_all1.ui'
 #
 # Created by: PyQt5 UI code generator 5.13.2
 #
@@ -15,7 +15,7 @@ class Ui_Form(object):
         Form.setObjectName("Form")
         Form.resize(400, 195)
         self.radioButton = QtWidgets.QRadioButton(Form)
-        self.radioButton.setGeometry(QtCore.QRect(10, 130, 41, 21))
+        self.radioButton.setGeometry(QtCore.QRect(10, 120, 41, 21))
         self.radioButton.setObjectName("radioButton")
         self.line = QtWidgets.QFrame(Form)
         self.line.setGeometry(QtCore.QRect(60, 0, 20, 291))
@@ -23,7 +23,7 @@ class Ui_Form(object):
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.radioButton_2 = QtWidgets.QRadioButton(Form)
-        self.radioButton_2.setGeometry(QtCore.QRect(80, 130, 41, 16))
+        self.radioButton_2.setGeometry(QtCore.QRect(80, 120, 41, 16))
         self.radioButton_2.setObjectName("radioButton_2")
         self.line_2 = QtWidgets.QFrame(Form)
         self.line_2.setGeometry(QtCore.QRect(130, 0, 20, 191))
@@ -31,7 +31,7 @@ class Ui_Form(object):
         self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_2.setObjectName("line_2")
         self.radioButton_3 = QtWidgets.QRadioButton(Form)
-        self.radioButton_3.setGeometry(QtCore.QRect(150, 130, 41, 16))
+        self.radioButton_3.setGeometry(QtCore.QRect(150, 120, 41, 16))
         self.radioButton_3.setObjectName("radioButton_3")
         self.line_3 = QtWidgets.QFrame(Form)
         self.line_3.setGeometry(QtCore.QRect(200, 0, 20, 201))
@@ -56,13 +56,13 @@ class Ui_Form(object):
         self.radioButton_4.setGeometry(QtCore.QRect(250, 130, 41, 16))
         self.radioButton_4.setObjectName("radioButton_4")
         self.label = QtWidgets.QLabel(Form)
-        self.label.setGeometry(QtCore.QRect(20, 100, 35, 10))
+        self.label.setGeometry(QtCore.QRect(20, 80, 35, 10))
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(Form)
-        self.label_2.setGeometry(QtCore.QRect(90, 100, 35, 10))
+        self.label_2.setGeometry(QtCore.QRect(90, 80, 35, 10))
         self.label_2.setObjectName("label_2")
         self.label_3 = QtWidgets.QLabel(Form)
-        self.label_3.setGeometry(QtCore.QRect(150, 100, 51, 16))
+        self.label_3.setGeometry(QtCore.QRect(150, 80, 51, 16))
         self.label_3.setObjectName("label_3")
         self.label_4 = QtWidgets.QLabel(Form)
         self.label_4.setGeometry(QtCore.QRect(250, 110, 41, 16))
@@ -73,10 +73,15 @@ class Ui_Form(object):
         self.label_6 = QtWidgets.QLabel(Form)
         self.label_6.setGeometry(QtCore.QRect(220, 70, 35, 10))
         self.label_6.setObjectName("label_6")
-        self.comboBox = QtWidgets.QComboBox()
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
+        self.comboBox = QtWidgets.QComboBox(Form)
+        self.comboBox.setGeometry(QtCore.QRect(10, 60, 51, 21))
+        self.comboBox.setObjectName("comboBox")
+        self.comboBox_2 = QtWidgets.QComboBox(Form)
+        self.comboBox_2.setGeometry(QtCore.QRect(80, 60, 53, 22))
+        self.comboBox_2.setObjectName("comboBox_2")
+        self.comboBox_3 = QtWidgets.QComboBox(Form)
+        self.comboBox_3.setGeometry(QtCore.QRect(150, 60, 53, 22))
+        self.comboBox_3.setObjectName("comboBox_3")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -95,6 +100,3 @@ class Ui_Form(object):
         self.label_4.setText(_translate("Form", "Timestamp"))
         self.label_5.setText(_translate("Form", "Start:"))
         self.label_6.setText(_translate("Form", "End:"))
-        self.comboBox.setItemText(0, _translate("Form", "None"))
-        self.comboBox.setItemText(0, _translate("Form", ""))
-
