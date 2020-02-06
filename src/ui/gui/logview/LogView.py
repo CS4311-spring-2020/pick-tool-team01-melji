@@ -157,8 +157,8 @@ class LogView(QMainWindow):
         
         
         
-# if __name__ == '__main__':
-#     currtitle = 'PICK System'  #Use this var to change title
-#     app = QApplication(sys.argv)
-#     ex = LogView()
-#     sys.exit(app.exec_())
+if __name__ == '__main__':
+    currtitle = 'PICK System'  #Use this var to change title
+    app = QApplication(sys.argv)
+    ex = LogView()
+    sys.exit(app.exec_())
