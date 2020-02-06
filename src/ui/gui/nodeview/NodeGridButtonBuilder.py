@@ -2,6 +2,24 @@ import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QLabel, QPushButton, QHBoxLayout, QCheckBox ,QAction, QFrame
 from PyQt5.QtGui import QIcon, QPixmap
 
+from popups.menupopup import OpenMenuPopup
+#from popups.ChangeVector import OpenVectorChangePopup
+from popups.vector_configuration import OpenVectorConfigPopup
+from popups.vc_manager import OpenVCPopup
+from popups.timestamp_filter import OpenTSPopup
+from popups.team_configuration import OpenTFPopup
+from popups.remove_link import OpenRLPopup
+from popups.relationships import OpenRelatePopup
+from popups.node_creator import OpenNodeCreatePopup
+from popups.IconConfiguration import IconConfiguration
+from popups.FilterVector import OpenFilterVectorPopup
+from popups.filterTeam import OpenFilterTeamPopup
+from popups.filter_all import OpenFilterAllPopup
+from popups.export_configuration import OpenExportConfigPopup
+from popups.expand import OpenExpandPopup
+from popups.directory_configuration import OpenDirectoryConfigPopup
+from popups.connect_link import OpenconnectlinkPopup
+
 widthofcolumns = 200
 heightofrows=50
 heightoftextrow = 25
@@ -12,8 +30,8 @@ class GetGridWidgets(QFrame):
         super(GetGridWidgets,self).__init__(parent)
         
         self.arrayofwidgets = [ NodeVisibilityTextWidget(), NodeIDWidget(), NodeNameWidget(), NodeTimeStampWidget(), NodeDescriptionWidget(), NodeSourceWidget(), #NodeWidget(), 
-        NodeIconWidget(), NodeOriginDocumentWidget(), NodeLogEntryRefrenceWidget(), EmptyWidget(), NodeIDTextWidget(), NodeNameTextWidget(), NodeTimeStampTextWidget(), 
-        NodeDescriptionTextWidget(), NodeSourceTextWidget(),  NodeIconTextWidget(), NodeOriginDocumentTextWidget(), NodeLogEntryRefrenceTextWidget()]
+        NodeSourceWidget(), NodeOriginDocumentWidget(), NodeLogEntryRefrenceWidget(),NodeIconWidget(), EmptyWidget(), NodeIDTextWidget(), NodeNameTextWidget(), NodeTimeStampTextWidget(), 
+        NodeDescriptionTextWidget(), NodeSourceTextWidget(),  Node1TextWidget(), NodeOriginDocumentTextWidget(), NodeLogEntryRefrenceTextWidget(),NodeIconTextWidget()]
         return 
 
 
@@ -121,7 +139,7 @@ class NodeNameTextWidget(QFrame):
         layout.setContentsMargins(0,0,0,0)
         layout.setSpacing(0)
         self.setStyleSheet("border: 1px solid black;")
-        self.textlable = QLabel("NodeID")
+        self.textlable = QLabel("NodeName")
         layout.addWidget(self.textlable)
         self.setLayout(layout)  
         self.setMaximumHeight(heightoftextrow)
@@ -152,6 +170,9 @@ class NodeTimeStampWidget(QFrame):
 
         self.nodetimestampfilterbutton = QPushButton()
         self.nodetimestampfilterbutton.setIcon(QIcon(QPixmap("bin\\assets\\filter.png")))
+        self.nodetimestampfilterbutton.clicked.connect(lambda: OpenFilterAllPopup())
+        
+        #self.pushButton.clicked.connect(lambda: OpenExportConfigPopup())
         #self.nodetimestampfilterbutton.clicked.connect(lambda:self.whichbtn(self.b2))
         layout.addWidget(self.nodetimestampfilterbutton)
 
@@ -267,6 +288,7 @@ class NodeSourceWidget(QFrame):
 
         self.nodeeventteamfilterbutton = QPushButton()
         self.nodeeventteamfilterbutton.setIcon(QIcon(QPixmap("bin\\assets\\filter.png")))
+        self.nodeeventteamfilterbutton.clicked.connect(lambda: OpenFilterAllPopup())
         #self.nodeeventteamfilterbutton.clicked.connect(lambda:self.whichbtn(self.b2))
         layout.addWidget(self.nodeeventteamfilterbutton)
 
@@ -335,11 +357,25 @@ class NodeIconTextWidget(QFrame):
         layout.setContentsMargins(0,0,0,0)
         layout.setSpacing(0)
         self.setStyleSheet("border: 1px solid black;")
-        self.textlable = QLabel("Event Team")
+        self.textlable = QLabel("Icon")
         layout.addWidget(self.textlable)
         self.setLayout(layout)
         self.setMaximumHeight(heightoftextrow)
 
+
+class Node1TextWidget(QFrame):
+
+    def __init__(self, parent=None):
+        super(Node1TextWidget,self).__init__(parent)
+        
+        layout = QHBoxLayout()
+        layout.setContentsMargins(0,0,0,0)
+        layout.setSpacing(0)
+        self.setStyleSheet("border: 1px solid black;")
+        self.textlable = QLabel("Event Team")
+        layout.addWidget(self.textlable)
+        self.setLayout(layout)
+        self.setMaximumHeight(heightoftextrow)
 
 
 
@@ -413,6 +449,7 @@ class NodeLogEntryRefrenceWidget(QFrame):
 
         self.nodevectorsattachedtofilterbutton = QPushButton()
         self.nodevectorsattachedtofilterbutton.setIcon(QIcon(QPixmap("bin\\assets\\filter.png")))
+        self.nodevectorsattachedtofilterbutton.clicked.connect(lambda: OpenFilterAllPopup())
         #self.nodevectorsattachedtofilterbutton.clicked.connect(lambda:self.whichbtn(self.b2))
         layout.addWidget(self.nodevectorsattachedtofilterbutton)
 

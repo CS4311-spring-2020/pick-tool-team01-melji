@@ -7,6 +7,23 @@ import sys
 from PyQt5.QtWidgets import QMainWindow, QAction, qApp, QApplication, QVBoxLayout, QWidget,QToolBar,QLineEdit,QPushButton
 from PyQt5.QtGui import QIcon
 from nodeview.NodeGridBuilder import GridMake
+from popups.menupopup import OpenMenuPopup
+#from popups.ChangeVector import OpenVectorChangePopup
+from popups.vector_configuration import OpenVectorConfigPopup
+from popups.vc_manager import OpenVCPopup
+from popups.timestamp_filter import OpenTSPopup
+from popups.team_configuration import OpenTFPopup
+from popups.remove_link import OpenRLPopup
+from popups.relationships import OpenRelatePopup
+from popups.node_creator import OpenNodeCreatePopup
+from popups.IconConfiguration import IconConfiguration
+from popups.FilterVector import OpenFilterVectorPopup
+from popups.filterTeam import OpenFilterTeamPopup
+from popups.filter_all import OpenFilterAllPopup
+from popups.export_configuration import OpenExportConfigPopup
+from popups.expand import OpenExpandPopup
+from popups.directory_configuration import OpenDirectoryConfigPopup
+from popups.connect_link import OpenconnectlinkPopup
 global gwindow
 global logview
 global logviewAct
@@ -48,6 +65,7 @@ class NodeView(QMainWindow):
         
         fileAct = QAction(QIcon('bin\\assets\\file.png'), 'file', self)
         fileAct.setShortcut('Ctrl+X')
+        fileAct.triggered.connect(OpenMenuPopup) 
         #use following code for actions 
         #fileAct.triggered.connect(filepopup()**note function call may not be correct**) 
         #self.toolbar.addAction(fileAct)
@@ -91,11 +109,11 @@ class NodeView(QMainWindow):
 
         #the following code adds the items to the toolbar
         self.toolbar.addAction(fileAct)
-        self.toolbar.addAction(saveAct)
+        #self.toolbar.addAction(saveAct)
         self.toolbar.addAction(vcAct)
-        self.toolbar.addAction(settingsAct)
+        #self.toolbar.addAction(settingsAct)
         self.toolbar.addAction(logviewAct)
-        self.toolbar.addAction(historyAct)
+        #self.toolbar.addAction(historyAct)
         self.toolbar.addAction(redoAct)
         self.toolbar.addAction(undoAct)
 
@@ -161,14 +179,17 @@ class NodeView(QMainWindow):
 
         self.editvectorbutton = QPushButton("Edit Vector")
         self.editvectorbutton.setMaximumWidth(150)
+        self.editvectorbutton.clicked.connect(lambda: OpenVectorConfigPopup())
         self.toolbarlower.addWidget(self.editvectorbutton)
 
         self.addvectorbutton = QPushButton("Add Vector")
         self.addvectorbutton.setMaximumWidth(150)
+        self.addvectorbutton.clicked.connect(lambda: OpenVectorConfigPopup())
         self.toolbarlower.addWidget(self.addvectorbutton)
 
         self.removevectorbutton = QPushButton("Remove Vector")
         self.removevectorbutton.setMaximumWidth(150)
+        self.removevectorbutton.clicked.connect(lambda: OpenVectorConfigPopup())
         self.toolbarlower.addWidget(self.removevectorbutton)
 
         global gwindow

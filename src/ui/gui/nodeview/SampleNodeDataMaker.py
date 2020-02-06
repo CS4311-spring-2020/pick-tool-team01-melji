@@ -2,6 +2,8 @@ import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QLabel, QPushButton, QHBoxLayout, QVBoxLayout, QCheckBox ,QAction, QFrame
 from PyQt5.QtGui import QIcon, QPixmap
 from random import seed,randint
+#from popups.AddVector import OpenVectorAddPopup
+#from popups.RemoveVector import OpenVectorRemovePopup
 import random
 import string
 
@@ -13,7 +15,7 @@ class GetSampleWidgets(QFrame):
     def __init__(self, parent=None):
         super(GetSampleWidgets,self).__init__(parent)
         
-        self.arrayofsamplewidgets= [VisibilityButton(),LogRandIDTextWidget(),LogRandNameTextWidget(),RandTimeWidget(),LogRandDescriptionTextWidget(),RandEventTeamWidget(),RandEventTeamWidget(),IconWidget(),RandomFileTextWidget(),RandVectorWidget()]
+        self.arrayofsamplewidgets= [VisibilityButton(),LogRandIDTextWidget(),LogRandNameTextWidget(),RandTimeWidget(),LogRandDescriptionTextWidget(),RandEventTeamWidget(),RandEventTeamWidget(),RandomFileTextWidget(),LogRandNameTextWidget(),IconWidget(),RandomFileTextWidget(),RandVectorWidget()]
         
 
         return 
@@ -179,12 +181,12 @@ class RandVectorWidget(QFrame):
         
         self.logreportersortbutton = QPushButton()
         self.logreportersortbutton.setIcon(QIcon(QPixmap("bin\\assets\\add.png")))
-        #self.logreportersortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
+        #self.logreportersortbutton.clicked.connect(lambda:OpenVectorAddPopup())
         layout.addWidget(self.logreportersortbutton)
 
         self.logreporterfilterbutton = QPushButton()
         self.logreporterfilterbutton.setIcon(QIcon(QPixmap("bin\\assets\\subtract.png")))
-        #self.logreporterfilterbutton.clicked.connect(lambda:self.whichbtn(self.b2))
+        #self.logreporterfilterbutton.clicked.connect(lambda:OpenVectorRemovePopup())
         layout.addWidget(self.logreporterfilterbutton)
         
         

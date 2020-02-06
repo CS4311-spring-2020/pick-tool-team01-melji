@@ -2,6 +2,8 @@ import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QLabel, QPushButton, QHBoxLayout, QVBoxLayout, QCheckBox ,QAction, QFrame
 from PyQt5.QtGui import QIcon, QPixmap
 from random import seed,randint
+from popups.AddVector import OpenVectorAddPopup
+from popups.RemoveVector import OpenVectorRemovePopup
 import random
 import string
 
@@ -160,11 +162,13 @@ class RandVectorWidget(QFrame):
         
         self.logreportersortbutton = QPushButton()
         self.logreportersortbutton.setIcon(QIcon(QPixmap("bin\\assets\\add.png")))
+        self.logreportersortbutton.clicked.connect(lambda:OpenVectorAddPopup())
         #self.logreportersortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
         layout.addWidget(self.logreportersortbutton)
 
         self.logreporterfilterbutton = QPushButton()
         self.logreporterfilterbutton.setIcon(QIcon(QPixmap("bin\\assets\\subtract.png")))
+        self.logreportersortbutton.clicked.connect(lambda:OpenVectorRemovePopup())
         #self.logreporterfilterbutton.clicked.connect(lambda:self.whichbtn(self.b2))
         layout.addWidget(self.logreporterfilterbutton)
         

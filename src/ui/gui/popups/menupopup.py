@@ -10,6 +10,24 @@
 from PyQt5 import QtCore, QtGui, QtWidgets 
 from PyQt5.QtWidgets import QMainWindow, QVBoxLayout
 
+#from popups.menupopup import OpenMenuPopup
+#from popups.ChangeVector import OpenVectorChangePopup
+from popups.vector_configuration import OpenVectorConfigPopup
+from popups.vc_manager import OpenVCPopup
+from popups.timestamp_filter import OpenTSPopup
+from popups.team_configuration import OpenTFPopup
+from popups.remove_link import OpenRLPopup
+from popups.relationships import OpenRelatePopup
+from popups.node_creator import OpenNodeCreatePopup
+from popups.IconConfiguration import IconConfiguration
+from popups.FilterVector import OpenFilterVectorPopup
+from popups.filterTeam import OpenFilterTeamPopup
+from popups.filter_all import OpenFilterAllPopup
+from popups.export_configuration import OpenExportConfigPopup
+from popups.expand import OpenExpandPopup
+from popups.directory_configuration import OpenDirectoryConfigPopup
+from popups.connect_link import OpenconnectlinkPopup
+
 import sys
 
 class Ui_Menu(object):
@@ -40,8 +58,12 @@ class Ui_Menu(object):
         _translate = QtCore.QCoreApplication.translate
         Menu.setWindowTitle(_translate("Menu", "Menu"))
         self.pushButton.setText(_translate("Menu", "Export"))
+        self.pushButton.clicked.connect(lambda: OpenExportConfigPopup())
         self.pushButton_2.setText(_translate("Menu", "View Relationships"))
+        self.pushButton_2.clicked.connect(lambda: OpenRelatePopup())
         self.pushButton_3.setText(_translate("Menu", "Create Node"))
+        self.pushButton_3.clicked.connect(lambda: OpenNodeCreatePopup())
+
 
 
 class OpenMenuPopup(QMainWindow):
