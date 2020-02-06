@@ -8,6 +8,8 @@ from PyQt5.QtWidgets import QMainWindow, QAction, qApp, QApplication, QVBoxLayou
 from PyQt5.QtGui import QIcon
 from nodeview.NodeGridBuilder import GridMake
 global gwindow
+global logview
+global logviewAct
 class NodeView(QMainWindow):
     
     def __init__(self,gwindow1): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
@@ -30,8 +32,15 @@ class NodeView(QMainWindow):
         self.setGeometry(500, 500, 500, 500)
         self.setWindowTitle("node view")  
         #self.show()
-        
-        
+
+
+
+    def givelogview(self,logv):
+        global logview
+        logview = logv 
+        global logviewAct
+        logviewAct.triggered.connect(lambda: logv.show())
+
     def initUI(self):               
         #this is where the toolbar elements are set up
 
@@ -57,7 +66,7 @@ class NodeView(QMainWindow):
         settingsAct.setShortcut('Ctrl+I')
         #settingsAct.triggered.connect(settingspopup())
         #self.toolbar.addAction(settingsAct)
-
+        global logviewAct
         logviewAct = QAction(QIcon('bin\\assets\\logview.png'), 'log view', self)
         logviewAct.setShortcut('Ctrl+T')
         #logviewAct.triggered.connect(logview())
@@ -153,6 +162,15 @@ class NodeView(QMainWindow):
         self.editvectorbutton = QPushButton("Edit Vector")
         self.editvectorbutton.setMaximumWidth(150)
         self.toolbarlower.addWidget(self.editvectorbutton)
+
+        self.addvectorbutton = QPushButton("Add Vector")
+        self.addvectorbutton.setMaximumWidth(150)
+        self.toolbarlower.addWidget(self.addvectorbutton)
+
+        self.removevectorbutton = QPushButton("Remove Vector")
+        self.removevectorbutton.setMaximumWidth(150)
+        self.toolbarlower.addWidget(self.removevectorbutton)
+
         global gwindow
         window = gwindow
         self.editvectorbutton1 = QPushButton("Go To Graph")

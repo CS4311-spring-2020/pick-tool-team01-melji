@@ -26,7 +26,7 @@ class GridMake(QScrollArea):
         arrayofwidgets = data.arrayofwidgets
         
         numofsample = 0
-        numofsample = randint(0, 98)
+        numofsample = randint(2, 98)
 
         for y in range(0,numofsample): #this code will detect what is in the datatype and put it into spaces in grid layout
             sampledata = GetSampleWidgets()

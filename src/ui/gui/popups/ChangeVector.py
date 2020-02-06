@@ -158,6 +158,7 @@ class OpenVectorChange():
         global nodev
         global Dialog1
         nodev.hide()
+        ex2.givelogview(nodev)
         ex2.show()
         #Dialog1.hide()
 global ex2

@@ -174,5 +174,13 @@ class LogView(QMainWindow):
         self.editvectorbutton.clicked.connect(OpenVectorConfigPopup)
         self.toolbarlower.addWidget(self.editvectorbutton)
 
+        self.addvectorbutton = QPushButton("Add Vector")
+        self.addvectorbutton.setMaximumWidth(150)
+        self.toolbarlower.addWidget(self.addvectorbutton)
+
+        self.removevectorbutton = QPushButton("Remove Vector")
+        self.removevectorbutton.setMaximumWidth(150)
+        self.toolbarlower.addWidget(self.removevectorbutton)
+
         self.addToolBarBreak()
         self.addToolBar(self.toolbarlower)
