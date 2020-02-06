@@ -349,7 +349,7 @@ class IconTextWidget(QFrame):
         layout.setContentsMargins(0,0,0,0)
         layout.setSpacing(0)
         self.setStyleSheet("border: 1px solid black;")
-        self.textlable = QLabel("Event Team")
+        self.textlable = QLabel("Icon")
         layout.addWidget(self.textlable)
         self.setLayout(layout)
         self.setMaximumHeight(heightoftextrow)
