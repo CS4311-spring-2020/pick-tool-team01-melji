@@ -46,6 +46,10 @@ class GraphWindow(QWidget):
         edge1 = Edge(self.scene, node1.outputs[0], node2.inputs[0], edge_type=EDGE_TYPE_BEZIER)
         edge2 = Edge(self.scene, node2.outputs[0], node3.inputs[0], edge_type=EDGE_TYPE_BEZIER)
         timeline = Timeline(self.scene)
+    
+    def addNode(self, title):
+        node = Node(self.scene, title)
+        
 
 
     def contextMenuEvent(self, event):
