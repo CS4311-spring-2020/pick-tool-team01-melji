@@ -1,4 +1,4 @@
-from graph.graph_scene import GraphScene
+from src.ui.gui.graph.graph_scene import GraphScene
 class Scene():
     def __init__(self):
         self.nodes = []
@@ -23,6 +23,7 @@ class Scene():
 
     
     def removeNode(self, node):
+        self.grScene.removeItem(node.grNode)
         self.nodes.remove(node)
     
     def removeEdge(self, edge):

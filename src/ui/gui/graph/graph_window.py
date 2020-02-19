@@ -1,13 +1,13 @@
 from PyQt5.QtWidgets import *
-from graph.graph_scene import GraphScene
-from graph.graph_view import GraphView
+from src.ui.gui.graph.graph_scene import GraphScene
+from src.ui.gui.graph.graph_view import GraphView
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-from graph.node_scence import Scene
-from graph.node_edge import Edge, EDGE_TYPE_BEZIER
-from graph.node_dto import Node
-from graph.node_connector import Socket
-from graph.timeline_dto import Timeline
+from src.ui.gui.graph.node_scence import Scene
+from src.ui.gui.graph.node_edge import Edge, EDGE_TYPE_BEZIER
+from src.ui.gui.graph.node_dto import Node
+from src.ui.gui.graph.node_connector import Socket
+from src.ui.gui.graph.timeline_dto import Timeline
 
 
 class GraphWindow(QWidget):
@@ -46,7 +46,14 @@ class GraphWindow(QWidget):
         edge1 = Edge(self.scene, node1.outputs[0], node2.inputs[0], edge_type=EDGE_TYPE_BEZIER)
         edge2 = Edge(self.scene, node2.outputs[0], node3.inputs[0], edge_type=EDGE_TYPE_BEZIER)
         timeline = Timeline(self.scene)
-
+    
+    def addNode(self, title):
+        node = Node(self.scene, title)
+        
+    def removeNode(self, title):
+        for node in self.scene.nodes:
+            if node.title == title:
+                self.scene.removeNode(node)
 
     def contextMenuEvent(self, event):
         contextMenu = QMenu(self)
