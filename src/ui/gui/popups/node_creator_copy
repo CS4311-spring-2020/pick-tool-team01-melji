@@ -1,0 +1,68 @@
+from PyQt5.QtWidgets import *
+from PyQt5 import Qt
+
+import sys
+
+
+class Dialog(QDialog):
+    NumGridRows = 3
+    NumButtons = 4
+
+    def __init__(self):
+        super(Dialog, self).__init__()
+        self.createFormGroupBox()
+
+        buttonBox = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
+        buttonBox.accepted.connect(self.accept)
+        buttonBox.rejected.connect(self.reject)
+
+        mainLayout = QVBoxLayout()
+        mainLayout.addWidget(self.formGroupBox)
+        mainLayout.addWidget(buttonBox)
+        self.setLayout(mainLayout)
+
+        self.setWindowTitle("Node Creator")
+
+    def createFormGroupBox(self):
+        self.formGroupBox = QGroupBox("Form layout")
+        horizontal_group = QGroupBox("")
+        icon_layout = QHBoxLayout()
+        layout = QFormLayout()
+        line = QLineEdit()
+        line.setMinimumSize(600, 10)
+        line2 = QLineEdit()
+        line2.setMinimumSize(600, 10)
+        line3 = QLineEdit()
+        line3.setMinimumSize(600, 10)
+        line4 = QLineEdit()
+        line4.setMinimumSize(600, 10)
+        line5 = QLineEdit()
+        line5.setMinimumSize(600, 10)
+        line6 = QLineEdit()
+        line6.setMinimumSize(600, 10)
+        line7 = QLineEdit()
+        line7.setMinimumSize(600, 10)
+
+
+        layout.addRow(QLabel("node ID:"), line)
+        layout.addRow(QLabel("log name:"), line2)
+        layout.addRow(QLabel("Time Stamp:"), line3)
+        layout.addRow(QLabel("Description:"), line4)
+        layout.addRow(QLabel("Creator Team:"), line5)
+        combox = QComboBox()
+        icon_layout.addWidget(combox)
+        horizontal_group.setLayout(icon_layout)
+        icon_layout.addWidget(QLabel("or import your own\tLocation: "))
+        icon_layout.addWidget(QLineEdit())
+        combox.addItem("Selection of icons with images")
+        layout.addRow(QLabel("Icon"), horizontal_group)
+        layout.addRow(QLabel("Event Team:"), line7)
+
+        layout.addRow(QLabel("Linked Nodes:"), line6)
+        self.formGroupBox.setLayout(layout)
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    dialog = Dialog()
+    sys.exit(dialog.exec_())

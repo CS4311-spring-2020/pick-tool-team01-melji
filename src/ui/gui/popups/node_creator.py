@@ -7,8 +7,8 @@
 # WARNING! All changes made in this file will be lost!
 
 
-from PyQt5 import QtCore, QtGui, QtWidgets 
-from PyQt5.QtWidgets import QMainWindow, QVBoxLayout
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMainWindow, QVBoxLayout, QApplication
 
 import sys
 
@@ -119,6 +119,27 @@ class OpenNodeCreatePopup(QMainWindow):
         self.ui = Ui_Form()
         self.ui.setupUi(self.Dialog)
         layout.addWidget(self.Dialog)
-        self.setLayout(layout)
+        # self.setLayout(layout)
         self.Dialog.show()
         #sys.exit(app1.exec_())
+
+
+def window():
+    app = QApplication(sys.argv)
+    # OpenMenuPopup.Open()
+    # icon = IconConfiguration()
+    popup = OpenNodeCreatePopup()
+    popup.initUI()
+    # win2 = OpenMenuPopup()
+    # win2.Open()
+    # win3 = OpenVectorConfigPopup()
+    # win3.Open()
+    # w = OpenTFPopup()
+    # ex2 = NodeView(window)
+    # ex = LogView(ex2)
+    # sys.exit(app.exec())
+    # self.menu =
+    # self.menu.Open()
+
+
+window()
