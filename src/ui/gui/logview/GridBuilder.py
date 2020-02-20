@@ -46,6 +46,7 @@ class GridMake(QScrollArea):
         self.widget.setLayout(self.layoutgrid)
         self.setWidgetResizable(True)
         self.setWidget(self.widget)
+        
         #this code sets borders to 1px
         #QRegExp regexp(".*border: *(\\d+)px.*");
         #if (regexp.indexIn(btn->styleSheet()) >= 0)

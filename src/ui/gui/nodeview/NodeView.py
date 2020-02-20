@@ -113,7 +113,7 @@ class NodeView(QMainWindow):
         self.toolbar.addAction(vcAct)
         #self.toolbar.addAction(settingsAct)
         self.toolbar.addAction(logviewAct)
-        #self.toolbar.addAction(historyAct)
+        self.toolbar.addAction(historyAct)
         self.toolbar.addAction(redoAct)
         self.toolbar.addAction(undoAct)
 

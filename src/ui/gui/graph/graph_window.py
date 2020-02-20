@@ -1,4 +1,7 @@
 from PyQt5.QtWidgets import *
+from PyQt5 import QtGui
+from PyQt5 import QtCore
+from PyQt5.QtWidgets import QWidget , QHBoxLayout,QSplitter
 from graph.graph_scene import GraphScene
 from graph.graph_view import GraphView
 from PyQt5.QtGui import *
@@ -8,6 +11,7 @@ from graph.node_edge import Edge, EDGE_TYPE_BEZIER
 from graph.node_dto import Node
 from graph.node_connector import Socket
 from graph.timeline_dto import Timeline
+from nodeview.NodeGridBuilder import GridMake
 
 
 class GraphWindow(QWidget):
@@ -17,9 +21,14 @@ class GraphWindow(QWidget):
         self.initUI()
 
     def initUI(self):
-        self.setGeometry(200, 200, 800, 600)
-
-        self.layout = QVBoxLayout()
+        self.setGeometry(500, 500, 800, 600)
+        self.layout = QHBoxLayout()
+        self.splitter = QSplitter(Qt.Horizontal)
+        #self.splitter = .setOrientation(Qt.Horizontal)
+        grid = GridMake()
+        #grid.setMinimumSize(500, 500)
+        #self.layout.addWidget(grid)
+        self.splitter.addWidget(grid)
         self.layout.setContentsMargins(0, 0, 0, 0)
         self.setLayout(self.layout)
 
@@ -29,12 +38,13 @@ class GraphWindow(QWidget):
 
         # node2 = Node(self.scene, "Node 2")
         self.view = GraphView(self.scene.grScene, self)
-        self.layout.addWidget(self.view)
+        self.splitter.addWidget(self.view)
+        self.layout.addWidget(self.splitter)
+        #self.layout.addWidget(self.view)
 
         self.setWindowTitle('Graph View')
-        #self.show()
+        self.show()
 
-        # self.addDebugContent()
     def addNodes(self):
         node1 = Node(self.scene, "Node 1", inputs=[1], outputs=[1])
         node2 = Node(self.scene, "Node 2", inputs=[1], outputs=[1])
