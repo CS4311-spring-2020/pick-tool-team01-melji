@@ -1,13 +1,13 @@
 from PyQt5.QtWidgets import *
-from src.ui.gui.graph.graph_scene import GraphScene
-from src.ui.gui.graph.graph_view import GraphView
+from graph.graph_scene import GraphScene
+from graph.graph_view import GraphView
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-from src.ui.gui.graph.node_scence import Scene
-from src.ui.gui.graph.node_edge import Edge, EDGE_TYPE_BEZIER
-from src.ui.gui.graph.node_dto import Node
-from src.ui.gui.graph.node_connector import Socket
-from src.ui.gui.graph.timeline_dto import Timeline
+from graph.node_scence import Scene
+from graph.node_edge import Edge, EDGE_TYPE_BEZIER
+from graph.node_dto import Node
+from graph.node_connector import Socket
+from graph.timeline_dto import Timeline
 
 
 class GraphWindow(QWidget):

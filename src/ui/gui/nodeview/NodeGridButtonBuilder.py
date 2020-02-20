@@ -35,6 +35,108 @@ class GetGridWidgets(QFrame):
         return 
 
 
+class NodeTextWidget(QFrame):
+
+    def __init__(self,texttodisplay,parent=None):
+        super(NodeTextWidget,self).__init__(parent)
+        layout = QHBoxLayout()
+        layout.setContentsMargins(0,0,0,0)
+        layout.setSpacing(0)
+        self.setStyleSheet("border: 1px solid black;")
+        self.textlable = QLabel(texttodisplay)
+        layout.addWidget(self.textlable)
+        self.setLayout(layout)    
+        self.setMaximumHeight(heightoftextrow)
+        return
+
+
+class TopGrid(QFrame):
+    global nodesortbuttonext
+    global nodefilterbuttonext
+    global nodefilterbuttonext
+    global nodecheckbuttonext
+    def __init__(self, typeofsort,hasfilter,parent=None):
+        super(TopGrid,self).__init__(parent)
+        #return
+
+    #def maketopwidget(self,typeofsort,hasfilter):
+        
+        global nodesortbuttonext
+        global nodefilterbuttonext
+        layout = QHBoxLayout()
+        layout.setContentsMargins(0,0,0,0)
+        layout.setSpacing(0)
+        self.setStyleSheet("border: 1px solid black;")
+
+        if typeofsort == "1_9":
+
+            self.nodesortbutton = QPushButton()
+            nodesortbuttonext = self.nodesortbutton
+            self.nodesortbutton.setIcon(QIcon(QPixmap("bin\\assets\\1_9sort.png")))
+            self.nodesortbutton.setToolTip("This allows you to sort the current column")
+            #self.nodesortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
+            layout.addWidget(self.nodesortbutton)
+
+
+        elif typeofsort == "a_z":
+            
+            self.nodesortbutton = QPushButton()
+            nodesortbuttonext = self.nodesortbutton
+            self.nodesortbutton.setIcon(QIcon(QPixmap("bin\\assets\\a_zsort.png")))
+            self.nodesortbutton.setToolTip("This allows you to sort the current column")
+            #self.nodesortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
+            layout.addWidget(self.nodesortbutton)
+
+        elif typeofsort == "upsort":
+
+            self.nodesortbutton = QPushButton()
+            nodesortbuttonext = self.nodesortbutton
+            self.nodesortbutton.setIcon(QIcon(QPixmap("bin\\assets\\upsort.png")))
+            self.nodesortbutton.setToolTip("This allows you to sort the current column")
+            #self.nodesortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
+            layout.addWidget(self.nodesortbutton)
+        
+        global nodecheckbuttonext
+        self.nodecheckbutton = QCheckBox()
+        nodecheckbuttonext = self.nodecheckbutton
+        self.nodecheckbutton.setToolTip("This allows you to change visiblilty in this and the graph")
+        self.nodecheckbutton.setChecked(True)
+        #self.nodecheckbutton.stateChanged.connect(lambda:self.btnstate(self.b1))
+        layout.addWidget(self.nodecheckbutton)
+        
+
+        if hasfilter == "true":
+            self.nodefilterbutton = QPushButton()
+            nodefilterbuttonext = self.nodefilterbutton
+            self.nodefilterbutton.setIcon(QIcon(QPixmap("bin\\assets\\filter.png")))
+            self.nodesortbutton.setToolTip("This allows you to filter the current column")
+            #self.nodefilterbutton.clicked.connect(lambda: OpenFilterAllPopup())
+            layout.addWidget(self.nodefilterbutton)
+
+        #super(NodeTimeStampWidget,self).__init__(parent)
+
+
+        
+        self.setLayout(layout)
+        #self.setFixedSize(widthofcolumns, heightofrows) 
+        self.setMaximumHeight(heightofrows)
+        return
+
+    def returnbutton(self,typeofbutton):
+        global nodesortbuttonext
+        global nodefilterbuttonext
+        global nodecheckbuttonext
+        if typeofbutton == "sort":
+            return nodesortbuttonext
+
+
+        elif typeofbutton == "filter":
+            return nodesortbuttonext
+
+
+        elif typeofbutton == "check":
+            return nodecheckbuttonext
+
 
 class NodeVisibilityTextWidget(QFrame):
 

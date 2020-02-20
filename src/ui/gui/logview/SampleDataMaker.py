@@ -18,7 +18,7 @@ class GetSampleWidgets(QFrame):
         global sample
         
         sample = open('text.txt', 'w') 
-        self.arrayofsamplewidgets= [LogRandIDTextWidget(),LogRandNameTextWidget(),RandTimeWidget(),LogRandDescriptionTextWidget(),RandEventTeamWidget(),RandEventTeamWidget(),IconWidget(),RandomFileTextWidget(),RandVectorWidget()]
+        self.arrayofsamplewidgets= [LogRandIDTextWidget(),LogRandNameTextWidget(),RandTimeWidget(),LogRandDescriptionTextWidget(),RandEventTeamWidget(),RandEventTeamWidget(),LogRandNameTextWidget(),IconWidget(),RandomFileTextWidget(),RandVectorWidget()]
         
          
         sample.close() 
@@ -168,7 +168,7 @@ class RandVectorWidget(QFrame):
 
         self.logreporterfilterbutton = QPushButton()
         self.logreporterfilterbutton.setIcon(QIcon(QPixmap("bin\\assets\\subtract.png")))
-        self.logreportersortbutton.clicked.connect(lambda:OpenVectorRemovePopup())
+        self.logreporterfilterbutton.clicked.connect(lambda:OpenVectorRemovePopup())
         #self.logreporterfilterbutton.clicked.connect(lambda:self.whichbtn(self.b2))
         layout.addWidget(self.logreporterfilterbutton)
         

@@ -30,7 +30,7 @@ class GridMake(QScrollArea):
 
         for y in range(0,numofsample): #this code will detect what is in the datatype and put it into spaces in grid layout
             sampledata = GetSampleWidgets()
-            for x in range(0,9):
+            for x in range(0,10):
                 if y < 2:
                     widgettoad = arrayofwidgets[i]
                     self.layoutgrid.addWidget(widgettoad,y,x)
