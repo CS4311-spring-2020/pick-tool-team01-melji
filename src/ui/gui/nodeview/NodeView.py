@@ -63,44 +63,44 @@ class NodeView(QMainWindow):
 
         self.toolbar = self.addToolBar('UI')   #to-do lock toolbar
         
-        fileAct = QAction(QIcon('bin\\assets\\file.png'), 'file', self)
+        fileAct = QAction(QIcon('bin/assets/file.png'), 'file', self)
         fileAct.setShortcut('Ctrl+X')
         fileAct.triggered.connect(OpenMenuPopup) 
         #use following code for actions 
         #fileAct.triggered.connect(filepopup()**note function call may not be correct**) 
         #self.toolbar.addAction(fileAct)
 
-        saveAct = QAction(QIcon('bin\\assets\\save.png'), 'save', self)
+        saveAct = QAction(QIcon('bin/assets/save.png'), 'save', self)
         saveAct.setShortcut('Ctrl+S')
         #saveAct.triggered.connect(saveaction())
         #self.toolbar.addAction(saveAct)
         
-        vcAct = QAction(QIcon('bin\\assets\\VC.jpg'), 'version control', self)
+        vcAct = QAction(QIcon('bin/assets/VC.jpg'), 'version control', self)
         vcAct.setShortcut('Ctrl+N')
         #vcAct.triggered.connect(versionpopup())
         #self.toolbar.addAction(vcAct)
 
-        settingsAct = QAction(QIcon('bin\\assets\\settings.png'), 'settings', self)
+        settingsAct = QAction(QIcon('bin/assets/settings.png'), 'settings', self)
         settingsAct.setShortcut('Ctrl+I')
         #settingsAct.triggered.connect(settingspopup())
         #self.toolbar.addAction(settingsAct)
         global logviewAct
-        logviewAct = QAction(QIcon('bin\\assets\\logview.png'), 'log view', self)
+        logviewAct = QAction(QIcon('bin/assets/logview.png'), 'log view', self)
         logviewAct.setShortcut('Ctrl+T')
         #logviewAct.triggered.connect(logview())
         #self.toolbar.addAction(logviewAct)
 
-        historyAct = QAction(QIcon('bin\\assets\\history.png'), 'history', self)
+        historyAct = QAction(QIcon('bin/assets/history.png'), 'history', self)
         historyAct.setShortcut('Ctrl+H')
         #historyAct.triggered.connect(history popup())
         #self.toolbar.addAction(historyAct)
 
-        redoAct = QAction(QIcon('bin\\assets\\redo.png'), 'redo change', self)
+        redoAct = QAction(QIcon('bin/assets/redo.png'), 'redo change', self)
         redoAct.setShortcut('Ctrl+Y')
         #redoAct.triggered.connect(redo())
         #self.toolbar.addAction(redoAct)
 
-        undoAct = QAction(QIcon('bin\\assets\\undo.png'), 'undo change', self)
+        undoAct = QAction(QIcon('bin/assets/undo.png'), 'undo change', self)
         undoAct.setShortcut('Ctrl+Z')
         #undoAct.triggered.connect(undo())
         #self.toolbar.addAction(undoAct)
@@ -119,43 +119,43 @@ class NodeView(QMainWindow):
 
         self.toolbarlower = QToolBar()   #to-do lock toolbarlower
         
-        filterAct = QAction(QIcon('bin\\assets\\filter.png'), 'file', self)
+        filterAct = QAction(QIcon('bin/assets/filter.png'), 'file', self)
         filterAct.setShortcut('Ctrl+F')
         #use following code for actions 
         #fileAct.triggered.connect(filepopup()**note function call may not be correct**) 
         #self.toolbarlower.addAction(fileAct)
 
-        saveAct = QAction(QIcon('bin\\assets\\save.png'), 'save', self)
+        saveAct = QAction(QIcon('bin/assets/save.png'), 'save', self)
         saveAct.setShortcut('Ctrl+S')
         #saveAct.triggered.connect(saveaction())
         #self.toolbarlower.addAction(saveAct)
         
-        vcAct = QAction(QIcon('bin\\assets\\VC.jpg'), 'version control', self)
+        vcAct = QAction(QIcon('bin/assets/VC.jpg'), 'version control', self)
         vcAct.setShortcut('Ctrl+N')
         #vcAct.triggered.connect(versionpopup())
         #self.toolbarlower.addAction(vcAct)
 
-        settingsAct = QAction(QIcon('bin\\assets\\settings.png'), 'settings', self)
+        settingsAct = QAction(QIcon('bin/assets/settings.png'), 'settings', self)
         settingsAct.setShortcut('Ctrl+I')
         #settingsAct.triggered.connect(settingspopup())
         #self.toolbarlower.addAction(settingsAct)
 
-        logviewAct = QAction(QIcon('bin\\assets\\logview.png'), 'log view', self)
+        logviewAct = QAction(QIcon('bin/assets/logview.png'), 'log view', self)
         logviewAct.setShortcut('Ctrl+T')
         #logviewAct.triggered.connect(logview())
         #self.toolbarlower.addAction(logviewAct)
 
-        historyAct = QAction(QIcon('bin\\assets\\history.png'), 'history', self)
+        historyAct = QAction(QIcon('bin/assets/history.png'), 'history', self)
         historyAct.setShortcut('Ctrl+H')
         #historyAct.triggered.connect(history popup())
         #self.toolbarlower.addAction(historyAct)
 
-        redoAct = QAction(QIcon('bin\\assets\\redo.png'), 'redo change', self)
+        redoAct = QAction(QIcon('bin/assets/redo.png'), 'redo change', self)
         redoAct.setShortcut('Ctrl+Y')
         #redoAct.triggered.connect(redo())
         #self.toolbarlower.addAction(redoAct)
 
-        undoAct = QAction(QIcon('bin\\assets\\undo.png'), 'undo change', self)
+        undoAct = QAction(QIcon('bin/assets/undo.png'), 'undo change', self)
         undoAct.setShortcut('Ctrl+Z')
         #undoAct.triggered.connect(undo())
         #self.toolbarlower.addAction(undoAct)

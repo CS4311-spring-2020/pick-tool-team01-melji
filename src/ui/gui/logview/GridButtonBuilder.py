@@ -54,7 +54,7 @@ class TopGrid(QFrame):
 
             self.nodesortbutton = QPushButton()
             nodesortbuttonext = self.nodesortbutton
-            self.nodesortbutton.setIcon(QIcon(QPixmap("bin\\assets\\1_9sort.png")))
+            self.nodesortbutton.setIcon(QIcon(QPixmap("bin/assets/1_9sort.png")))
             self.nodesortbutton.setToolTip("This allows you to sort the current column")
             #self.nodesortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
             layout.addWidget(self.nodesortbutton)
@@ -64,7 +64,7 @@ class TopGrid(QFrame):
             
             self.nodesortbutton = QPushButton()
             nodesortbuttonext = self.nodesortbutton
-            self.nodesortbutton.setIcon(QIcon(QPixmap("bin\\assets\\a_zsort.png")))
+            self.nodesortbutton.setIcon(QIcon(QPixmap("bin/assets/a_zsort.png")))
             self.nodesortbutton.setToolTip("This allows you to sort the current column")
             #self.nodesortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
             layout.addWidget(self.nodesortbutton)
@@ -73,7 +73,7 @@ class TopGrid(QFrame):
 
             self.nodesortbutton = QPushButton()
             nodesortbuttonext = self.nodesortbutton
-            self.nodesortbutton.setIcon(QIcon(QPixmap("bin\\assets\\upsort.png")))
+            self.nodesortbutton.setIcon(QIcon(QPixmap("bin/assets/upsort.png")))
             self.nodesortbutton.setToolTip("This allows you to sort the current column")
             #self.nodesortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
             layout.addWidget(self.nodesortbutton)
@@ -90,7 +90,7 @@ class TopGrid(QFrame):
         if hasfilter == "true":
             self.nodefilterbutton = QPushButton()
             nodefilterbuttonext = self.nodefilterbutton
-            self.nodefilterbutton.setIcon(QIcon(QPixmap("bin\\assets\\filter.png")))
+            self.nodefilterbutton.setIcon(QIcon(QPixmap("bin/assets/filter.png")))
             self.nodesortbutton.setToolTip("This allows you to filter the current column")
             #self.nodefilterbutton.clicked.connect(lambda: OpenFilterAllPopup())
             layout.addWidget(self.nodefilterbutton)
@@ -133,7 +133,7 @@ class LogIDWidget(QFrame):
         layout.addWidget(self.textlable)
         
         self.logidsortbutton = QPushButton()
-        self.logidsortbutton.setIcon(QIcon(QPixmap("bin\\assets\\1_9sort.png")))
+        self.logidsortbutton.setIcon(QIcon(QPixmap("bin/assets/1_9sort.png")))
         #self.b2.clicked.connect(lambda:self.whichbtn(self.b2))
         layout.addWidget(self.logidsortbutton)
 
@@ -178,7 +178,7 @@ class LogNameWidget(QFrame):
         self.setStyleSheet("border: 1px solid black;")
         
         self.lognamesortbutton = QPushButton()
-        self.lognamesortbutton.setIcon(QIcon(QPixmap("bin\\assets\\a_zsort.png")))
+        self.lognamesortbutton.setIcon(QIcon(QPixmap("bin/assets/a_zsort.png")))
         #self.b2.clicked.connect(lambda:self.whichbtn(self.b2))
         layout.addWidget(self.lognamesortbutton)
 
@@ -224,7 +224,7 @@ class TimeStampWidget(QFrame):
         self.setStyleSheet("border: 1px solid black;")
         
         self.logtimestampsortbutton = QPushButton()
-        self.logtimestampsortbutton.setIcon(QIcon(QPixmap("bin\\assets\\1_9sort.png")))
+        self.logtimestampsortbutton.setIcon(QIcon(QPixmap("bin/assets/1_9sort.png")))
         #self.logtimestampsortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
         layout.addWidget(self.logtimestampsortbutton)
         
@@ -235,7 +235,7 @@ class TimeStampWidget(QFrame):
         layout.addWidget(self.logtimestampvisibilitybutton)
 
         self.logtimestampfilterbutton = QPushButton()
-        self.logtimestampfilterbutton.setIcon(QIcon(QPixmap("bin\\assets\\filter.png")))
+        self.logtimestampfilterbutton.setIcon(QIcon(QPixmap("bin/assets/filter.png")))
         self.logtimestampfilterbutton.clicked.connect(lambda: OpenFilterAllPopup())
         layout.addWidget(self.logtimestampfilterbutton)
 
@@ -275,7 +275,7 @@ class DescriptionWidget(QFrame):
         self.setStyleSheet("border: 1px solid black;")
         
         self.logdescriptionsortbutton = QPushButton()
-        self.logdescriptionsortbutton.setIcon(QIcon(QPixmap("bin\\assets\\upsort.png")))
+        self.logdescriptionsortbutton.setIcon(QIcon(QPixmap("bin/assets/upsort.png")))
         #self.logdescriptionsortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
         layout.addWidget(self.logdescriptionsortbutton)
         
@@ -322,7 +322,7 @@ class ReporterWidget(QFrame):
         self.setStyleSheet("border: 1px solid black;")
         
         self.logreportersortbutton = QPushButton()
-        self.logreportersortbutton.setIcon(QIcon(QPixmap("bin\\assets\\a_zsort.png")))
+        self.logreportersortbutton.setIcon(QIcon(QPixmap("bin/assets/a_zsort.png")))
         #self.logreportersortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
         layout.addWidget(self.logreportersortbutton)
         
@@ -333,7 +333,7 @@ class ReporterWidget(QFrame):
         layout.addWidget(self.logreportervisibilitybutton)
 
         self.logreporterfilterbutton = QPushButton()
-        self.logreporterfilterbutton.setIcon(QIcon(QPixmap("bin\\assets\\filter.png")))
+        self.logreporterfilterbutton.setIcon(QIcon(QPixmap("bin/assets/filter.png")))
         self.logreporterfilterbutton.clicked.connect(lambda: OpenFilterAllPopup())
         layout.addWidget(self.logreporterfilterbutton)
 
@@ -373,7 +373,7 @@ class EventTeamWidget(QFrame):
         self.setStyleSheet("border: 1px solid black;")
         
         self.logeventteamsortbutton = QPushButton()
-        self.logeventteamsortbutton.setIcon(QIcon(QPixmap("bin\\assets\\a_zsort.png")))
+        self.logeventteamsortbutton.setIcon(QIcon(QPixmap("bin/assets/a_zsort.png")))
         #self.logeventteamsortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
         layout.addWidget(self.logeventteamsortbutton)
         
@@ -384,7 +384,7 @@ class EventTeamWidget(QFrame):
         layout.addWidget(self.logeventteamvisibilitybutton)
 
         self.logeventteamfilterbutton = QPushButton()
-        self.logeventteamfilterbutton.setIcon(QIcon(QPixmap("bin\\assets\\filter.png")))
+        self.logeventteamfilterbutton.setIcon(QIcon(QPixmap("bin/assets/filter.png")))
         self.logeventteamfilterbutton.clicked.connect(lambda: OpenFilterAllPopup())
         layout.addWidget(self.logeventteamfilterbutton)
 
@@ -424,7 +424,7 @@ class IconWidget(QFrame):
         self.setStyleSheet("border: 1px solid black;")
         
         self.logiconsortbutton = QPushButton()
-        self.logiconsortbutton.setIcon(QIcon(QPixmap("bin\\assets\\upsort.png")))
+        self.logiconsortbutton.setIcon(QIcon(QPixmap("bin/assets/upsort.png")))
         #self.logiconsortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
         layout.addWidget(self.logiconsortbutton)
         
@@ -469,7 +469,7 @@ class OriginDocumentWidget(QFrame):
         self.setStyleSheet("border: 1px solid black;")
         
         self.logorigindocumentsortbutton = QPushButton()
-        self.logorigindocumentsortbutton.setIcon(QIcon(QPixmap("bin\\assets\\a_zsort.png")))
+        self.logorigindocumentsortbutton.setIcon(QIcon(QPixmap("bin/assets/a_zsort.png")))
         #self.logorigindocumentsortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
         layout.addWidget(self.logorigindocumentsortbutton)
         
@@ -516,7 +516,7 @@ class VectorsAttachedToWidget(QFrame):
         self.setStyleSheet("border: 1px solid black;")
         
         self.logvectorsattachedtosortbutton = QPushButton()
-        self.logvectorsattachedtosortbutton.setIcon(QIcon(QPixmap("bin\\assets\\a_zsort.png")))
+        self.logvectorsattachedtosortbutton.setIcon(QIcon(QPixmap("bin/assets/a_zsort.png")))
         #self.logvectorsattachedtosortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
         layout.addWidget(self.logvectorsattachedtosortbutton)
         
@@ -527,7 +527,7 @@ class VectorsAttachedToWidget(QFrame):
         layout.addWidget(self.logvectorsattachedtovisibilitybutton)
 
         self.logvectorsattachedtofilterbutton = QPushButton()
-        self.logvectorsattachedtofilterbutton.setIcon(QIcon(QPixmap("bin\\assets\\filter.png")))
+        self.logvectorsattachedtofilterbutton.setIcon(QIcon(QPixmap("bin/assets/filter.png")))
         self.logvectorsattachedtofilterbutton.clicked.connect(lambda: OpenFilterAllPopup())
         layout.addWidget(self.logvectorsattachedtofilterbutton)
 

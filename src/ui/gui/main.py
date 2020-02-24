@@ -1,4 +1,7 @@
 import sys
+import qdarkstyle
+import os
+os.environ['QT_API'] = 'pyqt5'
 from PyQt5.QtWidgets import *
 from graph.graph_window import GraphWindow
 from logview.LogView import LogView
@@ -11,6 +14,7 @@ from popups.team_configuration import OpenTFPopup
 global ex2
 def window():
     app = QApplication(sys.argv)
+    app.setStyleSheet(qdarkstyle.load_stylesheet())
     #OpenMenuPopup.Open()
     global ex2
     window = GraphWindow()
