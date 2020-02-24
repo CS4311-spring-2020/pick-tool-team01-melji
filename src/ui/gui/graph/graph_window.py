@@ -1,3 +1,4 @@
+
 from PyQt5.QtWidgets import *
 from PyQt5 import QtGui
 from PyQt5 import QtCore
@@ -21,9 +22,11 @@ class GraphWindow(QWidget):
         self.initUI()
 
     def initUI(self):
+
         self.setGeometry(500, 500, 800, 600)
         self.layout = QHBoxLayout()
         self.splitter = QSplitter(Qt.Horizontal)
+        #self.setStyleSheet(qdarkstyle.load_stylesheet(qt_api=os.environ('PYQTGRAPH_QT_LIB')))
         #self.splitter = .setOrientation(Qt.Horizontal)
         grid = GridMake()
         #grid.setMinimumSize(500, 500)
@@ -43,6 +46,7 @@ class GraphWindow(QWidget):
         #self.layout.addWidget(self.view)
 
         self.setWindowTitle('Graph View')
+        
         self.show()
 
     def addNodes(self):

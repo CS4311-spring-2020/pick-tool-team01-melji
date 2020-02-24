@@ -14,7 +14,6 @@ from popups.team_configuration import OpenTFPopup
 global ex2
 def window():
     app = QApplication(sys.argv)
-    app.setStyleSheet(qdarkstyle.load_stylesheet())
     #OpenMenuPopup.Open()
     global ex2
     window = GraphWindow()
@@ -26,6 +25,7 @@ def window():
     w = OpenTFPopup()
     ex2 = NodeView(window)
     ex = LogView(ex2)
+    app.setStyleSheet(qdarkstyle.load_stylesheet())
     sys.exit(app.exec())
     #self.menu = 
     #self.menu.Open()

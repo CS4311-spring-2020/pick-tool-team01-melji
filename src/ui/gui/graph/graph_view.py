@@ -9,7 +9,6 @@ class GraphView(QGraphicsView):
         self.grScene = QGraphicsScene
         self.initUI()
         self.setScene(self.grScene)
-        
         self.zoomInFactor = 1.25
         self.zoomInClamp = False
         self.zoom = 10
