@@ -161,13 +161,13 @@ class RandVectorWidget(QFrame):
         self.setStyleSheet("border: 1px solid black;")
         
         self.logreportersortbutton = QPushButton()
-        self.logreportersortbutton.setIcon(QIcon(QPixmap("bin\\assets\\add.png")))
+        self.logreportersortbutton.setIcon(QIcon(QPixmap("bin/assets/add.png")))
         self.logreportersortbutton.clicked.connect(lambda:OpenVectorAddPopup())
         #self.logreportersortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
         layout.addWidget(self.logreportersortbutton)
 
         self.logreporterfilterbutton = QPushButton()
-        self.logreporterfilterbutton.setIcon(QIcon(QPixmap("bin\\assets\\subtract.png")))
+        self.logreporterfilterbutton.setIcon(QIcon(QPixmap("bin/assets/subtract.png")))
         self.logreporterfilterbutton.clicked.connect(lambda:OpenVectorRemovePopup())
         #self.logreporterfilterbutton.clicked.connect(lambda:self.whichbtn(self.b2))
         layout.addWidget(self.logreporterfilterbutton)
@@ -236,11 +236,11 @@ class IconWidget(QFrame):
         labeli = QLabel(self)
         self.setStyleSheet("border: 1px solid black;")
         if rvalueg == 1:
-            labeli.setPixmap(QPixmap("bin\\assets\\white.png"))
+            labeli.setPixmap(QPixmap("bin/assets/white.png"))
         if rvalueg == 2:
-            labeli.setPixmap(QPixmap("bin\\assets\\blue.png"))
+            labeli.setPixmap(QPixmap("bin/assets/blue.png"))
         if rvalueg == 3:
-            labeli.setPixmap(QPixmap("bin\\assets\\red.png"))
+            labeli.setPixmap(QPixmap("bin/assets/red.png"))
         labeli.setScaledContents(True)
         labeli.setMaximumHeight(100)
         labeli.setMaximumWidth(120)

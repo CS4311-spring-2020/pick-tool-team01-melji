@@ -4,6 +4,8 @@
 ##  Thanks - Micheal 2/1/20
 #############################################################################
 import sys
+
+import os
 from PyQt5.QtWidgets import QMainWindow, QAction, qApp, QApplication, QVBoxLayout, QWidget,QToolBar,QLineEdit,QPushButton
 from PyQt5.QtGui import QIcon
 from logview.GridBuilder import GridMake
@@ -12,7 +14,7 @@ from popups.ChangeVector import OpenVectorChangePopup
 from popups.vector_configuration import OpenVectorConfigPopup
 from popups.vc_manager import OpenVCPopup
 from popups.timestamp_filter import OpenTSPopup
-from popups.team_configuration import OpenTFPopup
+from popups.team_configuration import Configure_Team
 from popups.remove_link import OpenRLPopup
 from popups.relationships import OpenRelatePopup
 from popups.node_creator import OpenNodeCreatePopup
@@ -34,6 +36,8 @@ class LogView(QMainWindow):
         global ex3
         global window
         ex3 = ex2
+        test = qApp
+        test.setStyleSheet("")
         self.initUI()
         #this code runs GridBuilder
         #############################################################################

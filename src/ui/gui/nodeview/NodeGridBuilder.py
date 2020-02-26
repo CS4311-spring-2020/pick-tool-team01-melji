@@ -3,7 +3,9 @@
 ##  Thanks - Micheal 2/1/20
 #############################################################################
 import sys
-from PyQt5.QtWidgets import (QScrollArea,QWidget,QGridLayout,QLabel)
+from PyQt5.QtCore import *
+from PyQt5 import QtCore
+from PyQt5.QtWidgets import QScrollArea, QWidget, QGridLayout, QLabel, QSizePolicy
 #from LogDataType import LogInfo
 from nodeview.NodeGridButtonBuilder import GetGridWidgets
 from nodeview.SampleNodeDataMaker import GetSampleWidgets
@@ -16,10 +18,12 @@ class GridMake(QScrollArea):
         self.scrollmake()
 
     def scrollmake(self):
-        self.widget = QWidget()                 
+        self.widget = QWidget()
+        self.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)               
         self.layoutgrid = QGridLayout()  
         self.layoutgrid.setSpacing(0)
         self.layoutgrid.setHorizontalSpacing(0)
+        self.layoutgrid.setContentsMargins(0,0,0,0)
         i = 0
         n = 0
         data = GetGridWidgets()
@@ -30,7 +34,7 @@ class GridMake(QScrollArea):
         
         for y in range(0,numofsample): #this code will detect what is in the datatype and put it into spaces in grid layout
             sampledata = GetSampleWidgets()
-            for x in range(0,10):
+            for x in range(0,11):
                 if y < 2:
                     widgettoad = arrayofwidgets[i]
                     self.layoutgrid.addWidget(widgettoad,y,x)
@@ -43,8 +47,10 @@ class GridMake(QScrollArea):
                     n = n+1
         
         self.widget.setLayout(self.layoutgrid)
+        self.widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self.setWidgetResizable(True)
         self.setWidget(self.widget)
+        self.updateGeometry
         #this code sets borders to 1px
         #QRegExp regexp(".*border: *(\\d+)px.*");
         #if (regexp.indexIn(btn->styleSheet()) >= 0)

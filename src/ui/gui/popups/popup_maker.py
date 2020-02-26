@@ -3,10 +3,13 @@
 ##  Thanks - Micheal 2/1/20
 #############################################################################
 import sys
-from PyQt5.QtWidgets import (QScrollArea, QWidget, QGridLayout, QLabel, QPushButton,QMainWindow,QHBoxLayout,QVBoxLayout)
-from PyQt5.QtGui import QIcon, QPixmap
+from PyQt5.QtWidgets import (QScrollArea, QWidget, QGridLayout, QLabel, QPushButton,QMainWindow,QVBoxLayout,QVBoxLayout)
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import * 
+from PyQt5.Qt import *
 
-class IconConfiguration(QMainWindow):
+class ProjectConfiguration(QMainWindow):
     
     def __init__(self): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
         super().__init__()
@@ -18,27 +21,26 @@ class IconConfiguration(QMainWindow):
 
         _widget = QWidget()
         
-        addiconbutton = QPushButton("Add Icon")
-        addiconbutton.setMaximumWidth(150)
-        deleteiconbutton = QPushButton("Delete Icon")
-        deleteiconbutton.setMaximumWidth(150)
-        editiconbutton = QPushButton("Edit Icon")
-        editiconbutton.setMaximumWidth(150)
+        addprojectbutton = QPushButton("New Project")
+        addprojectbutton.setMaximumWidth(150)
+        deleteprojectbutton = QPushButton("Connect to Project")
+        deleteprojectbutton.setMaximumWidth(150)
+        editprojectbutton = QPushButton("Resume Project")
+        editprojectbutton.setMaximumWidth(150)
 
         widget = QWidget()                  
-        layouth = QHBoxLayout()                
+        layouth = QVBoxLayout()                
         widget.setLayout(layouth)
-        layouth.addWidget(addiconbutton)
-        layouth.addWidget(deleteiconbutton)
-        layouth.addWidget(editiconbutton)
-
+        layouth.addWidget(addprojectbutton)
+        layouth.addWidget(deleteprojectbutton)
+        layouth.addWidget(editprojectbutton)
+        layouth.setAlignment(Qt.AlignVCenter|Qt.AlignHCenter)
         widget.setLayout(layouth)
 
 
-        grid = IconMake()
+        
         _layout = QVBoxLayout(_widget)
         _layout.addWidget(widget)
-        _layout.addWidget(grid)
         
 
         self.setCentralWidget(_widget)
@@ -46,17 +48,17 @@ class IconConfiguration(QMainWindow):
         #############################################################################
 
         self.setGeometry(500, 500, 500, 500)
-        self.setWindowTitle("Icon Configuration")  
+        self.setWindowTitle("project Configuration")  
         #self.show()
-    def showiconconfig(self):
+    def showprojectconfig(self):
         self.show()
 
 
 
 
-class IconMake(QScrollArea):   
+class projectMake(QScrollArea):   
     def __init__(self, parent=None):
-        super(IconMake, self).__init__(parent)
+        super(projectMake, self).__init__(parent)
         self.scrollmake()
 
     def scrollmake(self):
@@ -90,3 +92,8 @@ class IconMake(QScrollArea):
         self.setWidget(self.widget)
 
         return
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    ex = ProjectConfiguration()
+    ex.showprojectconfig()
+    sys.exit(app.exec_())

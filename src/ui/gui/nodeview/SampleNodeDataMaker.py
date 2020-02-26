@@ -7,7 +7,7 @@ from random import seed,randint
 import random
 import string
 
-widthofcolumns = 200
+widthofcolumns = 600
 heightofrows=180
 heightoftextrow = 180
 rvalueg = 1  # for the program to know the color of the icon
@@ -15,7 +15,7 @@ class GetSampleWidgets(QFrame):
     def __init__(self, parent=None):
         super(GetSampleWidgets,self).__init__(parent)
         
-        self.arrayofsamplewidgets= [VisibilityButton(),LogRandIDTextWidget(),LogRandNameTextWidget(),RandTimeWidget(),LogRandDescriptionTextWidget(),RandEventTeamWidget(),RandEventTeamWidget(),RandomFileTextWidget(),LogRandNameTextWidget(),IconWidget(),RandomFileTextWidget(),RandVectorWidget()]
+        self.arrayofsamplewidgets= [VisibilityButton(),LogRandIDTextWidget(),LogRandNameTextWidget(),RandTimeWidget(),LogRandDescriptionTextWidget(),RandEventTeamWidget(),RandEventTeamWidget(),LogRandNameTextWidget(),RandomFileTextWidget(),LogRandNameTextWidget(),IconWidget(),RandomFileTextWidget(),RandVectorWidget()]
         
 
         return 
@@ -38,6 +38,7 @@ class VisibilityButton(QFrame):
         #cb.stateChanged.connect(self.toggled)
         
         self.setStyleSheet("border: 1px solid black;")
+        self.cb.setStyleSheet(" border: 0px; ")
         layout.addWidget(self.cb)
         
         self.setLayout(layout)    
@@ -91,7 +92,7 @@ class LogRandNameTextWidget(QFrame):
         layout.addWidget(self.textlable)
         self.setLayout(layout)  
         self.setMaximumHeight(heightoftextrow)
-        self.setMaximumWidth(heightoftextrow)
+        self.setMaximumWidth(widthofcolumns)
 
         return
 
@@ -180,12 +181,12 @@ class RandVectorWidget(QFrame):
         self.setStyleSheet("border: 1px solid black;")
         
         self.logreportersortbutton = QPushButton()
-        self.logreportersortbutton.setIcon(QIcon(QPixmap("bin\\assets\\add.png")))
+        self.logreportersortbutton.setIcon(QIcon(QPixmap("bin/assets/add.png")))
         #self.logreportersortbutton.clicked.connect(lambda:OpenVectorAddPopup())
         layout.addWidget(self.logreportersortbutton)
 
         self.logreporterfilterbutton = QPushButton()
-        self.logreporterfilterbutton.setIcon(QIcon(QPixmap("bin\\assets\\subtract.png")))
+        self.logreporterfilterbutton.setIcon(QIcon(QPixmap("bin/assets/subtract.png")))
         #self.logreporterfilterbutton.clicked.connect(lambda:OpenVectorRemovePopup())
         layout.addWidget(self.logreporterfilterbutton)
         
@@ -248,11 +249,11 @@ class IconWidget(QFrame):
         labeli = QLabel(self)
         self.setStyleSheet("border: 1px solid black;")
         if rvalueg == 1:
-            labeli.setPixmap(QPixmap("bin\\assets\\white.png"))
+            labeli.setPixmap(QPixmap("bin/assets/white.png"))
         if rvalueg == 2:
-            labeli.setPixmap(QPixmap("bin\\assets\\blue.png"))
+            labeli.setPixmap(QPixmap("bin/assets/blue.png"))
         if rvalueg == 3:
-            labeli.setPixmap(QPixmap("bin\\assets\\red.png"))
+            labeli.setPixmap(QPixmap("bin/assets/red.png"))
         labeli.setScaledContents(True)
         labeli.setMaximumHeight(100)
         labeli.setMaximumWidth(120)

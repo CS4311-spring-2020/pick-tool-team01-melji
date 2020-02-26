@@ -12,7 +12,7 @@ from popups.menupopup import OpenMenuPopup
 from popups.vector_configuration import OpenVectorConfigPopup
 from popups.vc_manager import OpenVCPopup
 from popups.timestamp_filter import OpenTSPopup
-from popups.team_configuration import OpenTFPopup
+from popups.team_configuration import Configure_Team
 from popups.remove_link import OpenRLPopup
 from popups.relationships import OpenRelatePopup
 from popups.node_creator import OpenNodeCreatePopup
