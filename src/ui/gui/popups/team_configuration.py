@@ -7,7 +7,8 @@
 # WARNING! All changes made in this file will be lost!
 
 import sys
-from PyQt5.QtWidgets import (QScrollArea, QWidget, QGridLayout, QLabel, QPushButton,QMainWindow,QVBoxLayout,QVBoxLayout)
+import qdarkstyle
+from PyQt5.QtWidgets import QScrollArea, QWidget, QGridLayout, QLabel, QPushButton, QMainWindow, QHBoxLayout, QVBoxLayout, QTextEdit, QCheckBox
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import * 
@@ -24,45 +25,74 @@ class Configure_Team(QMainWindow):
         #############################################################################
 
         _widget = QWidget()
+                  
+        layout = QGridLayout()    
         
-        addprojectbutton = QPushButton("New Project")
-        addprojectbutton.setMaximumWidth(150)
-        ip_label = QLabel()
-        ip_label.setText('')
-        text_panel = QTextEdit()
-        deleteprojectbutton = QPushButton("Connect to Project")
-        deleteprojectbutton.setMaximumWidth(150)
-        editprojectbutton = QPushButton("Resume Project")
-        editprojectbutton.setMaximumWidth(150)
-
-        widget = QWidget()                  
-        layouth = QVBoxLayout()                
-        widget.setLayout(layouth)
-        layouth.addWidget(addprojectbutton)
-        layouth.addWidget(deleteprojectbutton)
-        layouth.addWidget(editprojectbutton)
-        layouth.setAlignment(Qt.AlignVCenter|Qt.AlignHCenter)
-        widget.setLayout(layouth)
-
-
         
+        layout.setContentsMargins(0,0,0,0)
+        layout.setSpacing(10)
+        
+       
+        
+
+        name_label = QLabel("Team Configuration")
+        name_label.setMaximumWidth(150)
+        name_label.setMaximumHeight(35)
+
+        lead_check_button = QCheckBox("Lead?")
+        lead_check_button.setMaximumWidth(150)
+        
+
+        layout_lead_ip = QHBoxLayout()
+        ip_label = QLabel("Lead IP Address")
+        ip_label.setMaximumWidth(150)
+        ip_label.setMaximumHeight(25)
+        ip_edit = QTextEdit()
+        ip_edit.setMaximumWidth(300)
+        ip_edit.setMaximumHeight(25)
+        layout_lead_ip.addWidget(ip_label)
+        layout_lead_ip.addWidget(ip_edit)
+        layout_lead_ip.setSpacing(0)
+
+        layout_connections = QHBoxLayout()
+        connections_text_label = QLabel("Number of Established connectons to lead")
+        connections_text_label.setMaximumWidth(300)
+        connections_text_label.setMaximumHeight(35)
+        connections_label = QLabel("Number")
+        connections_label.setMaximumWidth(150)
+        connections_label.setMaximumHeight(35)
+        layout_connections.addWidget(connections_text_label)
+        layout_connections.addWidget(connections_label)
+        layout_connections.setSpacing(0)
+
+        connect_project_button = QPushButton("Connect")
+        connect_project_button.setMaximumWidth(150)
+
+        widget = QWidget()                    
+        widget.setLayout(layout)
+
+        layout.addWidget(name_label, 0, 0, 1, 2)
+        layout.addWidget(lead_check_button, 1, 0, 1, 2)
+        layout.addLayout(layout_lead_ip,2,0,1,2)
+        layout.addLayout(layout_connections,3,0,1,2)
+        layout.addWidget(connect_project_button,4,1)
+        
+        layout.setAlignment(Qt.AlignVCenter|Qt.AlignHCenter)
+        widget.setLayout(layout)
+
         _layout = QVBoxLayout(_widget)
         _layout.addWidget(widget)
-        
-
+        _layout.setAlignment(Qt.AlignVCenter|Qt.AlignHCenter)
         self.setCentralWidget(_widget)
 
         #############################################################################
 
-        self.setGeometry(500, 500, 500, 500)
-        self.setWindowTitle("project Configuration")  
-        #self.show()
+        self.setGeometry(400, 400, 400, 400)
+        self.setWindowTitle("Team Configuration")  
 
 
     def showconfig(self):
         self.show()
-
-
 
 
     

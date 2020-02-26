@@ -7,7 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 import sys
-from PyQt5.QtWidgets import (QScrollArea, QWidget, QGridLayout, QLabel, QPushButton,QMainWindow,QVBoxLayout,QVBoxLayout)
+from PyQt5.QtWidgets import (QScrollArea, QWidget, QGridLayout, QLabel, QPushButton, QMainWindow, QVBoxLayout, QVBoxLayout)
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import * 
@@ -39,7 +39,9 @@ class Paths(QMainWindow):
         layouth.addWidget(deleteprojectbutton)
         layouth.addWidget(editprojectbutton)
         layouth.setAlignment(Qt.AlignVCenter|Qt.AlignHCenter)
+        
         widget.setLayout(layouth)
+        
 
 
         
