@@ -30,7 +30,7 @@ def window():
     w.showpaths()
     ex2 = NodeView(window)
     ex = LogView(ex2)
-    #app.setStyleSheet(stylesheet+"QPushButton { min-height: 0px; min-width: 15px }"+"QLabel { border: 0px; }")
+    app.setStyleSheet(stylesheet+"QPushButton { min-height: 0px; min-width: 15px }"+"QLabel { border: 0px; }")
     #app.setStyleSheet(qdarkstyle.load_stylesheet().append(QString("QPushButton { min-height: 0px; min-width: 0px }")))
     sys.exit(app.exec())
     #self.menu = 
