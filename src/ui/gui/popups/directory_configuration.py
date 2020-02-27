@@ -85,6 +85,7 @@ class Configure_Directory(QMainWindow):
         white_team_file.setSpacing(0)
 
         start_ingestion_button = QPushButton("Start Data Ingestion")
+        start_ingestion_button.clicked.connect(self.get_blue_file)
 
         widget = QWidget()                    
         widget.setLayout(layout)
@@ -135,6 +136,8 @@ class Configure_Directory(QMainWindow):
         self.white_folder = QFileDialog.getExistingDirectory(self, 'Open White Team Directory', options=QFileDialog.ShowDirsOnly)
         self.white_file_text_label.setText(self.white_folder)
 
+    def call_ingestion(self):
+        #yourvalidationservicecalltopassinformation(self.root_folder,self.red_folder,self.blue_folder,self.white_folder,)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
