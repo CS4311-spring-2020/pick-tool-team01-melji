@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import *
 from graph.graph_window import GraphWindow
 from logview.LogView import LogView
 from nodeview.NodeView import NodeView
+from action_view.Action_Report_View import ActionView
 from popups.menupopup import OpenMenuPopup
 from popups.vector_configuration import OpenVectorConfigPopup
 from popups.IconConfiguration import IconConfiguration
@@ -28,6 +29,8 @@ def window():
     #win3.Open()
     w = Paths()
     w.showpaths()
+    a = ActionView()
+    a.show_view()
     ex2 = NodeView(window)
     ex = LogView(ex2)
     app.setStyleSheet(stylesheet+"QPushButton { min-height: 0px; min-width: 15px }"+"QLabel { border: 0px; }")

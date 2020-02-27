@@ -137,14 +137,7 @@ class Configure_Directory(QMainWindow):
         self.white_file_text_label.setText(self.white_folder)
 
     def call_ingestion(self):
-        #yourvalidationservicecalltopassinformation(self.root_folder,self.red_folder,self.blue_folder,self.white_folder,)
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    ex = Configure_Directory()
-    ex.show_config()
-    sys.exit(app.exec_())
-
-
-    
-    
+        return
+        
+        
+######yourvalidationservicecalltopassinformation(self.root_folder,self.red_folder,self.blue_folder,self.white_folder)

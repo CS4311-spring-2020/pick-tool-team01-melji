@@ -34,7 +34,7 @@ class GetGridWidgets(QFrame):
         EmptyWidget(), NodeTextWidget("Node ID"), NodeTextWidget("Node Name"), NodeTextWidget("TimeStamp"), NodeTextWidget("Description"), 
         NodeTextWidget("Source"), NodeTextWidget("Event Team"), NodeTextWidget("Location"), NodeTextWidget("Origin Document"), NodeTextWidget("Log Refrence"), NodeTextWidget("Icon")]
         return 
-
+#TODO select all in empty space
 
 class NodeTextWidget(QFrame):
 
