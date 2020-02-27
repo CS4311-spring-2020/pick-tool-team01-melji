@@ -9,6 +9,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import * 
 from PyQt5.Qt import *
 max_width = 4000
+from popups.directory_configuration import Configure_Directory
 
 class Configure_Event(QMainWindow):
     def __init__(self): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
@@ -91,6 +92,8 @@ class Configure_Event(QMainWindow):
         layout_end.setSpacing(0)
 
         connect_project_button = QPushButton("Save Event")
+        self.directory_config = Configure_Directory()
+        connect_project_button.clicked.connect(self.directory_config.show_config)
         #connect_project_button.setMaximumWidth(150)
 
         widget = QWidget()                    
@@ -119,6 +122,3 @@ class Configure_Event(QMainWindow):
     def show_config(self):
         self.show()
 
-
-    
-    

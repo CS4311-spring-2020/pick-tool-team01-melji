@@ -25,7 +25,7 @@ from popups.filterTeam import OpenFilterTeamPopup
 from popups.filter_all import OpenFilterAllPopup
 from popups.export_configuration import OpenExportConfigPopup
 from popups.expand import OpenExpandPopup
-from popups.directory_configuration import OpenDirectoryConfigPopup
+from popups.directory_configuration import Configure_Directory
 from popups.connect_link import OpenconnectlinkPopup
 from popups.IconConfiguration import IconConfiguration
 
