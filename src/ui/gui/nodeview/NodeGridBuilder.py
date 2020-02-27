@@ -18,8 +18,7 @@ class GridMake(QScrollArea):
         self.scrollmake()
 
     def scrollmake(self):
-        self.widget = QWidget()
-        self.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)               
+        self.widget = QWidget()               
         self.layoutgrid = QGridLayout()  
         self.layoutgrid.setSpacing(0)
         self.layoutgrid.setHorizontalSpacing(0)
