@@ -6,68 +6,93 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-
-from PyQt5 import QtCore, QtGui, QtWidgets 
-from PyQt5.QtWidgets import QMainWindow, QVBoxLayout
-from popups.directory_configuration import OpenDirectoryConfigPopup
-
 import sys
-
-class Ui_Form(object):
-    def setupUi(self, Form):
-        Form.setObjectName("Team Configuration")
-        Form.resize(400, 197)
-        self.checkBox = QtWidgets.QCheckBox(Form)
-        self.checkBox.setGeometry(QtCore.QRect(70, 20, 121, 31))
-        self.checkBox.setObjectName("checkBox")
-        self.textEdit = QtWidgets.QTextEdit(Form)
-        self.textEdit.setGeometry(QtCore.QRect(70, 60, 301, 21))
-        self.textEdit.setObjectName("textEdit")
-        self.label = QtWidgets.QLabel(Form)
-        self.label.setGeometry(QtCore.QRect(70, 40, 61, 20))
-        self.label.setObjectName("label")
-        self.label_2 = QtWidgets.QLabel(Form)
-        self.label_2.setGeometry(QtCore.QRect(70, 90, 91, 16))
-        self.label_2.setObjectName("label_2")
-        self.textEdit_2 = QtWidgets.QTextEdit(Form)
-        self.textEdit_2.setGeometry(QtCore.QRect(70, 110, 104, 21))
-        self.textEdit_2.setObjectName("textEdit_2")
-        self.pushButton = QtWidgets.QPushButton(Form)
-        self.pushButton.setGeometry(QtCore.QRect(160, 160, 56, 17))
-        self.pushButton.setObjectName("pushButton")
-
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
-        
-
-    def retranslateUi(self, Form):
-        _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Team Configuration"))
-        self.checkBox.setText(_translate("Form", "Lead"))
-        self.label.setText(_translate("Form", "Lead IP Adress:"))
-        self.label_2.setText(_translate("Form", "Number of connections:"))
-        self.textEdit_2.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">4</p></body></html>"))
-        self.pushButton.setText(_translate("Form", "Connect"))
-        self.pushButton.clicked.connect( lambda: OpenDirectoryConfigPopup())
+import qdarkstyle
+from PyQt5.QtWidgets import QScrollArea, QWidget, QGridLayout, QLabel, QPushButton, QMainWindow, QHBoxLayout, QVBoxLayout, QTextEdit, QCheckBox
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import * 
+from PyQt5.Qt import *
 
 
-class OpenTFPopup(QMainWindow):
-    
-    def __init__(self):
+class Configure_Team(QMainWindow):
+    def __init__(self): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
         super().__init__()
         
-        self.initUI()
+        #self.initUI()
+
+        #this code runs GridBuilder
+        #############################################################################
+
+        _widget = QWidget()
+                  
+        layout = QGridLayout()    
+        
+        
+        layout.setContentsMargins(0,0,0,0)
+        layout.setSpacing(10)
+        
+       
+        
+
+        name_label = QLabel("Team Configuration")
+        name_label.setMaximumWidth(150)
+        name_label.setMaximumHeight(35)
+
+        lead_check_button = QCheckBox("Lead?")
+        lead_check_button.setMaximumWidth(150)
+        
+
+        layout_lead_ip = QHBoxLayout()
+        ip_label = QLabel("Lead IP Address")
+        ip_label.setMaximumWidth(150)
+        ip_label.setMaximumHeight(25)
+        ip_edit = QTextEdit()
+        ip_edit.setMaximumWidth(300)
+        ip_edit.setMaximumHeight(25)
+        layout_lead_ip.addWidget(ip_label)
+        layout_lead_ip.addWidget(ip_edit)
+        layout_lead_ip.setSpacing(0)
+
+        layout_connections = QHBoxLayout()
+        connections_text_label = QLabel("Number of Established connectons to lead")
+        connections_text_label.setMaximumWidth(300)
+        connections_text_label.setMaximumHeight(35)
+        connections_label = QLabel("Number")
+        connections_label.setMaximumWidth(150)
+        connections_label.setMaximumHeight(35)
+        layout_connections.addWidget(connections_text_label)
+        layout_connections.addWidget(connections_label)
+        layout_connections.setSpacing(0)
+
+        connect_project_button = QPushButton("Connect")
+        connect_project_button.setMaximumWidth(150)
+
+        widget = QWidget()                    
+        widget.setLayout(layout)
+
+        layout.addWidget(name_label, 0, 0, 1, 2)
+        layout.addWidget(lead_check_button, 1, 0, 1, 2)
+        layout.addLayout(layout_lead_ip,2,0,1,2)
+        layout.addLayout(layout_connections,3,0,1,2)
+        layout.addWidget(connect_project_button,4,1)
+        
+        layout.setAlignment(Qt.AlignVCenter|Qt.AlignHCenter)
+        widget.setLayout(layout)
+
+        _layout = QVBoxLayout(_widget)
+        _layout.addWidget(widget)
+        _layout.setAlignment(Qt.AlignVCenter|Qt.AlignHCenter)
+        self.setCentralWidget(_widget)
+        #############################################################################
+
+        self.setGeometry(400, 400, 400, 400)
+        self.setWindowTitle("Team Configuration")  
+
+
+    def show_config(self):
+        self.show()
+
+
     
-    def initUI(self):    
-        layout = QVBoxLayout()
-        self.Dialog = QtWidgets.QDialog()
-        self.ui = Ui_Form()
-        self.ui.setupUi(self.Dialog)
-        layout.addWidget(self.Dialog)
-        self.setLayout(layout)
-        self.Dialog.show()
-        #sys.exit(app1.exec_())
+    
