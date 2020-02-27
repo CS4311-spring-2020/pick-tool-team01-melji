@@ -84,14 +84,13 @@ class Configure_Team(QMainWindow):
         _layout.addWidget(widget)
         _layout.setAlignment(Qt.AlignVCenter|Qt.AlignHCenter)
         self.setCentralWidget(_widget)
-
         #############################################################################
 
         self.setGeometry(400, 400, 400, 400)
         self.setWindowTitle("Team Configuration")  
 
 
-    def showconfig(self):
+    def show_config(self):
         self.show()
 
 

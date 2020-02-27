@@ -12,7 +12,8 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import * 
 from PyQt5.Qt import *
-
+from popups.team_configuration import Configure_Team
+from popups.Event_Configuration import Configure_Event
 
 class Paths(QMainWindow):
     def __init__(self): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
@@ -26,18 +27,22 @@ class Paths(QMainWindow):
         _widget = QWidget()
         
         addprojectbutton = QPushButton("New Project")
+        self.team_config = Configure_Team()
+        self.event_config = Configure_Event()
+        addprojectbutton.clicked.connect(self.event_config.show_config)
         addprojectbutton.setMaximumWidth(150)
-        deleteprojectbutton = QPushButton("Connect to Project")
-        deleteprojectbutton.setMaximumWidth(150)
-        editprojectbutton = QPushButton("Resume Project")
-        editprojectbutton.setMaximumWidth(150)
+        connectprojectbutton = QPushButton("Connect to Project")
+        connectprojectbutton.clicked.connect(self.team_config.show_config)
+        connectprojectbutton.setMaximumWidth(150)
+        resumeprojectbutton = QPushButton("Resume Project")
+        resumeprojectbutton.setMaximumWidth(150)
 
         widget = QWidget()                  
         layouth = QVBoxLayout()                
         widget.setLayout(layouth)
         layouth.addWidget(addprojectbutton)
-        layouth.addWidget(deleteprojectbutton)
-        layouth.addWidget(editprojectbutton)
+        layouth.addWidget(connectprojectbutton)
+        layouth.addWidget(resumeprojectbutton)
         layouth.setAlignment(Qt.AlignVCenter|Qt.AlignHCenter)
         
         widget.setLayout(layouth)
@@ -56,11 +61,10 @@ class Paths(QMainWindow):
         self.setGeometry(500, 500, 500, 500)
         self.setWindowTitle("PICK")  
         #self.show()
-
+    
 
     def showpaths(self):
         self.show()
-
 
 
 
