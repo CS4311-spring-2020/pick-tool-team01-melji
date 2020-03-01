@@ -1,9 +1,9 @@
 from abc import ABC
 
-from rx import Observable, Observer
+from rx import Observable
 import os
 
-from src.ui.gui.services.etl_service import ETLService
+from src.ui.gui.dao.splunk_dao import SplunkDAO
 from src.ui.gui.services.ocr_service import OCRService
 from src.ui.gui.services.transcriber_service import TranscriberService
 
@@ -19,9 +19,8 @@ class IntakeService(Observable):
         pass
 
     def __init__(self):
-
+        self.etl = SplunkDAO()
         self.ocr_service = OCRService()
-        self.etl_service = ETLService()
         self.transcriber_service = TranscriberService()
 
     def register_validation_observer(self, observer):
@@ -31,8 +30,10 @@ class IntakeService(Observable):
         pass
 
     def ingest_files(self, path):
-        for entry in os.listdir(path):
-            print(entry)
+        file = open('/Users/eddie/Documents/SchoolProjects/pick-tool-team01-melji/testing.txt', 'r')
+        for line in file:
+            self.etl.transform_log_entry(line)
+        # print(file)
         pass
 
 
