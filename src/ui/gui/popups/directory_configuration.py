@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
+from logview.LogView import LogView
 import sys
 import qdarkstyle
 from PyQt5.QtWidgets import QScrollArea, QWidget, QGridLayout, QLabel, QPushButton, QMainWindow, QHBoxLayout, QVBoxLayout, QTextEdit, QCheckBox , QTimeEdit, QCalendarWidget
@@ -25,6 +26,7 @@ class Configure_Directory(QMainWindow):
         layout.setSpacing(10)
         
        
+        
         
 
         title_label = QLabel("Directory Configuration")
@@ -72,7 +74,6 @@ class Configure_Directory(QMainWindow):
 
         white_team_file = QHBoxLayout()
         self.white_file_text_label = QLabel("C:/")
-        self.white_file_text_label.setMinimumWidth(300)
         self.white_file_text_label.setMaximumHeight(90)
         self.white_file_text_label.setWordWrap(True)
         white_file_button = QPushButton("White Team Directory")
@@ -85,7 +86,7 @@ class Configure_Directory(QMainWindow):
         white_team_file.setSpacing(0)
 
         start_ingestion_button = QPushButton("Start Data Ingestion")
-        start_ingestion_button.clicked.connect(self.get_blue_file)
+        start_ingestion_button.clicked.connect(lambda: self.closeMyApp_OpenNewApp())
 
         widget = QWidget()                    
         widget.setLayout(layout)
@@ -107,8 +108,14 @@ class Configure_Directory(QMainWindow):
         #############################################################################
 
         self.setGeometry(400, 400, 400, 400)
-        self.setWindowTitle("Event Configuration")  
+        self.setWindowTitle("Directory Configuration")  
 
+    
+    def closeMyApp_OpenNewApp(self): 
+        #ex2 = NodeView()
+        self.close() 
+        self.Open = LogView() 
+        self.Open.show()
 
     def show_config(self):
         self.show()
@@ -137,6 +144,7 @@ class Configure_Directory(QMainWindow):
         self.white_file_text_label.setText(self.white_folder)
 
     def call_ingestion(self):
+        #self.close() self.Open = NewApp.NewApp() self.Open.show()
         return
         
         

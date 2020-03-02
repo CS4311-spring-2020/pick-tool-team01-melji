@@ -4,15 +4,16 @@
 ##  Thanks - Micheal 2/1/20
 #############################################################################
 import sys
+#from nodeview.NodeGridBuilder import NodeGridMake
+from nodeview.NodeGridBuilder import NodeGridMake
 from PyQt5.QtWidgets import QMainWindow, QAction, qApp, QApplication, QVBoxLayout, QWidget,QToolBar,QLineEdit,QPushButton
 from PyQt5.QtGui import QIcon
-from nodeview.NodeGridBuilder import GridMake
 from popups.menupopup import OpenMenuPopup
+from graph.graph_window import GraphWindow
 #from popups.ChangeVector import OpenVectorChangePopup
 from popups.vector_configuration import OpenVectorConfigPopup
 from popups.vc_manager import OpenVCPopup
 from popups.timestamp_filter import OpenTSPopup
-from popups.team_configuration import Configure_Team
 from popups.remove_link import OpenRLPopup
 from popups.relationships import OpenRelatePopup
 from popups.node_creator import OpenNodeCreatePopup
@@ -22,23 +23,22 @@ from popups.filterTeam import OpenFilterTeamPopup
 from popups.filter_all import OpenFilterAllPopup
 from popups.export_configuration import OpenExportConfigPopup
 from popups.expand import OpenExpandPopup
-from popups.directory_configuration import Configure_Directory
 from popups.connect_link import OpenconnectlinkPopup
 global gwindow
 global logview
 global logviewAct
 class NodeView(QMainWindow):
     
-    def __init__(self,gwindow1): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
+    def __init__(self): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
         super().__init__()
         global gwindow
-        gwindow = gwindow1
+        #gwindow = gwindow1
         self.initUI()
-
+        #TODO GET TO GRAPH SOMEHOW
         #this code runs GridBuilder
         #############################################################################
 
-        self.grid = GridMake(self)
+        self.grid = NodeGridMake(self)
         _widget = QWidget()
         _layout = QVBoxLayout(_widget)
         _layout.addWidget(self.grid)
@@ -192,17 +192,20 @@ class NodeView(QMainWindow):
         self.removevectorbutton.clicked.connect(lambda: OpenVectorConfigPopup())
         self.toolbarlower.addWidget(self.removevectorbutton)
 
-        global gwindow
-        window = gwindow
+        #TODO go to graph
         self.editvectorbutton1 = QPushButton("Go To Graph")
         self.editvectorbutton1.setMaximumWidth(150)
-        self.editvectorbutton1.clicked.connect(lambda: window.show())
+        self.editvectorbutton1.clicked.connect(lambda: self.closeMyApp_OpenNewApp() )
         self.toolbarlower.addWidget(self.editvectorbutton1)
 
         self.addToolBarBreak()
         self.addToolBar(self.toolbarlower)
 
 
+    def closeMyApp_OpenNewApp(self): 
+        self.close() 
+        self.Open = GraphWindow() 
+        self.Open.show()
 
         
         

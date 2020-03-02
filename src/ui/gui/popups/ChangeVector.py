@@ -139,40 +139,21 @@ class Ui_Form(object):
         self.lineEdit_5.setText(_translate("Form", "Description of vector"))
         self.pushButton.setText(_translate("Form", "Change "))
         
-        self.pushButton.clicked.connect( lambda: OpenVectorChange())
+        
         #self.pushButton.clicked.connect( lambda: self.hide())
         self.label_3.setText(_translate("Form", "Vector1"))
         self.label_4.setText(_translate("Form", "Vector2"))
         self.label_5.setText(_translate("Form", "Vector3"))
         self.label_6.setText(_translate("Form", "Vector4"))
         self.label_7.setText(_translate("Form", "Vector5"))
-    def clicked(self):
-        self.app1 = QApplication(sys.argv)
-        ex2 = NodeView()
-        sys.exit(self.app1.exec())
 
 
-class OpenVectorChange():
-    def __init__(self):
-        global ex2
-        global nodev
-        global Dialog1
-        nodev.hide()
-        ex2.givelogview(nodev)
-        ex2.show()
-        #Dialog1.hide()
-global ex2
-global nodev
-global Dialog1
+
 class OpenVectorChangePopup(QMainWindow):
     
-    def __init__(self,ex3,nodesv):
-        global nodev
-        nodev = nodesv
+    def __init__(self):
         global Dialog
         super().__init__()
-        global ex2
-        ex2 = ex3
         self.initUI()
     def initUI(self):    
         layout = QVBoxLayout()
@@ -180,7 +161,15 @@ class OpenVectorChangePopup(QMainWindow):
         Dialog1 = self.Dialog
         self.ui = Ui_Form()
         self.ui.setupUi(self.Dialog)
+        self.ui.pushButton.clicked.connect( lambda: self.closeMyApp_OpenNewApp())
         layout.addWidget(self.Dialog)
         self.setLayout(layout)
         self.Dialog.show()
+        self.setWindowTitle("Change Vectoraaaa")
         #sys.exit(app1.exec_())\
+
+    def closeMyApp_OpenNewApp(self): 
+        self.close() 
+        self.Open = NodeView() 
+        self.Open.show()
+
