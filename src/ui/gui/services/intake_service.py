@@ -1,6 +1,7 @@
 from abc import ABC
 
 from rx import Observable
+import asyncio
 import os
 
 from src.ui.gui.dao.splunk_dao import SplunkDAO
@@ -30,11 +31,9 @@ class IntakeService(Observable):
         pass
 
     def ingest_files(self, path):
-        file = open('/Users/eddie/Documents/SchoolProjects/pick-tool-team01-melji/testing.txt', 'r')
-        for line in file:
-            self.etl.transform_log_entry(line)
-        # print(file)
-        pass
+        path = "/Users/eddie/Documents/SchoolProjects/pick-tool-team01-melji/example"
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(self.etl.transform_log_entry(path))
 
 
 # Testing Intake Service
