@@ -3,13 +3,15 @@ import splunklib.results as results
 import asyncio, concurrent.futures
 import os
 
+from asgiref.sync import async_to_sync
+
 from src.ui.gui.dao.extract_transform_load_dao import ExtractTransformLoadDAO
 from src.ui.gui.model.log_entry import LogEntry
 
 HOST = "localhost"
 PORT = 8089
 USERNAME = "admin"
-PASSWORD = ""
+PASSWORD = "eherreraga858408"
 INDEX = "main"
 DEBUG = True
 
@@ -58,6 +60,7 @@ class SplunkDAO(ExtractTransformLoadDAO):
             entries.append(self.transform_to_logentry(result))
         return entries
 
+    @async_to_sync
     async def transform_log_entry(self, log_file_directory_path):
         status = await self.upload_logfiles(log_file_directory_path)
         entries = await self.retrieving_splunk_events()

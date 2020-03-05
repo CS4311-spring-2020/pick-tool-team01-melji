@@ -3,6 +3,8 @@ from abc import ABC
 from rx import Observable
 import asyncio
 import os
+import asyncio
+
 
 from src.ui.gui.dao.splunk_dao import SplunkDAO
 from src.ui.gui.services.ocr_service import OCRService
@@ -31,11 +33,6 @@ class IntakeService(Observable):
         pass
 
     def ingest_files(self, path):
-        path = "/Users/eddie/Documents/SchoolProjects/pick-tool-team01-melji/example"
-        loop = asyncio.get_event_loop()
-        loop.run_until_complete(self.etl.transform_log_entry(path))
+        entries = self.etl.transform_log_entry(path)
+        return entries
 
-
-# Testing Intake Service
-intake = IntakeService()
-intake.ingest_files('/Users/eddie/Documents/SchoolProjects/pick-tool-team01-melji/')

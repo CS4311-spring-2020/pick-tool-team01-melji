@@ -10,7 +10,12 @@ from logview.SampleDataMaker import GetSampleWidgets
 from random import seed,randint
 import random
 
-class GridMake(QScrollArea):   
+from src.ui.gui.logview.splunk_data_maker import SplunkData
+from src.ui.gui.services import intake_service
+from src.ui.gui.services.intake_service import IntakeService
+
+
+class GridMake(QScrollArea):
     def __init__(self, parent=None):
         super(GridMake, self).__init__(parent)
         self.scrollmake()
@@ -28,8 +33,11 @@ class GridMake(QScrollArea):
         numofsample = 0
         numofsample = randint(2, 98)
 
-        for y in range(0,numofsample): #this code will detect what is in the datatype and put it into spaces in grid layout
-            sampledata = GetSampleWidgets()
+        self.intake_service = IntakeService()
+        self.entries = self.intake_service.ingest_files(
+            "/Users/eddie/Documents/SchoolProjects/pick-tool-team01-melji/example/")
+        for y in range(len(self.entries)): #this code will detect what is in the datatype and put it into spaces in grid layout
+            sampledata = SplunkData(self.entries[y])
             for x in range(0,10):
                 if y < 2:
                     widgettoad = arrayofwidgets[i]
@@ -38,7 +46,7 @@ class GridMake(QScrollArea):
 
                 else:
                     
-                    arrayofsamplewidgets = sampledata.arrayofsamplewidgets
+                    arrayofsamplewidgets = sampledata.splunk_data
                     widgettoad = arrayofsamplewidgets[x]
                     self.layoutgrid.addWidget(widgettoad,y,x)
                     n = n+1
