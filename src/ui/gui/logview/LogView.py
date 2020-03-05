@@ -6,10 +6,10 @@
 import sys
 
 import os
+from popups.menupopup import OpenMenuPopup
 from PyQt5.QtWidgets import QMainWindow, QAction, qApp, QApplication, QVBoxLayout, QWidget,QToolBar,QLineEdit,QPushButton
 from PyQt5.QtGui import QIcon
 from logview.GridBuilder import GridMake
-from popups.menupopup import OpenMenuPopup
 from popups.ChangeVector import OpenVectorChangePopup
 from popups.vector_configuration import OpenVectorConfigPopup
 from popups.vc_manager import OpenVCPopup
@@ -24,20 +24,18 @@ from popups.filterTeam import OpenFilterTeamPopup
 from popups.filter_all import OpenFilterAllPopup
 from popups.export_configuration import OpenExportConfigPopup
 from popups.expand import OpenExpandPopup
-from popups.directory_configuration import Configure_Directory
+#from popups.directory_configuration import Configure_Directory
 from popups.connect_link import OpenconnectlinkPopup
 
-global ex3
 global window
 class LogView(QMainWindow):
     
-    def __init__(self,ex2): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
+    def __init__(self): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
         super().__init__()
-        global ex3
         global window
-        ex3 = ex2
-        test = qApp
-        test.setStyleSheet("")
+        #test = qApp
+        
+        #test.setStyleSheet("")
         self.initUI()
         #this code runs GridBuilder
         #############################################################################
@@ -50,7 +48,7 @@ class LogView(QMainWindow):
         self.setGeometry(500, 500, 500, 500)
         currtitle = 'PICK System'
         self.setWindowTitle(currtitle)  
-        self.show()
+        #self.show()
         
         
     def initUI(self):               
@@ -169,9 +167,8 @@ class LogView(QMainWindow):
 
         self.changevectorbutton = QPushButton("Go To Vector")
         self.changevectorbutton.setMaximumWidth(150)
-        global ex3
         global window
-        self.changevectorbutton.clicked.connect(lambda:OpenVectorChangePopup(ex3,self))
+        self.changevectorbutton.clicked.connect(lambda: self.closeMyApp_OpenNewApp() )
         self.toolbarlower.addWidget(self.changevectorbutton)
 
         self.editvectorbutton = QPushButton("Edit Vector")
@@ -189,3 +186,9 @@ class LogView(QMainWindow):
 
         self.addToolBarBreak()
         self.addToolBar(self.toolbarlower)
+
+    
+    def closeMyApp_OpenNewApp(self): 
+        self.close() 
+        self.Open = OpenVectorChangePopup() 
+        self.Open.show()

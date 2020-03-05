@@ -6,15 +6,14 @@ import sys
 from PyQt5.QtCore import *
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QScrollArea, QWidget, QGridLayout, QLabel, QSizePolicy
-#from LogDataType import LogInfo
-from nodeview.NodeGridButtonBuilder import GetGridWidgets
-from nodeview.SampleNodeDataMaker import GetSampleWidgets
+from nodeview.NodeGridButtonBuilder import GetNodeGridWidgets
+from nodeview.SampleNodeDataMaker import GetNodeSampleWidgets
 from random import seed,randint
 import random
-
-class GridMake(QScrollArea):   
+ 
+class NodeGridMake(QScrollArea):   
     def __init__(self, parent=None):
-        super(GridMake, self).__init__(parent)
+        super(NodeGridMake, self).__init__(parent)
         self.scrollmake()
 
     def scrollmake(self):
@@ -25,14 +24,14 @@ class GridMake(QScrollArea):
         self.layoutgrid.setContentsMargins(0,0,0,0)
         i = 0
         n = 0
-        data = GetGridWidgets()
+        data = GetNodeGridWidgets()
         arrayofwidgets = data.arrayofwidgets
         
         numofsample = 0
         numofsample = randint(2, 98)
         
         for y in range(0,numofsample): #this code will detect what is in the datatype and put it into spaces in grid layout
-            sampledata = GetSampleWidgets()
+            sampledata = GetNodeSampleWidgets()
             for x in range(0,11):
                 if y < 2:
                     widgettoad = arrayofwidgets[i]

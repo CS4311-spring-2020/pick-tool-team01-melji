@@ -15,7 +15,6 @@ from PyQt5.QtWidgets import QMainWindow, QVBoxLayout
 from popups.vector_configuration import OpenVectorConfigPopup
 from popups.vc_manager import OpenVCPopup
 from popups.timestamp_filter import OpenTSPopup
-from popups.team_configuration import Configure_Team
 from popups.remove_link import OpenRLPopup
 from popups.relationships import OpenRelatePopup
 from popups.node_creator import OpenNodeCreatePopup
@@ -25,7 +24,6 @@ from popups.filterTeam import OpenFilterTeamPopup
 from popups.filter_all import OpenFilterAllPopup
 from popups.export_configuration import OpenExportConfigPopup
 from popups.expand import OpenExpandPopup
-from popups.directory_configuration import Configure_Directory
 from popups.connect_link import OpenconnectlinkPopup
 from popups.IconConfiguration import IconConfiguration
 

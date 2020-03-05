@@ -3,38 +3,24 @@ from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QLabel, QPushBut
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.Qt import *
 
-from popups.menupopup import OpenMenuPopup
-#from popups.ChangeVector import OpenVectorChangePopup
-from popups.vector_configuration import OpenVectorConfigPopup
-from popups.vc_manager import OpenVCPopup
-from popups.timestamp_filter import OpenTSPopup
-from popups.remove_link import OpenRLPopup
-from popups.relationships import OpenRelatePopup
-from popups.node_creator import OpenNodeCreatePopup
-from popups.IconConfiguration import IconConfiguration
-from popups.FilterVector import OpenFilterVectorPopup
-from popups.filterTeam import OpenFilterTeamPopup
 from popups.filter_all import OpenFilterAllPopup
 from popups.export_configuration import OpenExportConfigPopup
-from popups.expand import OpenExpandPopup
-from popups.directory_configuration import Configure_Directory
-from popups.connect_link import OpenconnectlinkPopup
 
 widthofcolumns = 200
 heightofrows=50
 heightoftextrow = 25
 
-class GetGridWidgets(QFrame):
+class GetNodeGridWidgets(QFrame):
 
     def __init__(self, parent=None):
-        super(GetGridWidgets,self).__init__(parent)
+        super(GetNodeGridWidgets,self).__init__(parent)
         #NodeVisibilityTextWidget()NodeIDWidget()NodeNameWidget()NodeTimeStampWidget()NodeDescriptionWidget()NodeSourceWidget()NodeOriginDocumentWidget(), NodeLogEntryRefrenceWidget(),NodeIconWidget(),NodeIDTextWidget(), NodeNameTextWidget(), NodeTimeStampTextWidget(), NodeDescriptionTextWidget(), NodeSourceTextWidget(),  Node1TextWidget(), NodeOriginDocumentTextWidget(), NodeLogEntryRefrenceTextWidget(),NodeIconTextWidget()
         self.arrayofwidgets = [ NodeTextWidget("Visibility"), TopGrid("1_9","no"), TopGrid("a_z","no"), TopGrid("a_z","true"), TopGrid("a_z","no"),  
         TopGrid("a_z","true"), TopGrid("a_z","true"), TopGrid("a_z","true"), TopGrid("a_z","no"), TopGrid("a_z","true"), TopGrid("direction","no"), 
         EmptyWidget(), NodeTextWidget("Node ID"), NodeTextWidget("Node Name"), NodeTextWidget("TimeStamp"), NodeTextWidget("Description"), 
         NodeTextWidget("Source"), NodeTextWidget("Event Team"), NodeTextWidget("Location"), NodeTextWidget("Origin Document"), NodeTextWidget("Log Refrence"), NodeTextWidget("Icon")]
         return 
-
+#TODO select all in empty space
 
 class NodeTextWidget(QFrame):
 
