@@ -34,6 +34,7 @@ import sys
 class Ui_Menu(object):
     def setupUi(self, Menu):
         Menu.setObjectName("Menu")
+        
         Menu.resize(400, 300)
         self.buttonBox = QtWidgets.QDialogButtonBox(Menu)
         self.buttonBox.setGeometry(QtCore.QRect(30, 240, 341, 32))
