@@ -93,8 +93,9 @@ class Configure_Event(QMainWindow):
 
         connect_project_button = QPushButton("Save Event")
         self.directory_config = Configure_Directory()
-        connect_project_button.clicked.connect(self.directory_config.show_config)
-        #connect_project_button.setMaximumWidth(150)
+        connect_project_button.clicked.connect(lambda: self.closeMyApp_OpenNewApp())
+        #connect_project_button.clicked.connect(self.directory_config.show_config)
+        #connect_project_button.setMaximumWidth(150) def closeMyApp_OpenNewApp(self): self.close() self.Open = NewApp.NewApp() self.Open.show()
 
         widget = QWidget()                    
         widget.setLayout(layout)
@@ -118,6 +119,10 @@ class Configure_Event(QMainWindow):
         self.setGeometry(400, 400, 400, 650)
         self.setWindowTitle("Event Configuration")  
 
+    def closeMyApp_OpenNewApp(self): 
+        self.close() 
+        self.Open = Configure_Directory() 
+        self.Open.show()
 
     def show_config(self):
         self.show()

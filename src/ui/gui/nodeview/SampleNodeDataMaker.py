@@ -2,8 +2,6 @@ import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QLabel, QPushButton, QHBoxLayout, QVBoxLayout, QCheckBox ,QAction, QFrame
 from PyQt5.QtGui import QIcon, QPixmap
 from random import seed,randint
-#from popups.AddVector import OpenVectorAddPopup
-#from popups.RemoveVector import OpenVectorRemovePopup
 import random
 import string
 
@@ -11,9 +9,9 @@ widthofcolumns = 600
 heightofrows=180
 heightoftextrow = 180
 rvalueg = 1  # for the program to know the color of the icon
-class GetSampleWidgets(QFrame):
+class GetNodeSampleWidgets(QFrame):
     def __init__(self, parent=None):
-        super(GetSampleWidgets,self).__init__(parent)
+        super(GetNodeSampleWidgets,self).__init__(parent)
         
         self.arrayofsamplewidgets= [VisibilityButton(),LogRandIDTextWidget(),LogRandNameTextWidget(),RandTimeWidget(),LogRandDescriptionTextWidget(),RandEventTeamWidget(),RandEventTeamWidget(),LogRandNameTextWidget(),RandomFileTextWidget(),LogRandNameTextWidget(),IconWidget(),RandomFileTextWidget(),RandVectorWidget()]
         

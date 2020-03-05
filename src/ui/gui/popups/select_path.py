@@ -27,12 +27,12 @@ class Paths(QMainWindow):
         _widget = QWidget()
         
         addprojectbutton = QPushButton("New Project")
-        self.team_config = Configure_Team()
-        self.event_config = Configure_Event()
-        addprojectbutton.clicked.connect(self.event_config.show_config)
+        #self.team_config = Configure_Team()
+        #self.event_config = Configure_Event()
+        addprojectbutton.clicked.connect(lambda: self.closeMyApp_OpenNewApp_Event())
         addprojectbutton.setMaximumWidth(150)
         connectprojectbutton = QPushButton("Connect to Project")
-        connectprojectbutton.clicked.connect(self.team_config.show_config)
+        connectprojectbutton.clicked.connect(lambda: self.closeMyApp_OpenNewApp_Team())
         connectprojectbutton.setMaximumWidth(150)
         resumeprojectbutton = QPushButton("Resume Project")
         resumeprojectbutton.setMaximumWidth(150)
@@ -62,6 +62,17 @@ class Paths(QMainWindow):
         self.setWindowTitle("PICK")  
         #self.show()
     
+    
+    def closeMyApp_OpenNewApp_Event(self): 
+        #ex2 = NodeView()
+        self.close() 
+        self.Open = Configure_Event() 
+        self.Open.show()
+    def closeMyApp_OpenNewApp_Team(self): 
+        #ex2 = NodeView()
+        self.close() 
+        self.Open = Configure_Team() 
+        self.Open.show()
 
     def showpaths(self):
         self.show()

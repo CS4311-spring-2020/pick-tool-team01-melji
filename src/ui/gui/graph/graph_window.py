@@ -12,7 +12,7 @@ from graph.node_edge import Edge, EDGE_TYPE_BEZIER
 from graph.node_dto import Node
 from graph.node_connector import Socket
 from graph.timeline_dto import Timeline
-from nodeview.NodeGridBuilder import GridMake
+from nodeview.NodeGridBuilder import NodeGridMake
 
 
 class GraphWindow(QWidget):
@@ -28,7 +28,7 @@ class GraphWindow(QWidget):
         self.splitter = QSplitter(Qt.Horizontal)
         #self.setStyleSheet(qdarkstyle.load_stylesheet(qt_api=os.environ('PYQTGRAPH_QT_LIB')))
         #self.splitter = .setOrientation(Qt.Horizontal)
-        grid = GridMake()
+        grid = NodeGridMake()
         #grid.setMinimumSize(500, 500)
         #self.layout.addWidget(grid)
         self.splitter.addWidget(grid)
@@ -47,7 +47,7 @@ class GraphWindow(QWidget):
 
         self.setWindowTitle('Graph View')
         
-        self.show()
+        #self.show()
 
     def addNodes(self):
         node1 = Node(self.scene, "Node 1", inputs=[1], outputs=[1])
