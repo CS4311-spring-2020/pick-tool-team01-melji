@@ -20,7 +20,7 @@ class GetSampleWidgets(QFrame):
         sample = open('text.txt', 'w') 
         self.arrayofsamplewidgets= [LogRandIDTextWidget(),LogRandNameTextWidget(),RandTimeWidget(),LogRandDescriptionTextWidget(),RandEventTeamWidget(),RandEventTeamWidget(),LogRandNameTextWidget(),IconWidget(),RandomFileTextWidget(),RandVectorWidget()]
         
-         
+        
         sample.close() 
 
         return 
@@ -35,12 +35,13 @@ class LogRandIDTextWidget(QFrame):
     def __init__(self, parent=None):
         super(LogRandIDTextWidget,self).__init__(parent)
 
-        value = randint(0, 9999)
+        value1 = randint(0, 9999)
+        self.value = str(value1)
         layout = QHBoxLayout()
         layout.setContentsMargins(0,0,0,0)
         layout.setSpacing(0)
         self.setStyleSheet("border: 1px solid black;")
-        self.textlable = QLabel(str(value))
+        self.textlable = QLabel(self.value)
         layout.addWidget(self.textlable)
         self.setLayout(layout)    
         self.setMaximumHeight(heightoftextrow)
@@ -66,7 +67,7 @@ class LogRandNameTextWidget(QFrame):
             randomtextvar =''.join( random.choice(letters) for i in range(randint(0, 20)))
             randomtext = randomtext + ' ' + randomtextvar
         
-       
+        
         self.textlable = QLabel(randomtext)
         self.textlable.setWordWrap(True)
         layout.addWidget(self.textlable)

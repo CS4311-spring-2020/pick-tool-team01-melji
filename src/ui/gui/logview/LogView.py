@@ -6,6 +6,7 @@
 import sys
 
 import os
+from action_view.Action_Report_View import ActionView
 from popups.menupopup import OpenMenuPopup
 from PyQt5.QtWidgets import QMainWindow, QAction, qApp, QApplication, QVBoxLayout, QWidget,QToolBar,QLineEdit,QPushButton
 from PyQt5.QtGui import QIcon
@@ -34,7 +35,8 @@ class LogView(QMainWindow):
         super().__init__()
         global window
         #test = qApp
-        
+        self.av = ActionView()
+        self.av.show()
         #test.setStyleSheet("")
         self.initUI()
         #this code runs GridBuilder

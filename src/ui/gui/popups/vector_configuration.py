@@ -163,3 +163,4 @@ class OpenVectorConfigPopup(QMainWindow):
         self.setLayout(layout)
         self.Dialog.show()
         #sys.exit(app1.exec_())\
+

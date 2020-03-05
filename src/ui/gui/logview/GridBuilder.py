@@ -33,6 +33,7 @@ class GridMake(QScrollArea):
             for x in range(0,10):
                 if y < 2:
                     widgettoad = arrayofwidgets[i]
+                    widgettoad.logsortbutton.clicked.connect(lambda: self.sortlogs(self.layoutgrid,x,10))
                     self.layoutgrid.addWidget(widgettoad,y,x)
                     i = i+1
 
@@ -53,3 +54,23 @@ class GridMake(QScrollArea):
         #qDebug() << regexp.cap(1);
 
         return
+
+
+    def sortlogs(self,gridlayout,columnofsort,number_of_widget_columns):
+        i = 2
+        while gridlayout.itemAtPosition(i,columnofsort).widget() != None:
+            a = i+1
+            while gridlayout.itemAtPosition(a,columnofsort).widget() != None: 
+                if gridlayout.itemAtPosition(a,columnofsort).widget() < gridlayout.itemAtPosition(i,columnofsort).widget():
+                    self.switch(gridlayout,i,a,number_of_widget_columns)
+
+
+                    
+
+    def switch(self,gridlayout,i,a,number_of_widget_columns):
+        x = 0
+        while x < number_of_widget_columns:
+                widget_a = gridlayout.itemAtPosition(i,x).widget()
+                widget_b = gridlayout.itemAtPosition(a,x).widget()
+                gridlayout.addWidget(widget_a,a,x)
+                gridlayout.addWidget(widget_a,i,x)
