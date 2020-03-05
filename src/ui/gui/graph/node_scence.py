@@ -23,6 +23,7 @@ class Scene():
 
     
     def removeNode(self, node):
+        self.grScene.removeItem(node.grNode)
         self.nodes.remove(node)
     
     def removeEdge(self, edge):

@@ -152,27 +152,28 @@ class Ui_Form(object):
         sys.exit(self.app1.exec())
 
 
-class OpenVectorAdd():
+class OpenVectorRemove():
     def __init__(self):
         global ex2
         global nodev
         global Dialog1
-        nodev.hide()
-        ex2.givelogview(nodev)
-        ex2.show()
+        #nodev.hide()
+        #ex2.givelogview(nodev)
+        #ex2.show()
         #Dialog1.hide()
 global ex2
 global nodev
 global Dialog1
 class OpenVectorRemovePopup(QMainWindow):
     
-    def __init__(self,ex3,nodesv):
+    #def __init__(self,ex3,nodesv): To-Do
+    def __init__(self):
         global nodev
-        nodev = nodesv
+        #nodev = nodesv
         global Dialog
         super().__init__()
         global ex2
-        ex2 = ex3
+        #ex2 = ex3
         self.initUI()
     def initUI(self):    
         layout = QVBoxLayout()
