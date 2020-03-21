@@ -33,7 +33,6 @@ class OCRService(object):
         basename = os.path.basename(file_abs_path)
         info = os.path.splitext(basename)
         extension = ((info[1])[1:]).lower()
-        print(extension)
         return self._supportedFiles.__contains__(extension)
 
     # converting the image file into string
