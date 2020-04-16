@@ -6,4 +6,5 @@ intake:
     password: "eherreraga858408"
     index: "main"
   cleansing:
-    script: "absolute-path"
+    script: "/Users/eddie/Documents/SchoolProjects/pick-tool-team01-melji/example/cleansing_script.sh"
+
