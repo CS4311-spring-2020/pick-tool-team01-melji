@@ -7,8 +7,9 @@ pip install --global-option='build_ext' --global-option='-I/usr/local/include' -
 """
 import speech_recognition as sr
 import os
+from pathlib import Path
 
-from src.ui.gui.services.exceptions import FileNotSupported
+from services.exceptions import FileNotSupported
 
 
 class TranscriberService(object):
@@ -48,4 +49,6 @@ class TranscriberService(object):
 
 
 transcriber = TranscriberService(debug=True)
-transcriber.convert_to_string("/Users/eddie/Documents/SchoolProjects/pick-tool-team01-melji/example/english.wav")
+p = Path("example/english.wav").resolve()
+print(str(p))
+transcriber.convert_to_string(str(p))

@@ -1,4 +1,4 @@
-from src.ui.gui.services.exceptions import FileNotSupported
+from services.exceptions import FileNotSupported
 
 try:
     from PIL import Image

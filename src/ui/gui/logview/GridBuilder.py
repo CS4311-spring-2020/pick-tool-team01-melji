@@ -10,9 +10,9 @@ from logview.SampleDataMaker import GetSampleWidgets
 from random import seed,randint
 import random
 
-from src.ui.gui.logview.splunk_data_maker import SplunkData
-from src.ui.gui.services import intake_service
-from src.ui.gui.services.intake_service import IntakeService
+from logview.splunk_data_maker import SplunkData
+from services import intake_service
+from services.intake_service import IntakeService
 
 
 class GridMake(QScrollArea):

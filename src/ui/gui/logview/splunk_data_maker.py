@@ -1,14 +1,15 @@
 from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QLabel, QPushButton, QHBoxLayout, QVBoxLayout, \
     QCheckBox, QAction, QFrame
 from PyQt5.QtGui import QIcon, QPixmap
-from random import seed, randint
+from random import seed
+from random import randint
 from popups.AddVector import OpenVectorAddPopup
 from popups.RemoveVector import OpenVectorRemovePopup
 import random
 import string
 
-from src.ui.gui.model import log_entry
-from src.ui.gui.services.intake_service import IntakeService
+from model import log_entry
+from services.intake_service import IntakeService
 
 widthofcolumns = 200
 heightofrows = 180

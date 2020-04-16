@@ -6,9 +6,9 @@ import os
 import asyncio
 
 
-from src.ui.gui.dao.splunk_dao import SplunkDAO
-from src.ui.gui.services.ocr_service import OCRService
-from src.ui.gui.services.transcriber_service import TranscriberService
+from dao.splunk_dao import SplunkDAO
+from services.ocr_service import OCRService
+from services.transcriber_service import TranscriberService
 
 """
 Service for ingesting files into the system and returning log-entries. Its going to be using :Validation Service:, 
