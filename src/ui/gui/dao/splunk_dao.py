@@ -11,7 +11,7 @@ from model.log_entry import LogEntry
 HOST = "localhost"
 PORT = 8089
 USERNAME = "admin"
-PASSWORD = ""
+PASSWORD = "eherreraga858408"
 INDEX = "main"
 DEBUG = True
 
@@ -25,12 +25,21 @@ class SplunkDAO(ExtractTransformLoadDAO):
             username=USERNAME,
             password=PASSWORD)
         self.pool = concurrent.futures.ThreadPoolExecutor()
+        self._supportedFile = [
+            "txt"
+        ]
 
     async def upload_logfile(self, path):
         if DEBUG:
             print('uploading ', path)
         index = self.service.indexes[INDEX]
         index.upload(path)
+
+    def is_file_supported(self, files_abs_path):
+        basename = os.path.basename(files_abs_path)
+        info = os.path.splitext(basename)
+        extension = ((info[1])[1:]).lower()
+        return self._supportedFile.__contains__(extension)
 
     async def upload_logfiles(self, directory_path):
         if DEBUG:
@@ -50,7 +59,7 @@ class SplunkDAO(ExtractTransformLoadDAO):
         jobs = self.service.jobs
         entries = list()
         kwargs_blockingsearch = {"exec_mode": "blocking"}
-        searchquery_blocking = "search * | head 100"
+        searchquery_blocking = "search * | head 300"
         print("waiting for search job to finish")
 
         job = jobs.create(searchquery_blocking, **kwargs_blockingsearch)

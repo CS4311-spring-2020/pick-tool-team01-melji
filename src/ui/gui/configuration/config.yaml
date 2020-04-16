@@ -1,0 +1,10 @@
+intake:
+  splunk:
+    host: "localhost"
+    port: 8089
+    username: "admin"
+    password: "eherreraga858408"
+    index: "main"
+  cleansing:
+    script: "/Users/eddie/Documents/SchoolProjects/pick-tool-team01-melji/example/cleansing_script.sh"
+

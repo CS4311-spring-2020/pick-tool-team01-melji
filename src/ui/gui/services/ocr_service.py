@@ -36,11 +36,12 @@ class OCRService(object):
         return self._supportedFiles.__contains__(extension)
 
     # converting the image file into string
-    def convert_to_string(self, file_abs_path):
+    @async_to_sync
+    async def convert_to_string(self, file_abs_path):
         if not self.is_file_supported(file_abs_path):
             raise FileNotSupported(f"The {self.__class__.__name__} can not handle this type of file : {file_abs_path}")
         try:
-            text = pytesseract.image_to_string(file_abs_path, timeout=self.timeout)
+            text =  pytesseract.image_to_string(file_abs_path, timeout=self.timeout)
             if self.debug:
                 print("[DEBUG]", text)
             return text
