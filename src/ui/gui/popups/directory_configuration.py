@@ -87,6 +87,8 @@ class Configure_Directory(QMainWindow):
 
         start_ingestion_button = QPushButton("Start Data Ingestion")
         start_ingestion_button.clicked.connect(lambda: self.closeMyApp_OpenNewApp())
+        back_button = QPushButton("Go Back")
+        back_button.clicked.connect(lambda: self.closeMyApp_OpenNewApp())
 
         widget = QWidget()                    
         widget.setLayout(layout)
@@ -112,6 +114,11 @@ class Configure_Directory(QMainWindow):
 
     
     def closeMyApp_OpenNewApp(self): 
+        #ex2 = NodeView()
+        self.close() 
+        self.Open = LogView() 
+        self.Open.show()
+    def OpenPrevApp(self): 
         #ex2 = NodeView()
         self.close() 
         self.Open = LogView() 

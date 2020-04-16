@@ -17,12 +17,12 @@ from nodeview.NodeGridBuilder import NodeGridMake
 
 class GraphWindow(QWidget):
 
-    def __init__(self, parent=None):
+    def __init__(self, wind, parent=None):
         super().__init__(parent=parent)
-        self.initUI()
+        self.initUI(wind)
 
-    def initUI(self):
-
+    def initUI(self,wind):
+        
         self.setGeometry(500, 500, 800, 600)
         self.layout = QHBoxLayout()
         self.splitter = QSplitter(Qt.Horizontal)
@@ -31,7 +31,7 @@ class GraphWindow(QWidget):
         grid = NodeGridMake()
         #grid.setMinimumSize(500, 500)
         #self.layout.addWidget(grid)
-        self.splitter.addWidget(grid)
+        self.splitter.addWidget(wind)#grid)
         self.layout.setContentsMargins(0, 0, 0, 0)
         self.setLayout(self.layout)
 

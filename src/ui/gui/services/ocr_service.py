@@ -1,4 +1,5 @@
 from services.exceptions import FileNotSupported
+from asgiref.sync import async_to_sync
 
 try:
     from PIL import Image

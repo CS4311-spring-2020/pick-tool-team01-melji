@@ -8,6 +8,8 @@ from PyQt5 import QtCore
 from PyQt5.QtWidgets import QScrollArea, QWidget, QGridLayout, QLabel, QSizePolicy
 from nodeview.NodeGridButtonBuilder import GetNodeGridWidgets
 from nodeview.SampleNodeDataMaker import GetNodeSampleWidgets
+from nodeview.SampleNodeDataMakerSplunk import GetNodeWidgets
+from services.intake_service import IntakeService
 from random import seed,randint
 import random
  
@@ -30,13 +32,25 @@ class NodeGridMake(QScrollArea):
         numofsample = 0
         numofsample = randint(2, 98)
         
-        for y in range(0,numofsample): #this code will detect what is in the datatype and put it into spaces in grid layout
-            sampledata = GetNodeSampleWidgets()
-            for x in range(0,11):
+        #for y in range(0,numofsample): #this code will detect what is in the datatype and put it into spaces in grid layout
+         #   sampledata = GetNodeSampleWidgets()
+          #  for x in range(0,11):
+           #     if y < 2:
+            #        widgettoad = arrayofwidgets[i]
+             #       self.layoutgrid.addWidget(widgettoad,y,x)
+              #      i = i+1
+        
+        self.intake_service = IntakeService()
+        self.entries = self.intake_service.ingest_files(
+            "/Users/eddie/Documents/SchoolProjects/pick-tool-team01-melji/example/")
+        for y in range(len(self.entries)): #this code will detect what is in the datatype and put it into spaces in grid layout
+            sampledata = GetNodeSampleWidgets(self.entries[y])
+            for x in range(0,10):
                 if y < 2:
                     widgettoad = arrayofwidgets[i]
                     self.layoutgrid.addWidget(widgettoad,y,x)
                     i = i+1
+
 
                 else:
                     arrayofsamplewidgets = sampledata.arrayofsamplewidgets
