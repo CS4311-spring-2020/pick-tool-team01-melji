@@ -1,0 +1,9 @@
+intake:
+  splunk:
+    host: "localhost"
+    port: 8089
+    username: "admin"
+    password: "eherreraga858408"
+    index: "main"
+  cleansing:
+    script: "absolute-path"
