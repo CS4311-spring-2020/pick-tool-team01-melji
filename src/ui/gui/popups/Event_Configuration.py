@@ -94,6 +94,8 @@ class Configure_Event(QMainWindow):
         connect_project_button = QPushButton("Save Event")
         self.directory_config = Configure_Directory()
         connect_project_button.clicked.connect(lambda: self.closeMyApp_OpenNewApp())
+        back_button = QPushButton("Go Back")
+        back_button.clicked.connect(lambda: self.OpenPrevApp())
         #connect_project_button.clicked.connect(self.directory_config.show_config)
         #connect_project_button.setMaximumWidth(150) def closeMyApp_OpenNewApp(self): self.close() self.Open = NewApp.NewApp() self.Open.show()
 
@@ -105,7 +107,8 @@ class Configure_Event(QMainWindow):
         layout.addLayout(layout_description,2,0,1,3)
         layout.addLayout(layout_start,3,0,1,3)
         layout.addLayout(layout_end,4,0,1,3)
-        layout.addWidget(connect_project_button,5,0)
+        layout.addWidget(connect_project_button,5,2)
+        layout.addWidget(back_button,5,0)
         
         layout.setAlignment(Qt.AlignVCenter|Qt.AlignHCenter)
         widget.setLayout(layout)
@@ -118,12 +121,22 @@ class Configure_Event(QMainWindow):
 
         self.setGeometry(400, 400, 400, 650)
         self.setWindowTitle("Event Configuration")  
-
     def closeMyApp_OpenNewApp(self): 
         self.close() 
-        self.Open = Configure_Directory() 
+        nxt = Configure_Directory()
+        #nxt.getselfsnxt) 
+        #mys = self.myself
+        nxt.getlast(self)
+        self.Open = nxt 
         self.Open.show()
-
+    def getlastconf(self,lastc):
+        self.lasta = lastc
+        
+    def OpenPrevApp(self): 
+        #ex2 = NodeView()
+        self.close() 
+        self.Open = self.lasta
+        self.Open.show()
     def show_config(self):
         self.show()
 

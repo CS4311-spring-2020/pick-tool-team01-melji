@@ -66,12 +66,15 @@ class Paths(QMainWindow):
     def closeMyApp_OpenNewApp_Event(self): 
         #ex2 = NodeView()
         self.close() 
-        self.Open = Configure_Event() 
+        configevent = Configure_Event() 
+        configevent.getlastconf(self)
+        self.Open = configevent
         self.Open.show()
     def closeMyApp_OpenNewApp_Team(self): 
         #ex2 = NodeView()
         self.close() 
-        self.Open = Configure_Team() 
+        configteam = Configure_Team()
+        self.Open = configteam 
         self.Open.show()
 
     def showpaths(self):
