@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QLabel, QPushBut
 from PyQt5.QtGui import QIcon, QPixmap
 from random import seed,randint
 from action_view.Validate_Invalidate_Widget import Validate_Invalidate_Widget
+
 import random
 import string
 
@@ -24,6 +25,7 @@ class Get_Widgets(QFrame):
             self.arrayofwidgets.append(DescriptionTextWidget(text_array[i]))
             i += 1
             self.arrayofwidgets.append(FileTextWidget(text_array[i]))
+            self.arrayofwidgets.append(Validate_Invalidate_Widget())
         
         return 
 

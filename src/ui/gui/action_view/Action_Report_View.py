@@ -29,14 +29,14 @@ global logview
 global logviewAct
 class ActionView(QMainWindow):
     
-    def __init__(self): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
+    def __init__(self,action_report_list): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
         super().__init__()
         self.initUI()
 
         #this code runs GridBuilder
         #############################################################################
 
-        self.grid = Grid_Make(self)
+        self.grid = Grid_Make(action_report_list)
         _widget = QWidget()
         _layout = QVBoxLayout(_widget)
         _layout.addWidget(self.grid)

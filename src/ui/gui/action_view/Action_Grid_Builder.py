@@ -14,11 +14,11 @@ from random import seed,randint
 import random
 
 class Grid_Make(QScrollArea):   
-    def __init__(self, parent=None):
+    def __init__(self,text_array, parent=None):
         super(Grid_Make, self).__init__(parent)
-        self.scroll_make()
+        self.scroll_make(text_array)
 
-    def scroll_make(self):
+    def scroll_make(self,text_array):
         self.widget = QWidget()               
         self.layoutgrid = QGridLayout()  
         self.layoutgrid.setSpacing(0)
@@ -27,37 +27,23 @@ class Grid_Make(QScrollArea):
         i = 0
         n = 0
         data = Get_Grid_Widgets()
-        arrayofwidgets = data.arrayofwidgets
+        o_data = Get_Grid_Widgets(text_array)
+        arrayofwidgets = data.arrayofwidgets + o_data.arrayofwidgets
 
-        #o_data = Get_Grid_Widgets(text_array)use this to connect to splunk
-        #arrayofsamplewidgets = o_data.arrayofwidgets this should be the only place arrayofsamplewidgets is assigned if your using splunk
         numofsample = 0
         numofsample = randint(2, 98)
+        length
         
-        for y in range(0,numofsample): #this code will detect what is in the datatype and put it into spaces in grid layout
-            sampledata = Get_Sample_Widgets()
+        for y in range(0,len(arrayofwidgets)): #this code will detect what is in the datatype and put it into spaces in grid layout
+            
             
             for x in range(0,5):
-                if y < 2:
-                    widgettoad = arrayofwidgets[i]
-                    self.layoutgrid.addWidget(widgettoad,y,x)
-                    i = i+1
+                
+                widgettoad = arrayofwidgets[i]
+                self.layoutgrid.addWidget(widgettoad,y,x)
+                i += 1
                
-                    arrayofsamplewidgets = sampledata.arrayofsamplewidgets
-
-                else: 
-                    if x < 3:
-                        arrayofsamplewidgets = sampledata.arrayofsamplewidgets
-                        #to use splunk data remove above line
-                        widgettoad = arrayofsamplewidgets[x]
-                        self.layoutgrid.addWidget(widgettoad,y,x)
-                    elif x == 3:
-                        arrayofsamplewidgets = sampledata.arrayofsamplewidgets
-                        #to use splunk data remove above line
-                        widgettoad = arrayofsamplewidgets[x]
-                        self.layoutgrid.addWidget(widgettoad,y,x,1,2)
-
-                    n = n+1
+                    
         
         self.widget.setLayout(self.layoutgrid)
         self.widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
