@@ -4,7 +4,7 @@ from rx import Observable
 import asyncio
 import os
 import asyncio
-
+import string
 
 from dao.splunk_dao import SplunkDAO
 from services.ocr_service import OCRService
@@ -38,6 +38,7 @@ class IntakeService(Observable):
         for service in self.transformation_services:
             if service.is_file_supported(file_path):
                 result = service.convert_to_string(file_path)
+                result = str(result)
                 info = os.path.split(file_path)[1]
                 path = os.path.split(file_path)[0]
                 info = "example_log.txt"

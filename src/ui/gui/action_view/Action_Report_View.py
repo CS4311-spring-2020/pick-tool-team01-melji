@@ -200,6 +200,7 @@ class ActionView(QMainWindow):
         #self.addToolBar(self.toolbarlower)
 
 
-
-        
-        
+#to use this do
+#a = ActionView()
+#a.show()
+     

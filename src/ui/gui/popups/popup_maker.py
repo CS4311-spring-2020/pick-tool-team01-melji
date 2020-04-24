@@ -1,13 +1,19 @@
 #############################################################################
-##  This code shoveswhatever is in an array of "LogInfo" into individual spaces - todo
+##  This code shoves whatever is in an array of "LogInfo" into individual spaces - todo
 ##  Thanks - Micheal 2/1/20
 #############################################################################
 import sys
-from PyQt5.QtWidgets import (QScrollArea, QWidget, QGridLayout, QLabel, QPushButton,QMainWindow,QVBoxLayout,QVBoxLayout)
+sys.path.insert(0, '../src/ui/gui/nodeview/NodeView')
+from PyQt5.QtWidgets import (QScrollArea, QWidget, QGridLayout, QLabel, QPushButton,QMainWindow,QVBoxLayout,QHBoxLayout,QFrame)
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import * 
 from PyQt5.Qt import *
+from random import seed,randint
+import random
+import string
+#from NodeView import NodeView
+
 
 class ProjectConfiguration(QMainWindow):
     
@@ -21,21 +27,27 @@ class ProjectConfiguration(QMainWindow):
 
         _widget = QWidget()
         
-        addprojectbutton = QPushButton("New Project")
-        addprojectbutton.setMaximumWidth(150)
-        deleteprojectbutton = QPushButton("Connect to Project")
-        deleteprojectbutton.setMaximumWidth(150)
-        editprojectbutton = QPushButton("Resume Project")
-        editprojectbutton.setMaximumWidth(150)
+        add_button = QPushButton("Add")
+        add_button.setMaximumWidth(150)
+        delete_button = QPushButton("Delete")
+        delete_button.setMaximumWidth(150)
+        edit_button = QPushButton("Edit")
+        edit_button.setMaximumWidth(150)
+        #self.pushButton.clicked.connect( lambda: self.closeMyApp_OpenNewApp())
 
         widget = QWidget()                  
-        layouth = QVBoxLayout()                
-        widget.setLayout(layouth)
-        layouth.addWidget(addprojectbutton)
-        layouth.addWidget(deleteprojectbutton)
-        layouth.addWidget(editprojectbutton)
-        layouth.setAlignment(Qt.AlignVCenter|Qt.AlignHCenter)
-        widget.setLayout(layouth)
+        layoutv = QVBoxLayout()       
+        layouth = QHBoxLayout()                       
+        widget.setLayout(layoutv)
+        
+        self.mainv = vectconfigtempname()
+        layoutv.addWidget(self.mainv)
+        layouth.addWidget(add_button)
+        layouth.addWidget(delete_button)
+        layouth.addWidget(edit_button)
+        layoutv.addLayout(layouth)
+        layoutv.setAlignment(Qt.AlignVCenter|Qt.AlignHCenter)
+        widget.setLayout(layoutv)
 
 
         
@@ -48,13 +60,104 @@ class ProjectConfiguration(QMainWindow):
         #############################################################################
 
         self.setGeometry(500, 500, 500, 500)
-        self.setWindowTitle("project Configuration")  
+        self.setWindowTitle("Vector Configuration")  
         #self.show()
     def showprojectconfig(self):
         self.show()
+        
+    def closeMyApp_OpenNewApp(self): 
+        self.close() 
+        self.Open = NodeView() 
+        self.Open.show()
 
 
 
+class vectconfigtempname(QScrollArea):## experimenting with vector add
+    def __init__(self, parent=None):
+        super(vectconfigtempname, self).__init__(parent)
+        self.scrollmake()
+    def add_vecotor(vector_to_add):
+        return
+    def scrollmake(self):
+        self.widget = QWidget()                 
+        self.layoutgrid = QGridLayout()  
+        self.layoutgrid.setSpacing(0)
+        self.layoutgrid.setHorizontalSpacing(0)
+        i = 0
+        n = 0
+        
+        numofsample = 0
+        numofsample = randint(5, 28)
+
+        
+            
+
+        for y in range(0,numofsample):
+             
+            self.button1 = Vector_Push_Button()
+            self.text1 = LogRandNameTextWidget()
+            self.text2 = LogRandNameTextWidget()
+            self.layoutgrid.addWidget(self.button1,y,0)
+            self.layoutgrid.addWidget(self.text1,y,1)
+            self.layoutgrid.addWidget(self.text2,y,2)
+            y= y+1
+            n = n+1
+        
+        self.widget.setLayout(self.layoutgrid)
+        self.setWidgetResizable(True)
+        self.setWidget(self.widget)
+        
+        #this code sets borders to 1px
+        #QRegExp regexp(".*border: *(\\d+)px.*");
+        #if (regexp.indexIn(btn->styleSheet()) >= 0)
+        #qDebug() << regexp.cap(1);
+
+        return
+
+
+widthofcolumns = 200
+heightofrows=50
+heightoftextrow = 25
+class LogRandNameTextWidget(QFrame):
+
+    def __init__(self, parent=None):
+        super(LogRandNameTextWidget,self).__init__(parent)
+
+        letters = string.ascii_lowercase
+        layout = QHBoxLayout()
+        layout.setContentsMargins(0,0,0,0)
+        layout.setSpacing(0)
+        self.setStyleSheet("border: 1px solid black;")
+        
+        a =  randint(1, 8)
+        randomtext = ''
+        for x in range(0,a):
+            randomtextvar =''.join( random.choice(letters) for i in range(randint(0, 20)))
+            randomtext = randomtext + ' ' + randomtextvar
+        
+       
+        self.textlable = QLabel(randomtext)
+        self.textlable.setWordWrap(True)
+        layout.addWidget(self.textlable)
+        self.setLayout(layout)  
+        self.setMaximumWidth(widthofcolumns)
+
+        return
+
+class Vector_Push_Button(QFrame):
+
+    def __init__(self,parent=None):
+        super(Vector_Push_Button,self).__init__(parent)
+        layout = QHBoxLayout()
+        layout.setContentsMargins(0,0,0,0)
+        layout.setAlignment(Qt.AlignVCenter|Qt.AlignHCenter)
+        layout.setSpacing(0)
+        self.push_button = QPushButton()
+        self.setStyleSheet("border: 1px solid black;")
+        layout.addWidget(self.push_button)
+        self.setLayout(layout)    
+        self.setMaximumWidth(heightofrows)
+        return
 
 class projectMake(QScrollArea):   
     def __init__(self, parent=None):
@@ -92,7 +195,8 @@ class projectMake(QScrollArea):
         self.setWidget(self.widget)
 
         return
-if __name__ == "__main__":
+        
+if __name__ == "__main__": #remove a's to test without running program
     app = QApplication(sys.argv)
     ex = ProjectConfiguration()
     ex.showprojectconfig()

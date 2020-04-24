@@ -30,7 +30,7 @@ from popups.connect_link import OpenconnectlinkPopup
 global window
 class LogView(QMainWindow):
     
-    def __init__(self): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
+    def __init__(self,dir_config): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
         super().__init__()
         global window
         #test = qApp
@@ -39,7 +39,7 @@ class LogView(QMainWindow):
         self.initUI()
         #this code runs GridBuilder
         #############################################################################
-        self.grid = GridMake(self)
+        self.grid = GridMake(dir_config)
         _widget = QWidget()
         _layout = QVBoxLayout(_widget)
         _layout.addWidget(self.grid)

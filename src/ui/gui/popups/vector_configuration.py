@@ -7,7 +7,11 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets 
-from PyQt5.QtWidgets import QMainWindow, QVBoxLayout
+from PyQt5.QtWidgets import QMainWindow, QVBoxLayout,QScrollArea,QWidget,QGridLayout,QLabel,QFrame,QHBoxLayout
+from random import seed,randint
+import random
+from PyQt5.Qt import *
+import string
 
 import sys
 class Ui_Form(object):
@@ -163,3 +167,113 @@ class OpenVectorConfigPopup(QMainWindow):
         self.setLayout(layout)
         self.Dialog.show()
         #sys.exit(app1.exec_())\
+
+
+
+
+class vectconfigtempname(QScrollArea):
+    def __init__(self, parent=None):
+        super(vectconfigtempname, self).__init__(parent)
+        self.scrollmake()
+    def add_vecotor(vector_to_add):
+        return
+    def scrollmake(self):
+        self.widget = QWidget()                 
+        self.layoutgrid = QGridLayout()  
+        self.layoutgrid.setSpacing(0)
+        self.layoutgrid.setHorizontalSpacing(0)
+        i = 0
+        n = 0
+        
+        numofsample = 0
+        numofsample = randint(5, 28)
+
+        
+            
+
+        for y in range(0,numofsample):
+             
+            self.button1 = Vector_Push_Button()
+            self.text1 = LogRandNameTextWidget()
+            self.text2 = LogRandNameTextWidget()
+            self.layoutgrid.addWidget(self.button1,y,0)
+            self.layoutgrid.addWidget(self.text1,y,1)
+            self.layoutgrid.addWidget(self.text2,y,2)
+            n = n+1
+        
+        self.widget.setLayout(self.layoutgrid)
+        self.setWidgetResizable(True)
+        self.setWidget(self.widget)
+        
+        #this code sets borders to 1px
+        #QRegExp regexp(".*border: *(\\d+)px.*");
+        #if (regexp.indexIn(btn->styleSheet()) >= 0)
+        #qDebug() << regexp.cap(1);
+
+        return
+
+
+widthofcolumns = 200
+heightofrows=50
+heightoftextrow = 25
+class LogRandNameTextWidget(QFrame):
+
+    def __init__(self, parent=None):
+        super(LogRandNameTextWidget,self).__init__(parent)
+
+        letters = string.ascii_lowercase
+        layout = QHBoxLayout()
+        layout.setContentsMargins(0,0,0,0)
+        layout.setSpacing(0)
+        self.setStyleSheet("border: 1px solid black;")
+        
+        a =  randint(1, 8)
+        randomtext = ''
+        for x in range(0,a):
+            randomtextvar =''.join( random.choice(letters) for i in range(randint(0, 20)))
+            randomtext = randomtext + ' ' + randomtextvar
+        
+       
+        self.textlable = QLabel(randomtext)
+        self.textlable.setWordWrap(True)
+        layout.addWidget(self.textlable)
+        self.setLayout(layout)  
+        self.setMaximumHeight(heightoftextrow)
+        self.setMaximumWidth(heightoftextrow)
+
+        return
+
+class Vector_Push_Button(QFrame):
+
+    def __init__(self,parent=None):
+        super(Vector_Push_Button,self).__init__(parent)
+        layout = QHBoxLayout()
+        layout.setContentsMargins(0,0,0,0)
+        layout.setAlignment(Qt.AlignVCenter|Qt.AlignHCenter)
+        layout.setSpacing(0)
+        self.push_button = QPushButton()
+        self.setStyleSheet("border: 1px solid black;")
+        layout.addWidget(self.push_button)
+        self.setLayout(layout)    
+        self.setMaximumHeight(heightoftextrow)
+        return
+        
+class VectorConfigPopup(QMainWindow):
+    
+    def __init__(self):
+        super().__init__()
+        self.initUI()
+    
+    def initUI(self):    
+        layout = QVBoxLayout()
+        self.mainv = vectconfigtempname()
+        layout.addWidget(self.mainv)
+        self.setlayout(layout)
+        self.show
+        #sys.exit(app1.exec_())\
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    OpenVectorConfigPopup()
+    sys.exit(app.exec_())

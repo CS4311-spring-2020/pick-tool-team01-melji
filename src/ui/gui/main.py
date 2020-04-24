@@ -24,6 +24,7 @@ def window():
     #win3 = OpenVectorConfigPopup()
     #win3.Open()
     w = Paths()
+    print('cwd is %s' %(os.getcwd()))
     w.showpaths()
     #a = ActionView()
     #a.show_view()

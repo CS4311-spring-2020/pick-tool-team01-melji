@@ -9,6 +9,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import * 
 from PyQt5.Qt import *
+
 max_width = 4000
 
 class Configure_Directory(QMainWindow):
@@ -116,13 +117,15 @@ class Configure_Directory(QMainWindow):
     def closeMyApp_OpenNewApp(self): 
         #ex2 = NodeView()
         self.close() 
-        self.Open = LogView() 
+        self.Open = LogView(self) 
         self.Open.show()
     def OpenPrevApp(self): 
         #ex2 = NodeView()
         self.close() 
         self.Open = self.lastp
         self.Open.show()
+    def Return_Root(self):
+        return self.root_folder
 
     def show_config(self):
         self.show()

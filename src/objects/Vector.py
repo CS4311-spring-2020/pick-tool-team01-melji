@@ -10,7 +10,7 @@ class Vector:
         self.start_timestamp = start_timestamp
         self.end_timestamp = end_timestamp
         self.discription = discription
-        self.node_list = node_list #this contains a list of the id's of the vectors the vector is accociated to
+        self.node_list = node_list #this contains a list of the id's of the nodes accociated to a vector
         #do object_name.returnitem("item_name") to access any of the 9 items
     def return_item(self,what_to_return):
         self.value = ""
