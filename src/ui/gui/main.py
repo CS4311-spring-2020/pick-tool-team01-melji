@@ -6,8 +6,6 @@ from PyQt5.QtWidgets import *
 #from graph.graph_window import GraphWindow
 #from logview.LogView import LogView
 #from nodeview.NodeView import NodeView
-from popups.team_configuration import Configure_Team
-from popups.select_path import Paths
     #icon = IconConfiguration()
 #global ex2
 
@@ -38,5 +36,7 @@ def window():
     #self.menu.Open() def closeMyApp_OpenNewApp(self): self.close() self.Open = NewApp.NewApp() self.Open.show()
     
 
-
+sys.path.append(os.getcwd())
+from popups.team_configuration import Configure_Team
+from popups.select_path import Paths
 window()
