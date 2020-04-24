@@ -9,6 +9,7 @@ from PyQt5.QtWidgets import QScrollArea, QWidget, QGridLayout, QLabel, QSizePoli
 #from LogDataType import LogInfo
 from action_view.Action_Grid_Button_Builder import Get_Grid_Widgets
 from action_view.Action_Sample_Data_Maker import Get_Sample_Widgets
+from action_view.Action_Data_Maker import Get_Widgets
 from random import seed,randint
 import random
 
@@ -27,12 +28,15 @@ class Grid_Make(QScrollArea):
         n = 0
         data = Get_Grid_Widgets()
         arrayofwidgets = data.arrayofwidgets
-        
+
+        #o_data = Get_Grid_Widgets(text_array)use this to connect to splunk
+        #arrayofsamplewidgets = o_data.arrayofwidgets this should be the only place arrayofsamplewidgets is assigned if your using splunk
         numofsample = 0
         numofsample = randint(2, 98)
         
         for y in range(0,numofsample): #this code will detect what is in the datatype and put it into spaces in grid layout
             sampledata = Get_Sample_Widgets()
+            
             for x in range(0,5):
                 if y < 2:
                     widgettoad = arrayofwidgets[i]
@@ -44,10 +48,12 @@ class Grid_Make(QScrollArea):
                 else: 
                     if x < 3:
                         arrayofsamplewidgets = sampledata.arrayofsamplewidgets
+                        #to use splunk data remove above line
                         widgettoad = arrayofsamplewidgets[x]
                         self.layoutgrid.addWidget(widgettoad,y,x)
                     elif x == 3:
                         arrayofsamplewidgets = sampledata.arrayofsamplewidgets
+                        #to use splunk data remove above line
                         widgettoad = arrayofsamplewidgets[x]
                         self.layoutgrid.addWidget(widgettoad,y,x,1,2)
 
