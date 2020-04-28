@@ -22,7 +22,7 @@ def window():
     #win3 = OpenVectorConfigPopup()
     #win3.Open()
     w = Paths()
-    print('cwd is %s' %(os.getcwd()))
+    #print('cwd is %s' %(os.getcwd()))
     w.showpaths()
     #a = ActionView()
     #a.show_view()
@@ -35,8 +35,10 @@ def window():
     #self.menu = 
     #self.menu.Open() def closeMyApp_OpenNewApp(self): self.close() self.Open = NewApp.NewApp() self.Open.show()
     
-
+print('cwd is %s' %(os.getcwd()))
 sys.path.append(os.getcwd())
+print('cwd is %s' %(os.getcwd()))
 from popups.team_configuration import Configure_Team
+from src.objects.Log import Log
 from popups.select_path import Paths
 window()

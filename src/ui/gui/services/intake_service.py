@@ -55,8 +55,8 @@ class IntakeService(Observable):
             for name in files:
                 indv_path = os.path.join(root, name)
                 is_text = self.etl.is_file_supported(indv_path)
-                if not is_text:
-                    self.get_files(indv_path)
+                #if not is_text:
+                    #self.get_files(indv_path)
         entries = self.etl.transform_log_entry(path)
         return entries
 

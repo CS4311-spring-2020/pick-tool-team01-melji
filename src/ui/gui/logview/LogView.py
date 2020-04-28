@@ -26,6 +26,7 @@ from popups.export_configuration import OpenExportConfigPopup
 from popups.expand import OpenExpandPopup
 #from popups.directory_configuration import Configure_Directory
 from popups.connect_link import OpenconnectlinkPopup
+from src.objects.Log import Log
 
 global window
 class LogView(QMainWindow):

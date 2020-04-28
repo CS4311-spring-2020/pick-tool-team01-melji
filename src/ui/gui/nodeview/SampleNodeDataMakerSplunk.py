@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QLabel, QPushButton, QHBoxLayout, QVBoxLayout, QCheckBox ,QAction, QFrame
+from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QLabel, QPushButton, QHBoxLayout, QVBoxLayout, QCheckBox ,QAction, QFrame, QMainWindow
 from PyQt5.QtGui import QIcon, QPixmap
 from random import seed,randint
 import random
@@ -11,9 +11,9 @@ heightoftextrow = 180
 rvalueg = 1  # for the program to know the color of the icon
 class GetNodeWidgets(QFrame):
     def __init__(self,log_entry, parent=None):
-        super(GetNodeSampleWidgets,self).__init__(parent)
+        super(GetNodeWidgets,self).__init__(parent)
         
-        self.arrayofsamplewidgets= [VisibilityButton(),LogRandIDTextWidget(),TextWidget(self.log_entry.identifier),TextWidget(self.log_entry.timestamp),TextWidget(self.log_entry.content),RandEventTeamWidget(),RandEventTeamWidget(),LogRandNameTextWidget(),TextWidget(self.log_entry.host),LogRandNameTextWidget(),IconWidget(),RandomFileTextWidget(),RandVectorWidget()]
+        self.arrayofsamplewidgets= [VisibilityButton(),LogRandIDTextWidget(),TextWidget(log_entry.identifier),TextWidget(log_entry.timestamp),TextWidget(log_entry.content),RandEventTeamWidget(),RandEventTeamWidget(),LogRandNameTextWidget(),TextWidget(log_entry.host),LogRandNameTextWidget(),IconWidget(),RandomFileTextWidget(),RandVectorWidget()]
         
 
         return 
@@ -277,4 +277,23 @@ class IconWidget(QFrame):
         self.setMaximumWidth(widthofcolumns)
         return
         
+class View_Node(QMainWindow):
+    
+    def __init__(self): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
+        super().__init__()
         
+        self.initUI()
+        #TODO GET TO GRAPH SOMEHOW
+        #this code runs GridBuilder
+        #############################################################################
+        _widget = QWidget()
+        layout = QHBoxLayout(_widget)
+        layout.addWidget()
+
+        self.setCentralWidget(_widget)
+
+        #############################################################################
+
+        self.setGeometry(500, 500, 500, 500)
+        self.setWindowTitle("Node View")  
+        #self.show()

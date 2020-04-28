@@ -8,6 +8,8 @@ from PyQt5.QtWidgets import (QScrollArea,QWidget,QGridLayout,QLabel)
 from logview.GridButtonBuilder import GetGridWidgets
 from logview.SampleDataMaker import GetSampleWidgets
 from random import seed,randint
+
+
 import random
 
 from logview.splunk_data_maker import SplunkData
@@ -18,9 +20,7 @@ from services.intake_service import IntakeService
 class GridMake(QScrollArea):
     def __init__(self,dir_conf, parent=None):
         super(GridMake, self).__init__(parent)
-        self.scrollmake(dir_conf)
-
-    def scrollmake(self,dir_conf):
+        
         self.widget = QWidget()                 
         self.layoutgrid = QGridLayout()  
         self.layoutgrid.setSpacing(0)
@@ -29,16 +29,19 @@ class GridMake(QScrollArea):
         n = 0
         data = GetGridWidgets()
         arrayofwidgets = data.arrayofwidgets
-        
+        self.number_of_logs = -1
         numofsample = 0
         numofsample = randint(2, 98)
-
+        self.log_list = []
+        #self.logentries
         self.intake_service = IntakeService()
         location = dir_conf.Return_Root()+"/"
         self.entries = self.intake_service.ingest_files(location)
             #"/Users/eddie/Documents/SchoolProjects/pick-tool-team01-melji/example/")
         for y in range(len(self.entries)): #this code will detect what is in the datatype and put it into spaces in grid layout
-            sampledata = SplunkData(self.entries[y])
+            sampledata = SplunkData(self.entries[y],self.number_of_logs,self.log_list)
+            self.number_of_logs += 1
+            #self.logentries = self.logentries + sampledata
             for x in range(0,10):
                 if y < 2:
                     widgettoad = arrayofwidgets[i]

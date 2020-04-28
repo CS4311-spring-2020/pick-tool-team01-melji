@@ -4,7 +4,7 @@
 #############################################################################
 
 class Log:
-    def init(self,log_id, log_name, timestamp, discription, reporter, event_team, location, icon_location, origin_document, vector_list):
+    def __init__(self,log_id, log_name, timestamp, discription, reporter, event_team, location, icon_location, origin_document, vector_list):
         self.log_id = log_id
         self.log_name = log_name
         self.timestamp = timestamp

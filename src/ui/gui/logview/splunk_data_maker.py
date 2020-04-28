@@ -7,7 +7,7 @@ from popups.AddVector import OpenVectorAddPopup
 from popups.RemoveVector import OpenVectorRemovePopup
 import random
 import string
-
+from src.objects.Log import Log
 from model import log_entry
 from services.intake_service import IntakeService
 
@@ -19,13 +19,15 @@ rvalueg = 1
 
 # TODO: refactor this in graphical representation of a LogEntry
 class SplunkData(QFrame):
-    def __init__(self, log_entry):
+    def __init__(self, log_entry,id_of_log,log_list):
         super(SplunkData, self).__init__(parent=None)
         self.ingestion_service = IntakeService()
-
         self.log_entry = log_entry
+        self.vectors = None
+        self.log = Log(id_of_log,self.log_entry.identifier,self.log_entry.timestamp,self.log_entry.content,"white","white",self.log_entry.host,"bin/assets/white.png", self.log_entry.source, self.vectors)
+        
         self.splunk_data = [
-            RandomIDData(),
+            IDData(id_of_log),
             LogEntryName(self.log_entry.identifier),
             LogEntryTimeStamp(self.log_entry.timestamp),
             LogEntryDescription(self.log_entry.content),
@@ -33,21 +35,24 @@ class SplunkData(QFrame):
             RandEventTeamWidget(),
             LogEntryName(self.log_entry.host),
             IconWidget(),
-            RandomFileTextWidget(),
+            LogEntryDescription(self.log_entry.source),
             RandVectorWidget()]
+        dat = self.splunk_data[3]
+        
 
 
-class RandomIDData(QFrame):
 
-    def __init__(self):
-        super(RandomIDData, self).__init__(None)
+class IDData(QFrame):
+
+    def __init__(self,id_num):
+        super(IDData, self).__init__(None)
 
         value = randint(0, 9999)
         layout = QHBoxLayout()
         layout.setContentsMargins(0, 0, 0, 0)
         layout.setSpacing(0)
         self.setStyleSheet("border: 1px solid black;")
-        self.textlable = QLabel(str(value))
+        self.textlable = QLabel(str(id_num))
         layout.addWidget(self.textlable)
         self.setLayout(layout)
         self.setMaximumHeight(heightoftextrow)
@@ -106,6 +111,8 @@ class LogEntryDescription(QFrame):
         self.setMaximumWidth(heightoftextrow)
 
         return
+   # def setup_clicked(item):
+        
 
 
 class RandomFileTextWidget(QFrame):
@@ -134,35 +141,45 @@ class RandVectorWidget(QFrame):
 
     def __init__(self, parent=None):
         super(RandVectorWidget, self).__init__(parent)
-        layout = QVBoxLayout()
-        layout.setContentsMargins(0, 0, 0, 0)
-        layout.setSpacing(0)
+        self.layout = QVBoxLayout()
+        self.layout.setContentsMargins(0, 0, 0, 0)
+        self.layout.setSpacing(0)
         self.setStyleSheet("border: 1px solid black;")
 
         self.logreportersortbutton = QPushButton()
         self.logreportersortbutton.setIcon(QIcon(QPixmap("bin/assets/add.png")))
         self.logreportersortbutton.clicked.connect(lambda: OpenVectorAddPopup())
         # self.logreportersortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
-        layout.addWidget(self.logreportersortbutton)
+        self.layout.addWidget(self.logreportersortbutton)
 
         self.logreporterfilterbutton = QPushButton()
         self.logreporterfilterbutton.setIcon(QIcon(QPixmap("bin/assets/subtract.png")))
         self.logreporterfilterbutton.clicked.connect(lambda: OpenVectorRemovePopup())
         # self.logreporterfilterbutton.clicked.connect(lambda:self.whichbtn(self.b2))
-        layout.addWidget(self.logreporterfilterbutton)
+        self.layout.addWidget(self.logreporterfilterbutton)
 
-        y = randint(0, 9)
+        y = 0
 
         for x in range(0, y):
             b = "Random Sample Vector" + str(x)
-            object = QLabel(b)
-            object.setStyleSheet("border: 1px solid white;")
-            layout.addWidget(object)
-            object.setMaximumHeight(16)
+            objectv = QLabel(b)
+            objectv.setStyleSheet("border: 1px solid white;")
+            self.layout.addWidget(objectv)
+            objectv.setMaximumHeight(16)
 
-        self.setLayout(layout)
+        self.setLayout(self.layout)
         self.setMaximumHeight(heightofrows)
         return
+    def return_layout():
+        return self.layout
+    def return_self():
+        return self
+    def add_vector(vector_to_add):
+        objectv = QLabel(str(vector_to_add))
+        objectv.setStyleSheet("border: 1px solid white;")
+        self.layout.addWidget(objectv)
+        objectv.setMaximumHeight(16)
+
 
 
 class RandEventTeamWidget(QFrame):

@@ -10,8 +10,8 @@ from model.log_entry import LogEntry
 
 HOST = "localhost"
 PORT = 8089
-USERNAME = "root"
-PASSWORD = "88888888"
+USERNAME = "admin"
+PASSWORD = "12345678"
 INDEX = "main"
 DEBUG = True
 
