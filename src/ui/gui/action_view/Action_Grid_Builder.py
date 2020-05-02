@@ -30,15 +30,18 @@ class Grid_Make(QScrollArea):
         numofsample = 0
         numofsample = randint(2, 98)
         #length
-        
-        for y in range(0,(len(arrayofwidgets)/5)): #this code will detect what is in the datatype and put it into spaces in grid layout
+        x  = 0
+        y=0
+
+        for i in range(0,(len(arrayofwidgets))): #this code will detect what is in the datatype and put it into spaces in grid layout
             
+            if x == 5:
+                x=0 
+                y+=1
+            widgettoad = arrayofwidgets[i]
+            self.layoutgrid.addWidget(widgettoad,y,x)
             
-            for x in range(0,5):
-                
-                widgettoad = arrayofwidgets[i]
-                self.layoutgrid.addWidget(widgettoad,y,x)
-                i += 1
+            x +=1
                 
                
                     

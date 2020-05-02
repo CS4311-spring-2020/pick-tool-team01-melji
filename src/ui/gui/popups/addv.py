@@ -212,6 +212,7 @@ if __name__ == "__main__": #remove a's to test without running program
     sys.path.append(os.getcwd()+"/src/ui/gui/")
     app = QApplication(sys.argv)
     #print('cwd is %s' %(os.getcwd()))
+    
     ex = AddVectorPopup()
     ex.show()
     sys.exit(app.exec_())

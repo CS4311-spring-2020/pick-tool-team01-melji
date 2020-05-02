@@ -40,7 +40,7 @@ class GridMake(QScrollArea):
         self.entries = self.intake_service.ingest_files(location)
             #"/Users/eddie/Documents/SchoolProjects/pick-tool-team01-melji/example/")
         for y in range(len(self.entries)): #this code will detect what is in the datatype and put it into spaces in grid layout
-            sampledata = SplunkData(self.entries[y],self.number_of_logs,self.log_listm,self.vector_list)
+            sampledata = SplunkData(self.entries[y],self.number_of_logs,self.log_list,self.vector_list)
             self.number_of_logs += 1
             #self.logentries = self.logentries + sampledata
             for x in range(0,10):

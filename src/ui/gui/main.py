@@ -36,7 +36,7 @@ def window():
     #self.menu = 
     #self.menu.Open() def closeMyApp_OpenNewApp(self): self.close() self.Open = NewApp.NewApp() self.Open.show()
     #hello?
-    
+
 print('cwd is %s' %(os.getcwd()))
 sys.path.append(os.getcwd())
 print('cwd is %s' %(os.getcwd()))

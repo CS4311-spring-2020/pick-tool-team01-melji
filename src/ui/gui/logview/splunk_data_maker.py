@@ -25,7 +25,7 @@ class SplunkData(QFrame):
         self.ingestion_service = IntakeService()
         self.log_entry = log_entry
         #self.vectors = None
-        self.log = Log(id_of_log,self.log_entry.identifier,self.log_entry.timestamp,self.log_entry.content,"white","white",self.log_entry.host,"bin/assets/white.png", self.log_entry.source, self.vectors)
+        self.log = Log(id_of_log,self.log_entry.identifier,self.log_entry.timestamp,self.log_entry.content,"white","white",self.log_entry.host,"bin/assets/white.png", self.log_entry.source, vectors)
         
         self.splunk_data = [
             IDData(id_of_log),
@@ -37,7 +37,7 @@ class SplunkData(QFrame):
             LogEntryName(self.log_entry.host),
             IconWidget(),
             LogEntryDescription(self.log_entry.source),
-            Vector_Add_Sub_Widget(self.log)]
+            Vector_Add_Sub_Widget(self.log,vectors)]
         dat = self.splunk_data[3]
         
 
@@ -171,7 +171,7 @@ class Vector_Add_Sub_Widget(QFrame):
             objectv.setMaximumHeight(16)
             
         self.log_add_vector_button.clicked.connect(lambda: OpenVectorAddPopup(this_log,vectors,self.widget_list_vectors))
-        #self.log_add_vector_button.clicked.connect(lambda: vectorapopup(this_log,vectors,self.widget_list_vectors,self.layout))
+        #self.log_add_vector_button.clicked.connect(lambda: vectorapopup(this_log,vectors,self.widget_list_vectors))
         self.log_remove_vector_button.clicked.connect(lambda: OpenVectorRemovePopup(this_log,vectors,widget_list_vectors))
 
         self.setLayout(self.layout)
@@ -187,7 +187,7 @@ class Vector_Add_Sub_Widget(QFrame):
         self.layout.addWidget(objectv)
         objectv.setMaximumHeight(16)
 
-    def vectorapopup(this_log,vectors,widget_list_vectors,layout):
+    def vectorapopup(this_log,vectors,layout):
         
         return
 
