@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QLabel, QPushBut
 from PyQt5.QtGui import QIcon, QPixmap
 from random import seed
 from random import randint
+#from popups.addv import AddVectorPopup
 from popups.AddVector import OpenVectorAddPopup
 from popups.RemoveVector import OpenVectorRemovePopup
 import random
@@ -19,11 +20,11 @@ rvalueg = 1
 
 # TODO: refactor this in graphical representation of a LogEntry
 class SplunkData(QFrame):
-    def __init__(self, log_entry,id_of_log,log_list):
+    def __init__(self, log_entry,id_of_log,log_list,vectors):
         super(SplunkData, self).__init__(parent=None)
         self.ingestion_service = IntakeService()
         self.log_entry = log_entry
-        self.vectors = None
+        #self.vectors = None
         self.log = Log(id_of_log,self.log_entry.identifier,self.log_entry.timestamp,self.log_entry.content,"white","white",self.log_entry.host,"bin/assets/white.png", self.log_entry.source, self.vectors)
         
         self.splunk_data = [
@@ -36,7 +37,7 @@ class SplunkData(QFrame):
             LogEntryName(self.log_entry.host),
             IconWidget(),
             LogEntryDescription(self.log_entry.source),
-            RandVectorWidget()]
+            Vector_Add_Sub_Widget(self.log)]
         dat = self.splunk_data[3]
         
 
@@ -137,35 +138,41 @@ class RandomFileTextWidget(QFrame):
         return
 
 
-class RandVectorWidget(QFrame):
+class Vector_Add_Sub_Widget(QFrame):
 
-    def __init__(self, parent=None):
-        super(RandVectorWidget, self).__init__(parent)
+    def __init__(self, this_log, vectors, parent=None):
+        super(Vector_Add_Sub_Widget, self).__init__(parent)
         self.layout = QVBoxLayout()
         self.layout.setContentsMargins(0, 0, 0, 0)
         self.layout.setSpacing(0)
         self.setStyleSheet("border: 1px solid black;")
 
-        self.logreportersortbutton = QPushButton()
-        self.logreportersortbutton.setIcon(QIcon(QPixmap("bin/assets/add.png")))
-        self.logreportersortbutton.clicked.connect(lambda: OpenVectorAddPopup())
-        # self.logreportersortbutton.clicked.connect(lambda:self.whichbtn(self.b2))
-        self.layout.addWidget(self.logreportersortbutton)
+        self.log_add_vector_button = QPushButton()
+        self.log_add_vector_button.setIcon(QIcon(QPixmap("bin/assets/add.png")))
+        #self.log_add_vector_button.clicked.connect(lambda: OpenVectorAddPopup(this_log,vectors))
+        #self.log_add_vector_button.clicked.connect(lambda: OpenVectorAddPopup(this_log,vectors))
+        # self.log_add_vector_button.clicked.connect(lambda:self.whichbtn(self.b2))
+        self.layout.addWidget(self.log_add_vector_button)
 
-        self.logreporterfilterbutton = QPushButton()
-        self.logreporterfilterbutton.setIcon(QIcon(QPixmap("bin/assets/subtract.png")))
-        self.logreporterfilterbutton.clicked.connect(lambda: OpenVectorRemovePopup())
-        # self.logreporterfilterbutton.clicked.connect(lambda:self.whichbtn(self.b2))
-        self.layout.addWidget(self.logreporterfilterbutton)
-
+        self.log_remove_vector_button = QPushButton()
+        self.log_remove_vector_button.setIcon(QIcon(QPixmap("bin/assets/subtract.png")))
+        #self.log_remove_vector_button.clicked.connect(lambda: OpenVectorRemovePopup())
+        # self.log_remove_vector_button.clicked.connect(lambda:self.whichbtn(self.b2))
+        self.layout.addWidget(self.log_remove_vector_button)
+        
         y = 0
-
+        self.widget_list_vectors = []
         for x in range(0, y):
             b = "Random Sample Vector" + str(x)
             objectv = QLabel(b)
             objectv.setStyleSheet("border: 1px solid white;")
+            self.widget_list_vectors.append(objectv)
             self.layout.addWidget(objectv)
             objectv.setMaximumHeight(16)
+            
+        self.log_add_vector_button.clicked.connect(lambda: OpenVectorAddPopup(this_log,vectors,self.widget_list_vectors))
+        #self.log_add_vector_button.clicked.connect(lambda: vectorapopup(this_log,vectors,self.widget_list_vectors,self.layout))
+        self.log_remove_vector_button.clicked.connect(lambda: OpenVectorRemovePopup(this_log,vectors,widget_list_vectors))
 
         self.setLayout(self.layout)
         self.setMaximumHeight(heightofrows)
@@ -180,7 +187,9 @@ class RandVectorWidget(QFrame):
         self.layout.addWidget(objectv)
         objectv.setMaximumHeight(16)
 
-
+    def vectorapopup(this_log,vectors,widget_list_vectors,layout):
+        
+        return
 
 class RandEventTeamWidget(QFrame):
 

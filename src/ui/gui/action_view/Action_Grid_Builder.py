@@ -14,11 +14,8 @@ from random import seed,randint
 import random
 
 class Grid_Make(QScrollArea):   
-    def __init__(self,text_array, parent=None):
-        super(Grid_Make, self).__init__(parent)
-        self.scroll_make(text_array)
-
-    def scroll_make(self,text_array):
+    def __init__(self,text_array):
+        super().__init__()
         self.widget = QWidget()               
         self.layoutgrid = QGridLayout()  
         self.layoutgrid.setSpacing(0)
@@ -27,14 +24,14 @@ class Grid_Make(QScrollArea):
         i = 0
         n = 0
         data = Get_Grid_Widgets()
-        o_data = Get_Grid_Widgets(text_array)
+        o_data = Get_Widgets(text_array)
         arrayofwidgets = data.arrayofwidgets + o_data.arrayofwidgets
 
         numofsample = 0
         numofsample = randint(2, 98)
-        length
+        #length
         
-        for y in range(0,len(arrayofwidgets)): #this code will detect what is in the datatype and put it into spaces in grid layout
+        for y in range(0,(len(arrayofwidgets)/5)): #this code will detect what is in the datatype and put it into spaces in grid layout
             
             
             for x in range(0,5):
@@ -42,6 +39,7 @@ class Grid_Make(QScrollArea):
                 widgettoad = arrayofwidgets[i]
                 self.layoutgrid.addWidget(widgettoad,y,x)
                 i += 1
+                
                
                     
         

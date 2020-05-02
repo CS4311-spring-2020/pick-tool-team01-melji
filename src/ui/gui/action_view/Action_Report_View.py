@@ -31,7 +31,7 @@ class ActionView(QMainWindow):
     
     def __init__(self,action_report_list): # this displays the action report to use it call ActionView (listofactionreportitems) with a array of items consisting of IDText ,NameText, DescriptionText, and FileText repeating until done
         super().__init__()
-        self.initUI()
+        #self.initUI()
 
         #this code runs GridBuilder
         #############################################################################

@@ -14,10 +14,11 @@ rvalueg = 1  # for the program to know the color of the icon
 global sample
 class Get_Widgets(QFrame):
     def __init__(self,text_array, parent=None):
-        super(Get_Sample_Widgets,self).__init__(parent)
+        super(Get_Widgets,self).__init__(parent)
 
-        self.arrayofwidgets
-        for i in range(0,len(text_array)):
+        self.arrayofwidgets = []
+        i = 0
+        while (i<(len(text_array)-1)):
             self.arrayofwidgets.append(IDTextWidget(text_array[i]))
             i += 1
             self.arrayofwidgets.append(NameTextWidget(text_array[i]))
@@ -26,6 +27,7 @@ class Get_Widgets(QFrame):
             i += 1
             self.arrayofwidgets.append(FileTextWidget(text_array[i]))
             self.arrayofwidgets.append(Validate_Invalidate_Widget())
+            
         
         return 
 
@@ -33,7 +35,7 @@ class Get_Widgets(QFrame):
 class IDTextWidget(QFrame):
 
     def __init__(self,text_in, parent=None):
-        super(RandIDTextWidget,self).__init__(parent)
+        super(IDTextWidget,self).__init__(parent)
 
         
         layout = QHBoxLayout()
@@ -52,7 +54,7 @@ class IDTextWidget(QFrame):
 class NameTextWidget(QFrame):
 
     def __init__(self,text_in, parent=None):
-        super(RandNameTextWidget,self).__init__(parent)
+        super(NameTextWidget,self).__init__(parent)
 
         letters = string.ascii_lowercase
         layout = QHBoxLayout()
@@ -77,7 +79,7 @@ class NameTextWidget(QFrame):
 class DescriptionTextWidget(QFrame):
 
     def __init__(self,text_in, parent=None):
-        super(RandDescriptionTextWidget,self).__init__(parent)
+        super(DescriptionTextWidget,self).__init__(parent)
 
         letters = string.ascii_lowercase
         layoutdes = QHBoxLayout()
@@ -102,7 +104,7 @@ class DescriptionTextWidget(QFrame):
 class FileTextWidget(QFrame):
 
     def __init__(self,text_in, parent=None):
-        super(RandomFileTextWidget,self).__init__(parent)
+        super(FileTextWidget,self).__init__(parent)
 
 
         letters = string.ascii_lowercase

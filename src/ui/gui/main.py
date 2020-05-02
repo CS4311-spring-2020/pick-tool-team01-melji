@@ -24,8 +24,9 @@ def window():
     w = Paths()
     #print('cwd is %s' %(os.getcwd()))
     w.showpaths()
-    #a = ActionView()
-    #a.show_view()
+    testing = (["IDText","NameText","DescriptionText","FileText"])
+    a = ActionView(testing)
+    a.show_view()
     #ex2 = NodeView(window)
     #ex = LogView(ex2)
     stylesheet = qdarkstyle.load_stylesheet()
@@ -34,6 +35,7 @@ def window():
     sys.exit(app.exec())
     #self.menu = 
     #self.menu.Open() def closeMyApp_OpenNewApp(self): self.close() self.Open = NewApp.NewApp() self.Open.show()
+    #hello?
     
 print('cwd is %s' %(os.getcwd()))
 sys.path.append(os.getcwd())
@@ -41,4 +43,5 @@ print('cwd is %s' %(os.getcwd()))
 from popups.team_configuration import Configure_Team
 from src.objects.Log import Log
 from popups.select_path import Paths
+from action_view.Action_Report_View import ActionView
 window()

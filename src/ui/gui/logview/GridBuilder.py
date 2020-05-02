@@ -25,6 +25,7 @@ class GridMake(QScrollArea):
         self.layoutgrid = QGridLayout()  
         self.layoutgrid.setSpacing(0)
         self.layoutgrid.setHorizontalSpacing(0)
+        self.vector_list = None
         i = 0
         n = 0
         data = GetGridWidgets()
@@ -39,7 +40,7 @@ class GridMake(QScrollArea):
         self.entries = self.intake_service.ingest_files(location)
             #"/Users/eddie/Documents/SchoolProjects/pick-tool-team01-melji/example/")
         for y in range(len(self.entries)): #this code will detect what is in the datatype and put it into spaces in grid layout
-            sampledata = SplunkData(self.entries[y],self.number_of_logs,self.log_list)
+            sampledata = SplunkData(self.entries[y],self.number_of_logs,self.log_listm,self.vector_list)
             self.number_of_logs += 1
             #self.logentries = self.logentries + sampledata
             for x in range(0,10):
@@ -50,8 +51,8 @@ class GridMake(QScrollArea):
 
                 else:
                     
-                    arrayofsamplewidgets = sampledata.splunk_data
-                    widgettoad = arrayofsamplewidgets[x]
+                    array_of_log_widgets = sampledata.splunk_data
+                    widgettoad = array_of_log_widgets[x]
                     self.layoutgrid.addWidget(widgettoad,y,x)
                     n = n+1
         
