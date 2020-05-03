@@ -1,8 +1,7 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QBrush, QPen
 from PyQt5.QtWidgets import *
-from PyQt5 import QtCore
-from PyQt5.QtWidgets import QWidget , QHBoxLayout,QSplitter
+from PyQt5.QtWidgets import QWidget, QHBoxLayout, QSplitter
 
 from src.ui.gui.graph.graph_view import GraphView
 from src.ui.gui.graph.node_dto import Node
@@ -65,21 +64,6 @@ class GraphWindow(QWidget):
         for node in self.scene.nodes:
             if node.title == title:
                 self.scene.removeNode(node)
-
-    # def contextMenuEvent(self, event):
-    #     contextMenu = QMenu(self)
-    #
-    #     removeNodeAction = contextMenu.addAction("Add node")
-    #     connectNode = contextMenu.addAction("Add relationship")
-    #     deConnectNode = contextMenu.addAction("Delete node")
-    #     undoChanges = contextMenu.addAction("Delete relationship")
-    #     redoChanges = contextMenu.addAction("Edit node")
-    #     settings = contextMenu.addAction("Edit relationship")
-    #     settings = contextMenu.addAction("Timeline orientation")
-    #     settings = contextMenu.addAction("Interval units")
-    #
-    #     action = contextMenu.exec_(self.mapToParent(event.pos()))
-
 
     def addDebugContent(self):
         greenBrush = QBrush(Qt.green)
