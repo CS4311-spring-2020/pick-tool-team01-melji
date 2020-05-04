@@ -48,7 +48,7 @@ class TranscriberService(object):
             print("[ERROR] Sphinx error; {0}".format(e))
 
 
-transcriber = TranscriberService(debug=True)
-p = Path("example/english.wav").resolve()
-print(str(p))
-transcriber.convert_to_string(str(p))
+# transcriber = TranscriberService(debug=True)
+# p = Path("example/english.wav").resolve()
+# print(str(p))
+# transcriber.convert_to_string(str(p))

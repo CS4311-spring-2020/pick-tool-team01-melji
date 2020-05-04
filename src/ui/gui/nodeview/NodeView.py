@@ -204,7 +204,7 @@ class NodeView(QMainWindow):
 
     def closeMyApp_OpenNewApp(self): 
         self.close() 
-        self.Open = GraphWindow(grid) 
+        self.Open = GraphWindow(self.grid)
         self.Open.show()
 
         
