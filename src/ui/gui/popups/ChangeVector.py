@@ -22,7 +22,7 @@ import string
 
 class OpenVectorChangePopup(QMainWindow):
     
-    def __init__(self): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
+    def __init__(self,vector_list): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
         super().__init__()
         
         #self.initUI()
@@ -32,22 +32,22 @@ class OpenVectorChangePopup(QMainWindow):
 
         _widget = QWidget()
         
-        add_button = QPushButton("change vector")
-        add_button.setMaximumWidth(150)
-        delete_button = QPushButton("Delete")
-        delete_button.setMaximumWidth(150)
-        edit_button = QPushButton("Edit")
-        edit_button.setMaximumWidth(150)
-        add_button.clicked.connect( lambda: self.closeMyApp_OpenNewApp())
+        #add_button = QPushButton("change vector")
+        #add_button.setMaximumWidth(150)
+        #delete_button = QPushButton("Delete")
+        #delete_button.setMaximumWidth(150)
+        #edit_button = QPushButton("Edit")
+        #edit_button.setMaximumWidth(150)
+        #add_button.clicked.connect( lambda: self.closeMyApp_OpenNewApp())
         
         widget = QWidget()                  
         layoutv = QVBoxLayout()       
         layouth = QHBoxLayout()                       
         widget.setLayout(layoutv)
         
-        self.mainv = vectconfigtempname()
+        self.mainv = vectconfigtempname(vector_list)
         layoutv.addWidget(self.mainv)
-        layouth.addWidget(add_button)
+        #layouth.addWidget(add_button)
         #layouth.addWidget(delete_button)
         #layouth.addWidget(edit_button)
         layoutv.addLayout(layouth)
@@ -78,7 +78,7 @@ class OpenVectorChangePopup(QMainWindow):
 
 
 class vectconfigtempname(QScrollArea):## experimenting with vector add
-    def __init__(self, parent=None):
+    def __init__(self,vector_list, parent=None):
         super(vectconfigtempname, self).__init__(parent)
         self.scrollmake()
     def add_vecotor(vector_to_add):
@@ -95,18 +95,17 @@ class vectconfigtempname(QScrollArea):## experimenting with vector add
         numofsample = randint(5, 28)
 
         
-            
+                    
+        
 
-        for y in range(0,numofsample):
+        for y in range(0,len(vector_list)):
              
-            self.button1 = Vector_Push_Button()
-            self.text1 = LogRandNameTextWidget()
-            self.text2 = LogRandNameTextWidget()
+            self.button1 = Vector_Push_Button(vectors[y],vectors_list)      
+            self.text1 = LogRandNameTextWidget(self.button1.name)
+            self.text2 = LogRandNameTextWidget(self.button1.description)
             self.layoutgrid.addWidget(self.button1,y,0)
             self.layoutgrid.addWidget(self.text1,y,1)
             self.layoutgrid.addWidget(self.text2,y,2)
-            y= y+1
-            n = n+1
         
         self.widget.setLayout(self.layoutgrid)
         self.setWidgetResizable(True)
@@ -119,36 +118,28 @@ class vectconfigtempname(QScrollArea):## experimenting with vector add
 
         return
 
+class Vector_Push_Button(QFrame):
 
-widthofcolumns = 200
-heightofrows=50
-heightoftextrow = 25
-class LogRandNameTextWidget(QFrame):
-
-    def __init__(self, parent=None):
-        super(LogRandNameTextWidget,self).__init__(parent)
-
-        letters = string.ascii_lowercase
+    def __init__(self,vector,parent=None):
+        super(Vector_Push_Button,self).__init__(parent)
         layout = QHBoxLayout()
+        self.vector = vector
         layout.setContentsMargins(0,0,0,0)
+        layout.setAlignment(Qt.AlignVCenter|Qt.AlignHCenter)
         layout.setSpacing(0)
+        self.push_button = QPushButton("go to this vector")
+        self.push_button.clicked.connect( lambda: self.closeMyApp_OpenNewApp(vector))
+        self.name = vector.return_item("vector_name")
+        self.description = vector.return_item("discription")
         self.setStyleSheet("border: 1px solid black;")
-        
-        a =  randint(1, 8)
-        randomtext = ''
-        for x in range(0,a):
-            randomtextvar =''.join( random.choice(letters) for i in range(randint(0, 20)))
-            randomtext = randomtext + ' ' + randomtextvar
-        
-       
-        self.textlable = QLabel(randomtext)
-        self.textlable.setWordWrap(True)
-        layout.addWidget(self.textlable)
-        self.setLayout(layout)  
-        self.setMaximumWidth(widthofcolumns)
-
+        layout.addWidget(self.push_button)
+        self.setLayout(layout)    
+        self.setMaximumWidth(heightofrows)
         return
-
+    def closeMyApp_OpenNewApp(self,vector): 
+        self.close() 
+        self.Open = NodeView(vector) 
+        self.Open.show()
 class Vector_Push_Button(QFrame):
 
     def __init__(self,parent=None):
@@ -162,6 +153,30 @@ class Vector_Push_Button(QFrame):
         layout.addWidget(self.push_button)
         self.setLayout(layout)    
         self.setMaximumWidth(heightofrows)
+        return
+widthofcolumns = 200
+heightofrows=50
+heightoftextrow = 25
+class LogRandNameTextWidget(QFrame):
+
+    def __init__(self,text, parent=None):
+        super(LogRandNameTextWidget,self).__init__(parent)
+
+        letters = string.ascii_lowercase
+        layout = QHBoxLayout()
+        layout.setContentsMargins(0,0,0,0)
+        layout.setSpacing(0)
+        self.setStyleSheet("border: 1px solid black;")
+        
+        
+        
+       
+        self.textlable = QLabel(text)
+        self.textlable.setWordWrap(True)
+        layout.addWidget(self.textlable)
+        self.setLayout(layout)  
+        self.setMaximumWidth(widthofcolumns)
+
         return
 
 class projectMake(QScrollArea):   

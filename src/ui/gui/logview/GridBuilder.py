@@ -18,14 +18,14 @@ from services.intake_service import IntakeService
 
 
 class GridMake(QScrollArea):
-    def __init__(self,dir_conf, parent=None):
+    def __init__(self,dir_conf,vector_list, parent=None):
         super(GridMake, self).__init__(parent)
         
         self.widget = QWidget()                 
         self.layoutgrid = QGridLayout()  
         self.layoutgrid.setSpacing(0)
         self.layoutgrid.setHorizontalSpacing(0)
-        self.vector_list = None
+        #self.vector_list = None
         i = 0
         n = 0
         data = GetGridWidgets()
@@ -40,7 +40,7 @@ class GridMake(QScrollArea):
         self.entries = self.intake_service.ingest_files(location)
             #"/Users/eddie/Documents/SchoolProjects/pick-tool-team01-melji/example/")
         for y in range(len(self.entries)): #this code will detect what is in the datatype and put it into spaces in grid layout
-            sampledata = SplunkData(self.entries[y],self.number_of_logs,self.log_list,self.vector_list)
+            sampledata = SplunkData(self.entries[y],self.number_of_logs,self.log_list,vector_list)
             self.number_of_logs += 1
             #self.logentries = self.logentries + sampledata
             for x in range(0,10):
