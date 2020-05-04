@@ -39,12 +39,12 @@ class NodeGridMake(QScrollArea):
             #        widgettoad = arrayofwidgets[i]
              #       self.layoutgrid.addWidget(widgettoad,y,x)
               #      i = i+1
-        
+        node_list = vector.return_item("node_list")
         self.intake_service = IntakeService()
         self.entries = self.intake_service.ingest_files(
             "/Users/eddie/Documents/SchoolProjects/pick-tool-team01-melji/example/")
         for y in range(len(self.entries)): #this code will detect what is in the datatype and put it into spaces in grid layout
-            sampledata = GetNodeWidgets(self.entries[y])
+            sampledata = GetNodeWidgets(node_list[y-2])
             for x in range(0,10):
                 if y < 2:
                     widgettoad = arrayofwidgets[i]

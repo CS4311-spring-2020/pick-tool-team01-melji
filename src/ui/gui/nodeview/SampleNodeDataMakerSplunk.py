@@ -10,10 +10,10 @@ heightofrows=180
 heightoftextrow = 180
 rvalueg = 1  # for the program to know the color of the icon
 class GetNodeWidgets(QFrame):
-    def __init__(self,log_entry, parent=None):
+    def __init__(self,node, parent=None):
         super(GetNodeWidgets,self).__init__(parent)
-        
-        self.arrayofsamplewidgets= [VisibilityButton(),LogRandIDTextWidget(),TextWidget(log_entry.identifier),TextWidget(log_entry.timestamp),TextWidget(log_entry.content),RandEventTeamWidget(),RandEventTeamWidget(),LogRandNameTextWidget(),TextWidget(log_entry.host),LogRandNameTextWidget(),IconWidget(),RandomFileTextWidget(),RandVectorWidget()]
+        #node.return_item("node_name"),node.return_item("timestamp"),node.return_item("discription"),node.return_item("reporter"),node.return_item("event_team"),node.return_item("location"),node.return_item("icon_location"),node.return_item("origin_document")
+        self.arrayofsamplewidgets= [VisibilityButton(),TextWidget(node.return_item("node_id")),TextWidget(node.return_item("node_name")),TextWidget(node.return_item("timestamp")),TextWidget(node.return_item("discription")),TextWidget("make this into reporter"),TextWidget("TODO make this into event team"),TextWidget(node.return_item("location")),TextWidget(node.return_item("icon_location")),TextWidget(node.return_item("origin_document")),TextWidget(" todo connections ")] #TODO
         
 
         return 

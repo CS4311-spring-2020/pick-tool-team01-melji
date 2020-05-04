@@ -24,6 +24,7 @@ from popups.filterTeam import OpenFilterTeamPopup
 from popups.filter_all import OpenFilterAllPopup
 from popups.export_configuration import OpenExportConfigPopup
 from popups.expand import OpenExpandPopup
+from popups.Make_Vector import Make_Vector
 #from popups.directory_configuration import Configure_Directory
 from popups.connect_link import OpenconnectlinkPopup
 
@@ -37,10 +38,11 @@ class LogView(QMainWindow):
         #test = qApp
         
         #test.setStyleSheet("")
-        self.initUI()
+        self.vector_list = []
+        self.initUI(self.vector_list)
         #this code runs GridBuilder
         #############################################################################
-        self.grid = GridMake(dir_config)
+        self.grid = GridMake(dir_config,self.vector_list)
         _widget = QWidget()
         _layout = QVBoxLayout(_widget)
         _layout.addWidget(self.grid)
@@ -52,7 +54,7 @@ class LogView(QMainWindow):
         #self.show()
         
         
-    def initUI(self):               
+    def initUI(self,vector_list):               
         #this is where the toolbar elements are set up
 
         self.toolbar = self.addToolBar('UI')   #to-do lock toolbar
@@ -177,18 +179,20 @@ class LogView(QMainWindow):
         self.editvectorbutton.clicked.connect(OpenVectorConfigPopup)
         self.toolbarlower.addWidget(self.editvectorbutton)
 
-        self.addvectorbutton = QPushButton("Add Vector")
+        self.addvectorbutton = QPushButton("Make Vector")
         self.addvectorbutton.setMaximumWidth(150)
+        self.addvectorbutton.clicked.connect( lambda:Make_Vector(vector_list))
         self.toolbarlower.addWidget(self.addvectorbutton)
 
-        self.removevectorbutton = QPushButton("Remove Vector")
+        self.removevectorbutton = QPushButton("Delete Vector")
         self.removevectorbutton.setMaximumWidth(150)
         self.toolbarlower.addWidget(self.removevectorbutton)
 
         self.addToolBarBreak()
         self.addToolBar(self.toolbarlower)
-
-    
+    def make_a_vector(vector_list):
+        wind = Make_Vector(vector_list)
+        wind.show()
     def closeMyApp_OpenNewApp(self): 
         self.close() 
         self.Open = OpenVectorChangePopup() 

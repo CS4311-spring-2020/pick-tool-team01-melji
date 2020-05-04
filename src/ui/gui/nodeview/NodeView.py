@@ -29,7 +29,7 @@ global logview
 global logviewAct
 class NodeView(QMainWindow):
     
-    def __init__(self): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
+    def __init__(self,vector): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
         super().__init__()
         global gwindow
         #gwindow = gwindow1
@@ -204,7 +204,7 @@ class NodeView(QMainWindow):
 
     def closeMyApp_OpenNewApp(self): 
         self.close() 
-        self.Open = GraphWindow(grid) 
+        self.Open = GraphWindow(self.grid) 
         self.Open.show()
 
         

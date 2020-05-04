@@ -4,7 +4,7 @@
 #############################################################################
 
 class Vector:
-    def init(self,vector_id, vector_name, start_timestamp, end_timestamp, discription, node_list):
+    def __init__(self,vector_id, vector_name, start_timestamp, end_timestamp, discription, node_list):
         self.vector_id = vector_id
         self.vector_name = vector_name
         self.start_timestamp = start_timestamp
