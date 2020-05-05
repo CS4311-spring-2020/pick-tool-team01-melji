@@ -80,10 +80,10 @@ class OpenVectorChangePopup(QMainWindow):
 class vectconfigtempname(QScrollArea):## experimenting with vector add
     def __init__(self,vector_list, parent=None):
         super(vectconfigtempname, self).__init__(parent)
-        self.scrollmake()
+        self.scrollmake(vector_list)
     def add_vecotor(vector_to_add):
         return
-    def scrollmake(self):
+    def scrollmake(self,vectors_list):
         self.widget = QWidget()                 
         self.layoutgrid = QGridLayout()  
         self.layoutgrid.setSpacing(0)
@@ -98,9 +98,9 @@ class vectconfigtempname(QScrollArea):## experimenting with vector add
                     
         
 
-        for y in range(0,len(vector_list)):
+        for y in range(0,len(vectors_list)):
              
-            self.button1 = Vector_Push_Button(vectors[y],vectors_list)      
+            self.button1 = Vector_Push_Button(vectors_list[y])      
             self.text1 = LogRandNameTextWidget(self.button1.name)
             self.text2 = LogRandNameTextWidget(self.button1.description)
             self.layoutgrid.addWidget(self.button1,y,0)
@@ -140,20 +140,7 @@ class Vector_Push_Button(QFrame):
         self.close() 
         self.Open = NodeView(vector) 
         self.Open.show()
-class Vector_Push_Button(QFrame):
 
-    def __init__(self,parent=None):
-        super(Vector_Push_Button,self).__init__(parent)
-        layout = QHBoxLayout()
-        layout.setContentsMargins(0,0,0,0)
-        layout.setAlignment(Qt.AlignVCenter|Qt.AlignHCenter)
-        layout.setSpacing(0)
-        self.push_button = QPushButton()
-        self.setStyleSheet("border: 1px solid black;")
-        layout.addWidget(self.push_button)
-        self.setLayout(layout)    
-        self.setMaximumWidth(heightofrows)
-        return
 widthofcolumns = 200
 heightofrows=50
 heightoftextrow = 25

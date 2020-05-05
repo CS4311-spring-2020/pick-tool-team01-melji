@@ -13,6 +13,7 @@ rvalueg = 1  # for the program to know the color of the icon
 
 
 class GetNodeWidgets(QFrame):
+
     def __init__(self, log_entry, parent=None):
         super(GetNodeWidgets, self).__init__(parent)
 

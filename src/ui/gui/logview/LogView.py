@@ -56,7 +56,7 @@ class LogView(QMainWindow):
         
     def initUI(self,vector_list):               
         #this is where the toolbar elements are set up
-
+        
         self.toolbar = self.addToolBar('UI')   #to-do lock toolbar
         
         fileAct = QAction(QIcon('bin/assets/file.png'), 'file', self)
@@ -171,7 +171,7 @@ class LogView(QMainWindow):
         self.changevectorbutton = QPushButton("Go To Vector")
         self.changevectorbutton.setMaximumWidth(150)
         global window
-        self.changevectorbutton.clicked.connect(lambda: self.closeMyApp_OpenNewApp() )
+        self.changevectorbutton.clicked.connect(lambda: self.closeMyApp_OpenNewApp(vector_list) )
         self.toolbarlower.addWidget(self.changevectorbutton)
 
         self.editvectorbutton = QPushButton("Edit Vector")
@@ -193,7 +193,7 @@ class LogView(QMainWindow):
     def make_a_vector(vector_list):
         wind = Make_Vector(vector_list)
         wind.show()
-    def closeMyApp_OpenNewApp(self): 
+    def closeMyApp_OpenNewApp(self,vector_list): 
         self.close() 
-        self.Open = OpenVectorChangePopup() 
+        self.Open = OpenVectorChangePopup(vector_list) 
         self.Open.show()
