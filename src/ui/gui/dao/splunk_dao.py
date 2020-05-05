@@ -5,13 +5,13 @@ import os
 
 from asgiref.sync import async_to_sync
 
-from src.ui.gui.dao.extract_transform_load_dao import ExtractTransformLoadDAO
-from src.ui.gui.model.log_entry import LogEntry
+from dao.extract_transform_load_dao import ExtractTransformLoadDAO
+from model.log_entry import LogEntry
 
 HOST = "localhost"
 PORT = 8089
 USERNAME = "admin"
-PASSWORD = "eherreraga858408"
+PASSWORD = "12345678"
 INDEX = "main"
 DEBUG = True
 

@@ -8,7 +8,7 @@
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets 
 from PyQt5.QtWidgets import QMainWindow, QVBoxLayout, QApplication ,QWidget
-from nodeview.NodeView import NodeView
+#from nodeview import NodeView
 
 #from PyQt5.QtWidgets import *
 
@@ -184,4 +184,19 @@ class OpenVectorAddPopup(QMainWindow):
         layout.addWidget(self.Dialog)
         self.setLayout(layout)
         self.Dialog.show()
+        self.ui.show()
         #sys.exit(app1.exec_())\
+if __name__ == "__main__": #remove a's to test without running program
+    import os
+    sys.path.append(os.getcwd())
+    #from src.ui.gui.nodeview.NodeView import NodeView
+    
+    sys.path.append(os.getcwd()+"/src/ui/gui/")
+    app = QApplication(sys.argv)
+    print('cwd is %s' %(os.getcwd()))
+    ex = OpenVectorAddPopup
+    ##ex.showprojectconfig()
+    #ex.show()
+    sys.exit(app.exec_())
+else:
+    from nodeview.NodeView import NodeView

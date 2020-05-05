@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QGraphicsView
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
+
 from src.ui.gui.graph.gr_node import GRNode
 from src.ui.gui.graph.gr_node_connector import GRSocket
 from src.ui.gui.graph.node_connector import Socket
@@ -31,6 +32,10 @@ class GraphView(QGraphicsView):
         self.zoomStep = 1
         self.zoomRange = [0, 10]
 
+
+        self._drag_enter_listeners = []
+        self._drop_listeners = []
+
     def initUI(self):
         self.setRenderHints(
             QPainter.Antialiasing | QPainter.HighQualityAntialiasing | QPainter.TextAntialiasing | QPainter.SmoothPixmapTransform)
@@ -39,7 +44,24 @@ class GraphView(QGraphicsView):
         self.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
 
         self.setTransformationAnchor(QGraphicsView.AnchorUnderMouse)
+
         self.setDragMode(QGraphicsView.RubberBandDrag)
+
+        # enable dropping
+        self.setAcceptDrops(True)
+
+    def dragEnterEvent(self, event):
+        for callback in self._drag_enter_listeners: callback(event)
+
+    def dropEvent(self, event):
+        for callback in self._drop_listeners: callback(event)
+
+    def addDragEnterListener(self, callback):
+        self._drag_enter_listeners.append(callback)
+
+    def addDropListener(self, callback):
+        self._drop_listeners.append(callback)
+
 
     def mousePressEvent(self, event):
         if event.button() == Qt.MiddleButton:
