@@ -3,42 +3,31 @@
 ##  The toolbar code is located in TemplateforPICK under InitUI 
 ##  Thanks - Micheal 2/1/20
 #############################################################################
-import sys
 #from nodeview.NodeGridBuilder import NodeGridMake
-from nodeview.NodeGridBuilder import NodeGridMake
-from PyQt5.QtWidgets import QMainWindow, QAction, qApp, QApplication, QVBoxLayout, QWidget,QToolBar,QLineEdit,QPushButton
 from PyQt5.QtGui import QIcon
-from popups.menupopup import OpenMenuPopup
+from PyQt5.QtWidgets import QMainWindow, QAction, QVBoxLayout, QWidget, QToolBar, QLineEdit, QPushButton
 from graph.graph_window import GraphWindow
-#from popups.ChangeVector import OpenVectorChangePopup
+from nodeview.NodeGridBuilder import NodeGridMake
+from popups.menupopup import OpenMenuPopup
+# from popups.ChangeVector import OpenVectorChangePopup
 from popups.vector_configuration import OpenVectorConfigPopup
-from popups.vc_manager import OpenVCPopup
-from popups.timestamp_filter import OpenTSPopup
-from popups.remove_link import OpenRLPopup
-from popups.relationships import OpenRelatePopup
-from popups.node_creator import OpenNodeCreatePopup
-from popups.IconConfiguration import IconConfiguration
-from popups.FilterVector import OpenFilterVectorPopup
-from popups.filterTeam import OpenFilterTeamPopup
-from popups.filter_all import OpenFilterAllPopup
-from popups.export_configuration import OpenExportConfigPopup
-from popups.expand import OpenExpandPopup
-from popups.connect_link import OpenconnectlinkPopup
+
 global gwindow
 global logview
 global logviewAct
 class NodeView(QMainWindow):
     
-    def __init__(self): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
+    def __init__(self,vector): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
         super().__init__()
         global gwindow
         #gwindow = gwindow1
-        self.initUI()
+        self.initUI(vector)
         #TODO GET TO GRAPH SOMEHOW
         #this code runs GridBuilder
         #############################################################################
 
-        self.grid = NodeGridMake(self)
+        self.vector = vector
+        self.grid = NodeGridMake(vector)
         _widget = QWidget()
         _layout = QVBoxLayout(_widget)
         _layout.addWidget(self.grid)
@@ -58,7 +47,7 @@ class NodeView(QMainWindow):
         global logviewAct
         logviewAct.triggered.connect(lambda: logv.show())
 
-    def initUI(self):               
+    def initUI(self,vector):               
         #this is where the toolbar elements are set up
 
         self.toolbar = self.addToolBar('UI')   #to-do lock toolbar
@@ -204,7 +193,7 @@ class NodeView(QMainWindow):
 
     def closeMyApp_OpenNewApp(self): 
         self.close() 
-        self.Open = GraphWindow() 
+        self.Open = GraphWindow(self.grid) 
         self.Open.show()
 
         

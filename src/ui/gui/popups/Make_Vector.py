@@ -8,11 +8,12 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import * 
 from PyQt5.Qt import *
+from src.objects.Vector import Vector
 max_width = 4000
-from popups.directory_configuration import Configure_Directory
+#from popups.directory_configuration import Configure_Directory
 
-class Configure_Event(QMainWindow):
-    def __init__(self): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
+class Make_Vector(QMainWindow):
+    def __init__(self,vector_list): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
         super().__init__()
         
         #self.initUI()
@@ -31,11 +32,11 @@ class Configure_Event(QMainWindow):
        
         
 
-        title_label = QLabel("Event Configuration")
-        title_label.setMaximumHeight(35)
+        #title_label = QLabel("Make Vector")
+        #title_label.setMaximumHeight(35)
         
         layout_name = QHBoxLayout()
-        name_text_label = QLabel("Event Name")
+        name_text_label = QLabel("Vector Name")
         #name_text_label.setMaximumWidth(150)
         name_text_label.setMaximumHeight(35)
         name_edit = QTextEdit()
@@ -46,7 +47,7 @@ class Configure_Event(QMainWindow):
         layout_name.setSpacing(0)
 
         layout_description = QHBoxLayout()
-        description_text_label = QLabel("Event description")
+        description_text_label = QLabel("Vector Description")
         #description_text_label.setMaximumWidth(150)
         description_edit = QTextEdit()
         #description_edit.setMaximumWidth(300)
@@ -55,58 +56,21 @@ class Configure_Event(QMainWindow):
         layout_description.addWidget(description_edit)
         layout_description.setSpacing(0)
 
-        layout_start = QHBoxLayout()
-        start_text_label = QLabel("Event Start")
-        #start_text_label.setMaximumWidth(150)
-        start_text_label.setMaximumHeight(35)
-        start_calendar = QCalendarWidget()
-        #start_calendar.setMaximumWidth(600)
-        start_calendar.setMaximumHeight(200)
-        start_calendar.setGridVisible(True)
-        start_time = QTime()
-        start_time.setHMS(12,0,0)
-        start_time_edit = QTimeEdit()
-        start_time_edit.setTime(start_time)
-        start_time_edit.setMaximumHeight(35)
-        layout_start.addWidget(start_text_label)
-        layout_start.addWidget(start_time_edit)
-        layout_start.addWidget(start_calendar)
-        layout_start.setSpacing(0)
-
-        layout_end = QHBoxLayout()
-        end_text_label = QLabel("Event End")
-        #end_text_label.setMaximumWidth(150)
-        end_text_label.setMaximumHeight(35)
-        end_calendar = QCalendarWidget()
-        #end_calendar.setMaximumWidth(600)
-        end_calendar.setMaximumHeight(200)
-        end_calendar.setGridVisible(True)
-        end_time = QTime()
-        end_time.setHMS(12,0,0)
-        end_time_edit = QTimeEdit()
-        end_time_edit.setTime(end_time)
-        end_time_edit.setMaximumHeight(35)
-        layout_end.addWidget(end_text_label)
-        layout_end.addWidget(end_time_edit)
-        layout_end.addWidget(end_calendar)
-        layout_end.setSpacing(0)
-
-        connect_project_button = QPushButton("Save Event")
-        self.directory_config = Configure_Directory()
-        connect_project_button.clicked.connect(lambda: self.closeMyApp_OpenNewApp())
-        back_button = QPushButton("Go Back")
-        back_button.clicked.connect(lambda: self.OpenPrevApp())
+        connect_project_button = QPushButton("Make Vector")
+        #self.directory_config = Configure_Directory()
+        connect_project_button.clicked.connect(lambda: self.create_vector(name_edit,description_edit,vector_list))
+        back_button = QPushButton("Cancel")
+        back_button.clicked.connect(lambda: self.closeApp())
         #connect_project_button.clicked.connect(self.directory_config.show_config)
         #connect_project_button.setMaximumWidth(150) def closeMyApp_OpenNewApp(self): self.close() self.Open = NewApp.NewApp() self.Open.show()
 
         widget = QWidget()                    
         widget.setLayout(layout)
 
-        layout.addWidget(title_label, 0, 0, 1, 3)
+        #layout.addWidget(title_label, 0, 0, 1, 3)
         layout.addLayout(layout_name,1,0,1,3)
         layout.addLayout(layout_description,2,0,1,3)
-        layout.addLayout(layout_start,3,0,1,3)
-        layout.addLayout(layout_end,4,0,1,3)
+        
         layout.addWidget(connect_project_button,5,2)
         layout.addWidget(back_button,5,0)
         
@@ -119,8 +83,26 @@ class Configure_Event(QMainWindow):
         self.setCentralWidget(_widget)
         #############################################################################
 
-        self.setGeometry(400, 400, 400, 650)
-        self.setWindowTitle("Event Configuration")  
+        self.setGeometry(400, 400, 400, 450)
+        self.setWindowTitle("Make Vector")  
+        self.show()
+    def closeApp(self):
+        self.close()
+        return
+    def create_vector(self, name, description,vector_list):
+        nametext = name.toPlainText()
+        descriptiontext = description.toPlainText()
+        num = 0
+        nodelist = []
+        if vector_list:
+            num = vector_list[-1].return_item("vector_id") # expects a number
+            num+=1
+        vector_list.append(Vector(num,nametext,None,None,descriptiontext,nodelist))
+        self.close()
+        return
+
+
+
     def closeMyApp_OpenNewApp(self): 
         self.close() 
         nxt = Configure_Directory()

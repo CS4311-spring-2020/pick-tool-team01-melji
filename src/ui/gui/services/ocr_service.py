@@ -1,12 +1,12 @@
+from services.exceptions import FileNotSupported
 from asgiref.sync import async_to_sync
-
-from src.ui.gui.services.exceptions import FileNotSupported
 
 try:
     from PIL import Image
 except ImportError:
     import Image
 import pytesseract
+#pytesseract.pytesseract.tesseract_cmd = '/usr/local/lib/python3.6/dist-packages/pytesseract/pytesseract'
 import os
 
 

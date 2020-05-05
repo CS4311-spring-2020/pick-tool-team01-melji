@@ -29,14 +29,14 @@ global logview
 global logviewAct
 class ActionView(QMainWindow):
     
-    def __init__(self): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
+    def __init__(self,action_report_list): # this displays the action report to use it call ActionView (listofactionreportitems) with a array of items consisting of IDText ,NameText, DescriptionText, and FileText repeating until done
         super().__init__()
-        self.initUI()
+        #self.initUI()
 
         #this code runs GridBuilder
         #############################################################################
 
-        self.grid = Grid_Make(self)
+        self.grid = Grid_Make(action_report_list)
         _widget = QWidget()
         _layout = QVBoxLayout(_widget)
         _layout.addWidget(self.grid)
@@ -200,6 +200,7 @@ class ActionView(QMainWindow):
         #self.addToolBar(self.toolbarlower)
 
 
-
-        
-        
+#to use this do
+#a = ActionView()
+#a.show()
+     

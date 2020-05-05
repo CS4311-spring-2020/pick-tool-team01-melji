@@ -4,7 +4,7 @@
 #############################################################################
 
 class Node:
-    def init(self,node_id, node_name, timestamp, discription, reporter, event_team, location, icon_location, origin_document, linked_to_list):
+    def __init__(self,node_id, node_name, timestamp, discription, reporter, event_team, location, icon_location, origin_document, linked_to_list):
         self.node_id = node_id
         self.node_name = node_name
         self.timestamp = timestamp
