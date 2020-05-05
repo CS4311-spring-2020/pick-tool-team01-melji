@@ -1,94 +1,115 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QLabel, QPushButton, QHBoxLayout, QVBoxLayout, QCheckBox ,QAction, QFrame
+from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QLabel, QPushButton, QHBoxLayout, QVBoxLayout, \
+    QCheckBox, QAction, QFrame, QMainWindow
 from PyQt5.QtGui import QIcon, QPixmap
-from random import seed,randint
+from random import seed, randint
 import random
 import string
 
 widthofcolumns = 600
-heightofrows=180
+heightofrows = 180
 heightoftextrow = 180
 rvalueg = 1  # for the program to know the color of the icon
-class GetNodeSampleWidgets(QFrame):
-    def __init__(self, parent=None):
-        super(GetNodeSampleWidgets,self).__init__(parent)
-        
-        self.arrayofsamplewidgets= [VisibilityButton(),LogRandIDTextWidget(),LogRandNameTextWidget(),RandTimeWidget(),LogRandDescriptionTextWidget(),RandEventTeamWidget(),RandEventTeamWidget(),LogRandNameTextWidget(),RandomFileTextWidget(),LogRandNameTextWidget(),IconWidget(),RandomFileTextWidget(),RandVectorWidget()]
-        
 
-        return 
 
-    
+class GetNodeWidgets(QFrame):
+    def __init__(self, node, parent=None):
+        super(GetNodeWidgets, self).__init__(parent)
+        # node.return_item("node_name"),node.return_item("timestamp"),node.return_item("discription"),node.return_item("reporter"),node.return_item("event_team"),node.return_item("location"),node.return_item("icon_location"),node.return_item("origin_document")
+        self.arrayofsamplewidgets = [VisibilityButton(), TextWidget(str(node.return_item("node_id"))),
+                                     TextWidget(node.return_item("node_name")),
+                                     TextWidget(node.return_item("timestamp")),
+                                     TextWidget(node.return_item("discription")), TextWidget("make this into reporter"),
+                                     TextWidget("TODO make this into event team"),
+                                     TextWidget(node.return_item("location")),
+                                     TextWidget(node.return_item("icon_location")),
+                                     TextWidget(node.return_item("origin_document")),
+                                     TextWidget(" todo connections ")]  # TODO
 
+        return
+
+
+class TextWidget(QFrame):
+
+    def __init__(self, text, parent=None):
+        super(TextWidget, self).__init__(parent)
+
+        value = randint(0, 9999)
+        layout = QHBoxLayout()
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(0)
+        self.setStyleSheet("border: 1px solid black;")
+        self.textlable = QLabel(text)
+        layout.addWidget(self.textlable)
+        self.setLayout(layout)
+        self.setMaximumHeight(heightoftextrow)
+        return
 
 
 class VisibilityButton(QFrame):
 
     def __init__(self, parent=None):
-        super(VisibilityButton,self).__init__(parent)
+        super(VisibilityButton, self).__init__(parent)
 
-        
         layout = QHBoxLayout()
-        layout.setContentsMargins(0,0,0,0)
+        layout.setContentsMargins(0, 0, 0, 0)
         layout.setSpacing(0)
         self.cb = QCheckBox('Visibility', self)
-        #self.cb.toggle()
-        #cb.stateChanged.connect(self.toggled)
-        
+        # self.cb.toggle()
+        # cb.stateChanged.connect(self.toggled)
+
         self.setStyleSheet("border: 1px solid black;")
         self.cb.setStyleSheet(" border: 0px; ")
         layout.addWidget(self.cb)
-        
-        self.setLayout(layout)    
+
+        self.setLayout(layout)
         self.setMaximumHeight(heightoftextrow)
         return
 
-    #def toggled(self, state):
-      
-        #if state == Qt.Checked:
-        #else:
+    # def toggled(self, state):
+
+    # if state == Qt.Checked:
+    # else:
+
 
 class LogRandIDTextWidget(QFrame):
 
     def __init__(self, parent=None):
-        super(LogRandIDTextWidget,self).__init__(parent)
+        super(LogRandIDTextWidget, self).__init__(parent)
 
         value = randint(0, 9999)
         layout = QHBoxLayout()
-        layout.setContentsMargins(0,0,0,0)
+        layout.setContentsMargins(0, 0, 0, 0)
         layout.setSpacing(0)
         self.setStyleSheet("border: 1px solid black;")
         self.textlable = QLabel(str(value))
         layout.addWidget(self.textlable)
-        self.setLayout(layout)    
+        self.setLayout(layout)
         self.setMaximumHeight(heightoftextrow)
         return
-
-
 
 
 class LogRandNameTextWidget(QFrame):
 
     def __init__(self, parent=None):
-        super(LogRandNameTextWidget,self).__init__(parent)
+        super(LogRandNameTextWidget, self).__init__(parent)
 
         letters = string.ascii_lowercase
         layout = QHBoxLayout()
-        layout.setContentsMargins(0,0,0,0)
+        layout.setContentsMargins(0, 0, 0, 0)
         layout.setSpacing(0)
         self.setStyleSheet("border: 1px solid black;")
-        
-        a =  randint(1, 8)
+
+        a = randint(1, 8)
         randomtext = ''
-        for x in range(0,a):
-            randomtextvar =''.join( random.choice(letters) for i in range(randint(0, 20)))
+        for x in range(0, a):
+            randomtextvar = ''.join(random.choice(letters) for i in range(randint(0, 20)))
             randomtext = randomtext + ' ' + randomtextvar
-        
-       
+
         self.textlable = QLabel(randomtext)
         self.textlable.setWordWrap(True)
         layout.addWidget(self.textlable)
-        self.setLayout(layout)  
+        self.setLayout(layout)
         self.setMaximumHeight(heightoftextrow)
         self.setMaximumWidth(widthofcolumns)
 
@@ -98,19 +119,19 @@ class LogRandNameTextWidget(QFrame):
 class RandTimeWidget(QFrame):
 
     def __init__(self, parent=None):
-        super(RandTimeWidget,self).__init__(parent)
+        super(RandTimeWidget, self).__init__(parent)
 
         value1 = randint(1, 12)
         value2 = randint(1, 31)
         value3 = randint(0, 3000)
         layout = QHBoxLayout()
-        layout.setContentsMargins(0,0,0,0)
+        layout.setContentsMargins(0, 0, 0, 0)
         layout.setSpacing(0)
         self.setStyleSheet("border: 1px solid black;")
         date = str(value1) + "/" + str(value2) + "/" + str(value3)
         self.textlable = QLabel(str(date))
         layout.addWidget(self.textlable)
-        self.setLayout(layout)    
+        self.setLayout(layout)
         self.setMaximumHeight(heightoftextrow)
         return
 
@@ -118,88 +139,79 @@ class RandTimeWidget(QFrame):
 class LogRandDescriptionTextWidget(QFrame):
 
     def __init__(self, parent=None):
-        super(LogRandDescriptionTextWidget,self).__init__(parent)
+        super(LogRandDescriptionTextWidget, self).__init__(parent)
 
         letters = string.ascii_lowercase
         layoutdes = QHBoxLayout()
-        layoutdes.setContentsMargins(0,0,0,0)
+        layoutdes.setContentsMargins(0, 0, 0, 0)
         layoutdes.setSpacing(0)
         self.setStyleSheet("border: 1px solid black;")
-        
-        a =  randint(0, 30)
+
+        a = randint(0, 30)
         randomtextdes = ''
-        for x in range(0,a):
-            randomtextvar =''.join( random.choice(letters) for i in range(randint(0, 20)))
+        for x in range(0, a):
+            randomtextvar = ''.join(random.choice(letters) for i in range(randint(0, 20)))
             randomtextdes = randomtextdes + ' ' + randomtextvar
-        
-       
+
         self.textlabledes = QLabel(randomtextdes)
         self.textlabledes.setWordWrap(True)
         layoutdes.addWidget(self.textlabledes)
-        self.setLayout(layoutdes)  
+        self.setLayout(layoutdes)
         self.setMaximumHeight(heightoftextrow)
         self.setMaximumWidth(heightoftextrow)
 
         return
 
 
-
 class RandomFileTextWidget(QFrame):
 
     def __init__(self, parent=None):
-        super(RandomFileTextWidget,self).__init__(parent)
-
+        super(RandomFileTextWidget, self).__init__(parent)
 
         letters = string.ascii_lowercase
         layout = QHBoxLayout()
-        layout.setContentsMargins(0,0,0,0)
+        layout.setContentsMargins(0, 0, 0, 0)
         layout.setSpacing(0)
 
         self.setStyleSheet("border: 1px solid black;")
 
-        randomfiletext =''.join(random.choice(letters) for i in range(randint(0, 15)))
-        randomfiletext = randomfiletext +'.txt'
+        randomfiletext = ''.join(random.choice(letters) for i in range(randint(0, 15)))
+        randomfiletext = randomfiletext + '.txt'
         self.textlable = QLabel(randomfiletext)
 
         layout.addWidget(self.textlable)
-        self.setLayout(layout)  
+        self.setLayout(layout)
         self.setMaximumHeight(heightoftextrow)
         return
-
-
 
 
 class RandVectorWidget(QFrame):
 
     def __init__(self, parent=None):
-        super(RandVectorWidget,self).__init__(parent)
+        super(RandVectorWidget, self).__init__(parent)
         layout = QVBoxLayout()
-        layout.setContentsMargins(0,0,0,0)
+        layout.setContentsMargins(0, 0, 0, 0)
         layout.setSpacing(0)
         self.setStyleSheet("border: 1px solid black;")
-        
+
         self.logreportersortbutton = QPushButton()
         self.logreportersortbutton.setIcon(QIcon(QPixmap("bin/assets/add.png")))
-        #self.logreportersortbutton.clicked.connect(lambda:OpenVectorAddPopup())
+        # self.logreportersortbutton.clicked.connect(lambda:OpenVectorAddPopup())
         layout.addWidget(self.logreportersortbutton)
 
         self.logreporterfilterbutton = QPushButton()
         self.logreporterfilterbutton.setIcon(QIcon(QPixmap("bin/assets/subtract.png")))
-        #self.logreporterfilterbutton.clicked.connect(lambda:OpenVectorRemovePopup())
+        # self.logreporterfilterbutton.clicked.connect(lambda:OpenVectorRemovePopup())
         layout.addWidget(self.logreporterfilterbutton)
-        
-        
-        y =  randint(0, 9)
 
-        for x in range(0,y):
+        y = randint(0, 9)
 
-                
+        for x in range(0, y):
             b = "randomsampledata" + str(x)
             object = QLabel(b)
             object.setStyleSheet("border: 1px solid white;")
             layout.addWidget(object)
             object.setMaximumHeight(16)
-
 
         self.setLayout(layout)
         self.setMaximumHeight(heightofrows)
@@ -209,10 +221,10 @@ class RandVectorWidget(QFrame):
 class RandEventTeamWidget(QFrame):
 
     def __init__(self, parent=None):
-        super(RandEventTeamWidget,self).__init__(parent)
+        super(RandEventTeamWidget, self).__init__(parent)
         global rvalueg
         layout = QHBoxLayout()
-        layout.setContentsMargins(0,0,0,0)
+        layout.setContentsMargins(0, 0, 0, 0)
         layout.setSpacing(0)
         rvalue = randint(1, 3)
         rvalueg = rvalue
@@ -221,28 +233,29 @@ class RandEventTeamWidget(QFrame):
         if rvalue == 1:
             color = "white"
         if rvalue == 2:
-           color = "blue"
+            color = "blue"
         if rvalue == 3:
             color = "red"
         labeli = QLabel(color)
         labeli.setScaledContents(True)
         layout.addWidget(labeli)
 
-        #print(labeli.hasScaledContents())
-        #print(labeli.size())
-        
-        self.setLayout(layout)  
+        # print(labeli.hasScaledContents())
+        # print(labeli.size())
+
+        self.setLayout(layout)
         self.setMaximumHeight(heightofrows)
         self.setMaximumWidth(widthofcolumns)
         return
 
+
 class IconWidget(QFrame):
 
     def __init__(self, parent=None):
-        super(IconWidget,self).__init__(parent)
+        super(IconWidget, self).__init__(parent)
         global rvalueg
         layout = QHBoxLayout()
-        layout.setContentsMargins(0,0,0,0)
+        layout.setContentsMargins(0, 0, 0, 0)
         layout.setSpacing(0)
         labeli = QLabel(self)
         self.setStyleSheet("border: 1px solid black;")
@@ -255,12 +268,33 @@ class IconWidget(QFrame):
         labeli.setScaledContents(True)
         labeli.setMaximumHeight(100)
         labeli.setMaximumWidth(120)
-        
+
         layout.addWidget(labeli)
-        
-        self.setLayout(layout)  
+
+        self.setLayout(layout)
         self.setMaximumHeight(heightofrows)
         self.setMaximumWidth(widthofcolumns)
         return
-        
-        
+
+
+class View_Node(QMainWindow):
+
+    def __init__(
+            self):  # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
+        super().__init__()
+
+        self.initUI()
+        # TODO GET TO GRAPH SOMEHOW
+        # this code runs GridBuilder
+        #############################################################################
+        _widget = QWidget()
+        layout = QHBoxLayout(_widget)
+        layout.addWidget()
+
+        self.setCentralWidget(_widget)
+
+        #############################################################################
+
+        self.setGeometry(500, 500, 500, 500)
+        self.setWindowTitle("Node View")
+        # self.show()
