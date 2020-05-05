@@ -30,7 +30,7 @@ class GraphWindow(QWidget):
         self.splitter = QSplitter(Qt.Horizontal)
         #self.setStyleSheet(qdarkstyle.load_stylesheet(qt_api=os.environ('PYQTGRAPH_QT_LIB')))
         #self.splitter = .setOrientation(Qt.Horizontal)
-        grid = NodeGridMake()
+        grid = NodeGridMake(wind.vector)
         #grid.setMinimumSize(500, 500)
         #self.layout.addWidget(grid)
         self.splitter.addWidget(wind)#grid)

@@ -34,12 +34,13 @@ class TextWidget(QFrame):
     def __init__(self, text, parent=None):
         super(TextWidget, self).__init__(parent)
 
-        value = randint(0, 9999)
+        self.text = text
+        self.value = randint(0, 9999)
         layout = QHBoxLayout()
         layout.setContentsMargins(0, 0, 0, 0)
         layout.setSpacing(0)
         self.setStyleSheet("border: 1px solid black;")
-        self.textlable = QLabel(text)
+        self.textlable = QLabel(self.text)
         layout.addWidget(self.textlable)
         self.setLayout(layout)
         self.setMaximumHeight(heightoftextrow)
