@@ -3,27 +3,15 @@
 ##  The toolbar code is located in TemplateforPICK under InitUI 
 ##  Thanks - Micheal 2/1/20
 #############################################################################
-import sys
 #from nodeview.NodeGridBuilder import NodeGridMake
-from nodeview.NodeGridBuilder import NodeGridMake
-from PyQt5.QtWidgets import QMainWindow, QAction, qApp, QApplication, QVBoxLayout, QWidget,QToolBar,QLineEdit,QPushButton
 from PyQt5.QtGui import QIcon
-from popups.menupopup import OpenMenuPopup
+from PyQt5.QtWidgets import QMainWindow, QAction, QVBoxLayout, QWidget, QToolBar, QLineEdit, QPushButton
 from graph.graph_window import GraphWindow
-#from popups.ChangeVector import OpenVectorChangePopup
+from nodeview.NodeGridBuilder import NodeGridMake
+from popups.menupopup import OpenMenuPopup
+# from popups.ChangeVector import OpenVectorChangePopup
 from popups.vector_configuration import OpenVectorConfigPopup
-from popups.vc_manager import OpenVCPopup
-from popups.timestamp_filter import OpenTSPopup
-from popups.remove_link import OpenRLPopup
-from popups.relationships import OpenRelatePopup
-from popups.node_creator import OpenNodeCreatePopup
-from popups.IconConfiguration import IconConfiguration
-from popups.FilterVector import OpenFilterVectorPopup
-from popups.filterTeam import OpenFilterTeamPopup
-from popups.filter_all import OpenFilterAllPopup
-from popups.export_configuration import OpenExportConfigPopup
-from popups.expand import OpenExpandPopup
-from popups.connect_link import OpenconnectlinkPopup
+
 global gwindow
 global logview
 global logviewAct
