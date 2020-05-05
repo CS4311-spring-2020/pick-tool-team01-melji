@@ -1,10 +1,7 @@
-import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QLabel, QPushButton, QHBoxLayout, QCheckBox ,QAction, QFrame, QSizePolicy
+from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon, QPixmap
-from PyQt5.Qt import *
-
+from PyQt5.QtWidgets import QLabel, QPushButton, QHBoxLayout, QCheckBox, QFrame
 from popups.filter_all import OpenFilterAllPopup
-from popups.export_configuration import OpenExportConfigPopup
 
 widthofcolumns = 200
 heightofrows=50
@@ -15,10 +12,10 @@ class GetNodeGridWidgets(QFrame):
     def __init__(self, parent=None):
         super(GetNodeGridWidgets,self).__init__(parent)
         #NodeVisibilityTextWidget()NodeIDWidget()NodeNameWidget()NodeTimeStampWidget()NodeDescriptionWidget()NodeSourceWidget()NodeOriginDocumentWidget(), NodeLogEntryRefrenceWidget(),NodeIconWidget(),NodeIDTextWidget(), NodeNameTextWidget(), NodeTimeStampTextWidget(), NodeDescriptionTextWidget(), NodeSourceTextWidget(),  Node1TextWidget(), NodeOriginDocumentTextWidget(), NodeLogEntryRefrenceTextWidget(),NodeIconTextWidget()
-        self.arrayofwidgets = [ NodeTextWidget("Visibility"), TopGrid("1_9","no"), TopGrid("a_z","no"), TopGrid("a_z","true"), TopGrid("a_z","no"),  
-        TopGrid("a_z","true"), TopGrid("a_z","true"), TopGrid("a_z","true"), TopGrid("a_z","no"), TopGrid("a_z","true"), TopGrid("direction","no"), 
-        EmptyWidget(), NodeTextWidget("Node ID"), NodeTextWidget("Node Name"), NodeTextWidget("TimeStamp"), NodeTextWidget("Description"), 
-        NodeTextWidget("Source"), NodeTextWidget("Event Team"), NodeTextWidget("Location"), NodeTextWidget("Origin Document"), NodeTextWidget("Log Refrence"), NodeTextWidget("Icon")]
+        self.arrayofsamplewidgets = [NodeTextWidget("Visibility"), TopGrid("1_9", "no"), TopGrid("a_z", "no"), TopGrid("a_z", "true"), TopGrid("a_z", "no"),
+                                     TopGrid("a_z","true"), TopGrid("a_z","true"), TopGrid("a_z","true"), TopGrid("a_z","no"), TopGrid("a_z","true"), TopGrid("direction","no"),
+                                     EmptyWidget(), NodeTextWidget("Node ID"), NodeTextWidget("Node Name"), NodeTextWidget("TimeStamp"), NodeTextWidget("Description"),
+                                     NodeTextWidget("Source"), NodeTextWidget("Event Team"), NodeTextWidget("Location"), NodeTextWidget("Origin Document"), NodeTextWidget("Log Refrence"), NodeTextWidget("Icon")]
         return 
 #TODO select all in empty space
 
