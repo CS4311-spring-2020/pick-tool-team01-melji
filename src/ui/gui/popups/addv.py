@@ -35,7 +35,7 @@ class AddVectorPopup(QMainWindow):
 
         _widget = QWidget()
         print('h1')
-        add_button = QPushButton("change vector")
+        add_button = QPushButton("Add Vectors")
         add_button.setMaximumWidth(150)
         delete_button = QPushButton("Delete")
         delete_button.setMaximumWidth(150)
@@ -68,7 +68,7 @@ class AddVectorPopup(QMainWindow):
         #############################################################################
 
         self.setGeometry(500, 500, 500, 500)
-        self.setWindowTitle("Vector Configuration")  
+        self.setWindowTitle("Add Vector")  
         self.show()
         
     def add_clicked(self,get_list,layout,this_log,widget_to_update): 
@@ -180,34 +180,21 @@ class Vector_Push_Button(QFrame):
 
     def __init__(self,vector,vector_list,parent=None):
         super(Vector_Push_Button,self).__init__(parent)
-        print("here1")
         layout = QHBoxLayout()
-        print("here2")
         self.vector = vector
-        print("here3")
         layout.setContentsMargins(0,0,0,0)
-        print("here4")
         layout.setAlignment(Qt.AlignVCenter|Qt.AlignHCenter)
-        print("here5")
         layout.setSpacing(0)
-        print("here6")
         self.check_button = QCheckBox("add")
-        print("here7")
         self.name = vector.return_item("vector_name")
-        print("here8")
         self.description = vector.return_item("discription")
-        print("here9")
         self.check_button.setChecked(False)
-        print("here10")
         self.setStyleSheet("border: 1px solid black;")
-        print("here11")
         layout.addWidget(self.check_button)
-        print("here12")
         if self.vector.return_item("vector_name") in vector_list:
             return None
-        print("here13")
         self.setLayout(layout)    
-        self.setMaximumWidth(heightofrows)
+        self.setMaximumWidth(widthofcolumns)
         
         
     def return_if_checked(self):
