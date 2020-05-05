@@ -9,6 +9,8 @@ from PyQt5.QtWidgets import QWidget, QGridLayout, QListWidget, QAbstractItemView
     QListWidgetItem
 from nodeview.SampleNodeDataMaker import GetNodeWidgets
 
+from src.ui.gui.nodeview.SampleNodeDataMaker import heightofrows
+
 OP_CODE_LOG_ENTRY = 1
 LISTBOX_MIMETYPE = "application/LogEntry"
 
@@ -59,6 +61,10 @@ class NodeGridMake(QListWidget):
             self.addItem(item)
 
             widget = GRNodeEntry(node)
+            s = QSize()
+            s.setHeight(heightofrows)
+            s.setWidth(widget.width())
+            item.setSizeHint(s)
 
             item.setFlags(Qt.ItemIsEnabled | Qt.ItemIsSelectable | Qt.ItemIsDragEnabled)
             item.setData(Qt.UserRole, OP_CODE_LOG_ENTRY)
