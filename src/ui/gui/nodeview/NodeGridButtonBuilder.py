@@ -1,3 +1,4 @@
+from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtWidgets import QLabel, QPushButton, QHBoxLayout, QCheckBox, QFrame
 from popups.filter_all import OpenFilterAllPopup
