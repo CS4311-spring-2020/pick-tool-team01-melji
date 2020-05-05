@@ -45,7 +45,7 @@ class OpenVectorChangePopup(QMainWindow):
         layouth = QHBoxLayout()                       
         widget.setLayout(layoutv)
         
-        self.mainv = vectconfigtempname(vector_list)
+        self.mainv = vectconfigtempname(vector_list,self)
         layoutv.addWidget(self.mainv)
         #layouth.addWidget(add_button)
         #layouth.addWidget(delete_button)
@@ -65,7 +65,7 @@ class OpenVectorChangePopup(QMainWindow):
         #############################################################################
 
         self.setGeometry(500, 500, 500, 500)
-        self.setWindowTitle("Vector Configuration")  
+        self.setWindowTitle("Change Vector")  
         #self.show()
     def showprojectconfig(self):
         self.show()
@@ -78,12 +78,12 @@ class OpenVectorChangePopup(QMainWindow):
 
 
 class vectconfigtempname(QScrollArea):## experimenting with vector add
-    def __init__(self,vector_list, parent=None):
+    def __init__(self,vector_list,to_change, parent=None):
         super(vectconfigtempname, self).__init__(parent)
-        self.scrollmake(vector_list)
+        self.scrollmake(vector_list,to_change)
     def add_vecotor(vector_to_add):
         return
-    def scrollmake(self,vectors_list):
+    def scrollmake(self,vectors_list,to_change):
         self.widget = QWidget()                 
         self.layoutgrid = QGridLayout()  
         self.layoutgrid.setSpacing(0)
@@ -100,7 +100,7 @@ class vectconfigtempname(QScrollArea):## experimenting with vector add
 
         for y in range(0,len(vectors_list)):
              
-            self.button1 = Vector_Push_Button(vectors_list[y])      
+            self.button1 = Vector_Push_Button(vectors_list[y],to_change)      
             self.text1 = LogRandNameTextWidget(self.button1.name)
             self.text2 = LogRandNameTextWidget(self.button1.description)
             self.layoutgrid.addWidget(self.button1,y,0)
@@ -120,7 +120,7 @@ class vectconfigtempname(QScrollArea):## experimenting with vector add
 
 class Vector_Push_Button(QFrame):
 
-    def __init__(self,vector,parent=None):
+    def __init__(self,vector,to_change,parent=None):
         super(Vector_Push_Button,self).__init__(parent)
         layout = QHBoxLayout()
         self.vector = vector
@@ -128,16 +128,16 @@ class Vector_Push_Button(QFrame):
         layout.setAlignment(Qt.AlignVCenter|Qt.AlignHCenter)
         layout.setSpacing(0)
         self.push_button = QPushButton("go to this vector")
-        self.push_button.clicked.connect( lambda: self.closeMyApp_OpenNewApp(vector))
+        self.push_button.clicked.connect( lambda: self.closeMyApp_OpenNewApp(vector,to_change))
         self.name = vector.return_item("vector_name")
         self.description = vector.return_item("discription")
         self.setStyleSheet("border: 1px solid black;")
         layout.addWidget(self.push_button)
         self.setLayout(layout)    
-        self.setMaximumWidth(heightofrows)
+        self.setMaximumWidth(widthofcolumns)
         return
-    def closeMyApp_OpenNewApp(self,vector): 
-        self.close() 
+    def closeMyApp_OpenNewApp(self,vector,to_change): 
+        to_change.close() 
         self.Open = NodeView(vector) 
         self.Open.show()
 
