@@ -9,13 +9,13 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import * 
 from PyQt5.Qt import *
+
 max_width = 4000
 
 class Configure_Directory(QMainWindow):
     def __init__(self): 
         super().__init__()
         
-      
 
         _widget = QWidget()
                   
@@ -88,7 +88,7 @@ class Configure_Directory(QMainWindow):
         start_ingestion_button = QPushButton("Start Data Ingestion")
         start_ingestion_button.clicked.connect(lambda: self.closeMyApp_OpenNewApp())
         back_button = QPushButton("Go Back")
-        back_button.clicked.connect(lambda: self.closeMyApp_OpenNewApp())
+        back_button.clicked.connect(lambda: self.OpenPrevApp())
 
         widget = QWidget()                    
         widget.setLayout(layout)
@@ -99,6 +99,7 @@ class Configure_Directory(QMainWindow):
         layout.addLayout(blue_team_file,3,0,1,3)
         layout.addLayout(white_team_file,4,0,1,3)
         layout.addWidget(start_ingestion_button,5,2)
+        layout.addWidget(back_button,5,1)
         
         layout.setAlignment(Qt.AlignVCenter|Qt.AlignHCenter)
         widget.setLayout(layout)
@@ -116,13 +117,15 @@ class Configure_Directory(QMainWindow):
     def closeMyApp_OpenNewApp(self): 
         #ex2 = NodeView()
         self.close() 
-        self.Open = LogView() 
+        self.Open = LogView(self) 
         self.Open.show()
     def OpenPrevApp(self): 
         #ex2 = NodeView()
         self.close() 
-        self.Open = LogView() 
+        self.Open = self.lastp
         self.Open.show()
+    def Return_Root(self):
+        return self.root_folder
 
     def show_config(self):
         self.show()
@@ -142,6 +145,10 @@ class Configure_Directory(QMainWindow):
         self.red_file_text_label.setText(self.red_folder)
         
         
+    def getself(mys):
+        self.myself = mys
+    def getlast(self,lst):
+        self.lastp = lst
     def get_blue_file(self):
         self.blue_folder = QFileDialog.getExistingDirectory(self, 'Open Blue Team Directory', options=QFileDialog.ShowDirsOnly)
         self.blue_file_text_label.setText(self.blue_folder)

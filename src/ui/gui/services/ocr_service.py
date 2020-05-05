@@ -6,6 +6,7 @@ try:
 except ImportError:
     import Image
 import pytesseract
+#pytesseract.pytesseract.tesseract_cmd = '/usr/local/lib/python3.6/dist-packages/pytesseract/pytesseract'
 import os
 
 

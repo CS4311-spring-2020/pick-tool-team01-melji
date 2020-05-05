@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QLabel, QPushButton, QHBoxLayout, QVBoxLayout, QCheckBox ,QAction, QFrame
+from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QLabel, QPushButton, QHBoxLayout, QVBoxLayout, QCheckBox ,QAction, QFrame, QMainWindow, QSizePolicy
 from PyQt5.QtGui import QIcon, QPixmap
 from random import seed,randint
 import random
@@ -10,10 +10,10 @@ heightofrows=180
 heightoftextrow = 180
 rvalueg = 1  # for the program to know the color of the icon
 class GetNodeWidgets(QFrame):
-    def __init__(self,log_entry, parent=None):
-        super(GetNodeSampleWidgets,self).__init__(parent)
-        
-        self.arrayofsamplewidgets= [VisibilityButton(),LogRandIDTextWidget(),TextWidget(self.log_entry.identifier),TextWidget(self.log_entry.timestamp),TextWidget(self.log_entry.content),RandEventTeamWidget(),RandEventTeamWidget(),LogRandNameTextWidget(),TextWidget(self.log_entry.host),LogRandNameTextWidget(),IconWidget(),RandomFileTextWidget(),RandVectorWidget()]
+    def __init__(self,node, parent=None):
+        super(GetNodeWidgets,self).__init__(parent)
+        #node.return_item("node_name"),node.return_item("timestamp"),node.return_item("discription"),node.return_item("reporter"),node.return_item("event_team"),node.return_item("location"),node.return_item("icon_location"),node.return_item("origin_document")
+        self.arrayofsamplewidgets= [VisibilityButton(),TextWidget(str(node.return_item("node_id"))),TextWidget(node.return_item("node_name")),TextWidget(node.return_item("timestamp")),TextWidget(node.return_item("discription")),TextWidget("make this into reporter"),TextWidget("TODO make this into event team"),TextWidget(node.return_item("location")),TextWidget(node.return_item("icon_location")),TextWidget(node.return_item("origin_document")),TextWidget(" todo connections ")] #TODO
         
 
         return 
@@ -33,7 +33,9 @@ class TextWidget(QFrame):
         self.textlable = QLabel(text)
         layout.addWidget(self.textlable)
         self.setLayout(layout)    
-        self.setMaximumHeight(heightoftextrow)
+        #sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+        self.setSizePolicy(QSizePolicy(QSizePolicy.Minimum,QSizePolicy.Minimum))
+        self.setMaximumWidth(widthofcolumns)        #self.setMaximumHeight(heightoftextrow)
         return
 
 class VisibilityButton(QFrame):
@@ -54,7 +56,9 @@ class VisibilityButton(QFrame):
         layout.addWidget(self.cb)
         
         self.setLayout(layout)    
-        self.setMaximumHeight(heightoftextrow)
+        self.setSizePolicy(QSizePolicy(QSizePolicy.Minimum,QSizePolicy.Minimum))
+        self.setMaximumWidth(widthofcolumns)
+        #self.setMaximumHeight(heightoftextrow)
         return
 
     #def toggled(self, state):
@@ -277,4 +281,23 @@ class IconWidget(QFrame):
         self.setMaximumWidth(widthofcolumns)
         return
         
+class View_Node(QMainWindow):
+    
+    def __init__(self): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
+        super().__init__()
         
+        self.initUI()
+        #TODO GET TO GRAPH SOMEHOW
+        #this code runs GridBuilder
+        #############################################################################
+        _widget = QWidget()
+        layout = QHBoxLayout(_widget)
+        layout.addWidget()
+
+        self.setCentralWidget(_widget)
+
+        #############################################################################
+
+        self.setGeometry(500, 500, 500, 500)
+        self.setWindowTitle("Node View")  
+        #self.show()

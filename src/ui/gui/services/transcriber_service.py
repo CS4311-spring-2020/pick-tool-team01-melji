@@ -5,10 +5,9 @@ https://github.com/bambocher/pocketsphinx-python/issues/28
 brew install portaudio
 pip install --global-option='build_ext' --global-option='-I/usr/local/include' --global-option='-L/usr/local/lib' pyaudio
 """
-import speech_recognition as sr
 import os
-from pathlib import Path
 
+import speech_recognition as sr
 from services.exceptions import FileNotSupported
 
 
@@ -48,7 +47,7 @@ class TranscriberService(object):
             print("[ERROR] Sphinx error; {0}".format(e))
 
 
-transcriber = TranscriberService(debug=True)
-p = Path("example/english.wav").resolve()
-print(str(p))
-transcriber.convert_to_string(str(p))
+# transcriber = TranscriberService(debug=True)
+# p = Path("example/english.wav").resolve()
+# print(str(p))
+# transcriber.convert_to_string(str(p))

@@ -24,22 +24,25 @@ from popups.filterTeam import OpenFilterTeamPopup
 from popups.filter_all import OpenFilterAllPopup
 from popups.export_configuration import OpenExportConfigPopup
 from popups.expand import OpenExpandPopup
+from popups.Make_Vector import Make_Vector
 #from popups.directory_configuration import Configure_Directory
 from popups.connect_link import OpenconnectlinkPopup
+
 
 global window
 class LogView(QMainWindow):
     
-    def __init__(self): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
+    def __init__(self,dir_config): # this is to start grid builder before .show  ***note grid builder will require a array of data type called loginfo in the future***
         super().__init__()
         global window
         #test = qApp
         
         #test.setStyleSheet("")
-        self.initUI()
+        self.vector_list = []
+        self.initUI(self.vector_list)
         #this code runs GridBuilder
         #############################################################################
-        self.grid = GridMake(self)
+        self.grid = GridMake(dir_config,self.vector_list)
         _widget = QWidget()
         _layout = QVBoxLayout(_widget)
         _layout.addWidget(self.grid)
@@ -51,9 +54,9 @@ class LogView(QMainWindow):
         #self.show()
         
         
-    def initUI(self):               
+    def initUI(self,vector_list):               
         #this is where the toolbar elements are set up
-
+        
         self.toolbar = self.addToolBar('UI')   #to-do lock toolbar
         
         fileAct = QAction(QIcon('bin/assets/file.png'), 'file', self)
@@ -168,7 +171,7 @@ class LogView(QMainWindow):
         self.changevectorbutton = QPushButton("Go To Vector")
         self.changevectorbutton.setMaximumWidth(150)
         global window
-        self.changevectorbutton.clicked.connect(lambda: self.closeMyApp_OpenNewApp() )
+        self.changevectorbutton.clicked.connect(lambda: self.closeMyApp_OpenNewApp(vector_list) )
         self.toolbarlower.addWidget(self.changevectorbutton)
 
         self.editvectorbutton = QPushButton("Edit Vector")
@@ -176,19 +179,21 @@ class LogView(QMainWindow):
         self.editvectorbutton.clicked.connect(OpenVectorConfigPopup)
         self.toolbarlower.addWidget(self.editvectorbutton)
 
-        self.addvectorbutton = QPushButton("Add Vector")
+        self.addvectorbutton = QPushButton("Make Vector")
         self.addvectorbutton.setMaximumWidth(150)
+        self.addvectorbutton.clicked.connect( lambda:Make_Vector(vector_list))
         self.toolbarlower.addWidget(self.addvectorbutton)
 
-        self.removevectorbutton = QPushButton("Remove Vector")
+        self.removevectorbutton = QPushButton("Delete Vector")
         self.removevectorbutton.setMaximumWidth(150)
         self.toolbarlower.addWidget(self.removevectorbutton)
 
         self.addToolBarBreak()
         self.addToolBar(self.toolbarlower)
-
-    
-    def closeMyApp_OpenNewApp(self): 
+    def make_a_vector(vector_list):
+        wind = Make_Vector(vector_list)
+        wind.show()
+    def closeMyApp_OpenNewApp(self,vector_list): 
         self.close() 
-        self.Open = OpenVectorChangePopup() 
+        self.Open = OpenVectorChangePopup(vector_list) 
         self.Open.show()

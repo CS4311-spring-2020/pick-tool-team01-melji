@@ -28,3 +28,13 @@ class Scene():
     
     def removeEdge(self, edge):
         self.edges.remove(edge)
+
+    def addDragEnterListener(self, callback):
+        pass
+        # views = self.grScene.views()
+        # views[0].addDragEnterListener(callback)
+
+    def addDropListener(self, callback):
+        pass
+        # views = self.grScene.views()
+        # views[0].addDropListener(callback)

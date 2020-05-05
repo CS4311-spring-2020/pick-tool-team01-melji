@@ -9,15 +9,13 @@ from PyQt5.QtWidgets import QScrollArea, QWidget, QGridLayout, QLabel, QSizePoli
 #from LogDataType import LogInfo
 from action_view.Action_Grid_Button_Builder import Get_Grid_Widgets
 from action_view.Action_Sample_Data_Maker import Get_Sample_Widgets
+from action_view.Action_Data_Maker import Get_Widgets
 from random import seed,randint
 import random
 
 class Grid_Make(QScrollArea):   
-    def __init__(self, parent=None):
-        super(Grid_Make, self).__init__(parent)
-        self.scroll_make()
-
-    def scroll_make(self):
+    def __init__(self,text_array):
+        super().__init__()
         self.widget = QWidget()               
         self.layoutgrid = QGridLayout()  
         self.layoutgrid.setSpacing(0)
@@ -26,32 +24,27 @@ class Grid_Make(QScrollArea):
         i = 0
         n = 0
         data = Get_Grid_Widgets()
-        arrayofwidgets = data.arrayofwidgets
-        
+        o_data = Get_Widgets(text_array)
+        arrayofwidgets = data.arrayofwidgets + o_data.arrayofwidgets
+
         numofsample = 0
         numofsample = randint(2, 98)
-        
-        for y in range(0,numofsample): #this code will detect what is in the datatype and put it into spaces in grid layout
-            sampledata = Get_Sample_Widgets()
-            for x in range(0,5):
-                if y < 2:
-                    widgettoad = arrayofwidgets[i]
-                    self.layoutgrid.addWidget(widgettoad,y,x)
-                    i = i+1
+        #length
+        x  = 0
+        y=0
+
+        for i in range(0,(len(arrayofwidgets))): #this code will detect what is in the datatype and put it into spaces in grid layout
+            
+            if x == 5:
+                x=0 
+                y+=1
+            widgettoad = arrayofwidgets[i]
+            self.layoutgrid.addWidget(widgettoad,y,x)
+            
+            x +=1
+                
                
-                    arrayofsamplewidgets = sampledata.arrayofsamplewidgets
-
-                else: 
-                    if x < 3:
-                        arrayofsamplewidgets = sampledata.arrayofsamplewidgets
-                        widgettoad = arrayofsamplewidgets[x]
-                        self.layoutgrid.addWidget(widgettoad,y,x)
-                    elif x == 3:
-                        arrayofsamplewidgets = sampledata.arrayofsamplewidgets
-                        widgettoad = arrayofsamplewidgets[x]
-                        self.layoutgrid.addWidget(widgettoad,y,x,1,2)
-
-                    n = n+1
+                    
         
         self.widget.setLayout(self.layoutgrid)
         self.widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
