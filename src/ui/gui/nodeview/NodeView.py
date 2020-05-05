@@ -26,6 +26,7 @@ class NodeView(QMainWindow):
         #this code runs GridBuilder
         #############################################################################
 
+        self.vector = vector
         self.grid = NodeGridMake(vector)
         _widget = QWidget()
         _layout = QVBoxLayout(_widget)
