@@ -128,7 +128,7 @@ class vectconfigtempname(QScrollArea):## experimenting with vector add
                 break
             else:
                 self.button1 = Vector_Push_Button(vectors[y],vectors_list)
-                if self.button1 != None:
+                if self.button1:
                     self.button_list.append(self.button1)
                     self.text1 = LogRandNameTextWidget(self.button1.name)
                     self.text2 = LogRandNameTextWidget(self.button1.description)
@@ -226,7 +226,7 @@ class projectMake(QScrollArea):
         self.layoutgrid = QGridLayout()  
         self.layoutgrid.setSpacing(0)
         self.layoutgrid.setHorizontalSpacing(0)
-
+        
         label1 = QLabel(self)
         label2 = QLabel(self)
         label3 = QLabel(self)

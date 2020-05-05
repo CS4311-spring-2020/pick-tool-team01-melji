@@ -33,12 +33,12 @@ class NodeView(QMainWindow):
         super().__init__()
         global gwindow
         #gwindow = gwindow1
-        self.initUI()
+        self.initUI(vector)
         #TODO GET TO GRAPH SOMEHOW
         #this code runs GridBuilder
         #############################################################################
 
-        self.grid = NodeGridMake(self)
+        self.grid = NodeGridMake(vector)
         _widget = QWidget()
         _layout = QVBoxLayout(_widget)
         _layout.addWidget(self.grid)
@@ -58,7 +58,7 @@ class NodeView(QMainWindow):
         global logviewAct
         logviewAct.triggered.connect(lambda: logv.show())
 
-    def initUI(self):               
+    def initUI(self,vector):               
         #this is where the toolbar elements are set up
 
         self.toolbar = self.addToolBar('UI')   #to-do lock toolbar

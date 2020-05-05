@@ -14,11 +14,8 @@ from random import seed,randint
 import random
  
 class NodeGridMake(QScrollArea):   
-    def __init__(self, parent=None):
-        super(NodeGridMake, self).__init__(parent)
-        self.scrollmake()
-
-    def scrollmake(self):
+    def __init__(self,vectora, parent=None): 
+        super(NodeGridMake,self).__init__(parent)
         self.widget = QWidget()               
         self.layoutgrid = QGridLayout()  
         self.layoutgrid.setSpacing(0)
@@ -39,12 +36,10 @@ class NodeGridMake(QScrollArea):
             #        widgettoad = arrayofwidgets[i]
              #       self.layoutgrid.addWidget(widgettoad,y,x)
               #      i = i+1
-        node_list = vector.return_item("node_list")
-        self.intake_service = IntakeService()
-        self.entries = self.intake_service.ingest_files(
-            "/Users/eddie/Documents/SchoolProjects/pick-tool-team01-melji/example/")
-        for y in range(len(self.entries)): #this code will detect what is in the datatype and put it into spaces in grid layout
-            sampledata = GetNodeWidgets(node_list[y-2])
+        node_list = vectora.return_item("node_list")
+        for y in range(0,len(node_list)+2): #this code will detect what is in the datatype and put it into spaces in grid layout
+            if y > 1:
+                sampledata = GetNodeWidgets(node_list[y-2])
             for x in range(0,10):
                 if y < 2:
                     widgettoad = arrayofwidgets[i]

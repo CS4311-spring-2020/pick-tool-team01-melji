@@ -13,7 +13,7 @@ class GetNodeWidgets(QFrame):
     def __init__(self,node, parent=None):
         super(GetNodeWidgets,self).__init__(parent)
         #node.return_item("node_name"),node.return_item("timestamp"),node.return_item("discription"),node.return_item("reporter"),node.return_item("event_team"),node.return_item("location"),node.return_item("icon_location"),node.return_item("origin_document")
-        self.arrayofsamplewidgets= [VisibilityButton(),TextWidget(node.return_item("node_id")),TextWidget(node.return_item("node_name")),TextWidget(node.return_item("timestamp")),TextWidget(node.return_item("discription")),TextWidget("make this into reporter"),TextWidget("TODO make this into event team"),TextWidget(node.return_item("location")),TextWidget(node.return_item("icon_location")),TextWidget(node.return_item("origin_document")),TextWidget(" todo connections ")] #TODO
+        self.arrayofsamplewidgets= [VisibilityButton(),TextWidget(str(node.return_item("node_id"))),TextWidget(node.return_item("node_name")),TextWidget(node.return_item("timestamp")),TextWidget(node.return_item("discription")),TextWidget("make this into reporter"),TextWidget("TODO make this into event team"),TextWidget(node.return_item("location")),TextWidget(node.return_item("icon_location")),TextWidget(node.return_item("origin_document")),TextWidget(" todo connections ")] #TODO
         
 
         return 

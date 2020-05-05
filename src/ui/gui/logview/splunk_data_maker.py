@@ -24,8 +24,8 @@ class SplunkData(QFrame):
         super(SplunkData, self).__init__(parent=None)
         self.ingestion_service = IntakeService()
         self.log_entry = log_entry
-        #self.vectors = None
-        self.log = Log(id_of_log,self.log_entry.identifier,self.log_entry.timestamp,self.log_entry.content,"white","white",self.log_entry.host,"bin/assets/white.png", self.log_entry.source, vectors)#TODO "white","white",self.log_entry.host,"bin/assets/white.png" needs changed to get the different teams bassed on ingestion
+        self.vectors = []
+        self.log = Log(id_of_log,self.log_entry.identifier,self.log_entry.timestamp,self.log_entry.content,"white","white",self.log_entry.host,"bin/assets/white.png", self.log_entry.source, self.vectors)#TODO "white","white",self.log_entry.host,"bin/assets/white.png" needs changed to get the different teams bassed on ingestion
         
         self.splunk_data = [
             IDData(id_of_log),
