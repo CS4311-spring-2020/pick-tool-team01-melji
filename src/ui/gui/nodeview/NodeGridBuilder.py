@@ -50,8 +50,8 @@ class NodeGridMake(QListWidget):
     #     super(NodeGridMake, self).__init__(parent)
     #     self.initUI()
     # self.scrollmake()
-    def __init__(self, parent=None):
-        super().__init__(parent)
+    def __init__(self, vector, parent=None):
+        super(NodeGridMake, self).__init__(parent)
         self.initUI()
 
     def initUI(self):
