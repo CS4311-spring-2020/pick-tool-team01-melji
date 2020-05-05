@@ -1,18 +1,14 @@
-
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QBrush, QPen
 from PyQt5.QtWidgets import *
-from PyQt5 import QtGui
-from PyQt5 import QtCore
-from PyQt5.QtWidgets import QWidget , QHBoxLayout,QSplitter
-from graph.graph_scene import GraphScene
-from graph.graph_view import GraphView
-from PyQt5.QtGui import *
-from PyQt5.QtCore import *
-from graph.node_scence import Scene
-from graph.node_edge import Edge, EDGE_TYPE_BEZIER
-from graph.node_dto import Node
-from graph.node_connector import Socket
-from graph.timeline_dto import Timeline
-from nodeview.NodeGridBuilder import NodeGridMake
+from PyQt5.QtWidgets import QWidget, QHBoxLayout, QSplitter
+
+from src.ui.gui.graph.graph_view import GraphView
+from src.ui.gui.graph.node_dto import Node
+from src.ui.gui.graph.node_edge import Edge, EDGE_TYPE_BEZIER
+from src.ui.gui.graph.node_scence import Scene
+from src.ui.gui.graph.timeline_dto import Timeline
+from src.ui.gui.nodeview.NodeGridBuilder import NodeGridMake
 
 from src.ui.gui.nodeview.NodeGridBuilder import LISTBOX_MIMETYPE
 
@@ -77,27 +73,13 @@ class GraphWindow(QWidget):
             if node.title == title:
                 self.scene.removeNode(node)
 
-    def contextMenuEvent(self, event):
-        contextMenu = QMenu(self)
-        
-        removeNodeAction = contextMenu.addAction("Add node")
-        connectNode = contextMenu.addAction("Add relationship")
-        deConnectNode = contextMenu.addAction("Delete node")
-        undoChanges = contextMenu.addAction("Delete relationship")
-        redoChanges = contextMenu.addAction("Edit node")
-        settings = contextMenu.addAction("Edit relationship")
-        settings = contextMenu.addAction("Timeline orientation")
-        settings = contextMenu.addAction("Interval units")
-
-        action = contextMenu.exec_(self.mapToParent(event.pos()))
-
-
     def addDebugContent(self):
         greenBrush = QBrush(Qt.green)
         outlinePen = QPen(Qt.black)
         outlinePen.setWidth(2)
 
         rect = self.grScene.addRect(-100, -100, 80, 100, outlinePen, greenBrush)
+
         rect.setFlag(QGraphicsItem.ItemIsMovable)
 
     def onDragEnter(self, event):

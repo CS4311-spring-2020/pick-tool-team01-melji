@@ -4,8 +4,9 @@ from PyQt5.QtCore import *
 
 
 class GRSocket(QGraphicsItem):
-    def __init__(self, parent=None):
-        super().__init__(parent)
+    def __init__(self, socket, socket_type=1):
+        self.socket = socket
+        super().__init__(socket.node.grNode)
 
         self.radius = 6.0
         self.outline_width = 1.0
@@ -20,13 +21,19 @@ class GRSocket(QGraphicsItem):
         # painting circle
         painter.setBrush(self._brush)
         painter.setPen(self._pen)
-        painter.drawEllipse(-8, 40, 2 * self.radius, 2 * self.radius)
+        # painter.drawEllipse(-8, 40, 2 * self.radius, 2 * self.radius)
+        painter.drawEllipse(-self.radius, -self.radius, 2 * self.radius, 2 * self.radius)
 
     def boundingRect(self):
+        # return QRectF(
+        #     0,
+        #     0,
+        #     2 * (self.radius + self.outline_width),
+        #     2 * (self.radius + self.outline_width),
+        # )
         return QRectF(
-            0,
-            0,
+            - self.radius - self.outline_width,
+            - self.radius - self.outline_width,
             2 * (self.radius + self.outline_width),
             2 * (self.radius + self.outline_width),
         )
-
