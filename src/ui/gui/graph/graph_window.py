@@ -1,4 +1,4 @@
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QDataStream, QIODevice
 from PyQt5.QtGui import QBrush, QPen
 from PyQt5.QtWidgets import *
 from PyQt5.QtWidgets import QWidget, QHBoxLayout, QSplitter
@@ -7,10 +7,8 @@ from src.ui.gui.graph.graph_view import GraphView
 from src.ui.gui.graph.node_dto import Node
 from src.ui.gui.graph.node_edge import Edge, EDGE_TYPE_BEZIER
 from src.ui.gui.graph.node_scence import Scene
-from src.ui.gui.graph.timeline_dto import Timeline
-from src.ui.gui.nodeview.NodeGridBuilder import NodeGridMake
-
 from src.ui.gui.nodeview.NodeGridBuilder import LISTBOX_MIMETYPE
+from src.ui.gui.nodeview.NodeGridBuilder import NodeGridMake
 
 
 class GraphWindow(QWidget):
@@ -63,7 +61,7 @@ class GraphWindow(QWidget):
 
         edge1 = Edge(self.scene, node1.outputs[0], node2.inputs[0], edge_type=EDGE_TYPE_BEZIER)
         edge2 = Edge(self.scene, node2.outputs[0], node3.inputs[0], edge_type=EDGE_TYPE_BEZIER)
-        timeline = Timeline(self.scene)
+        # timeline = Timeline(self.scene)
     
     def addNode(self, title):
         node = Node(self.scene, title)
